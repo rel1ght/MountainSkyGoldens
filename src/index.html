@@ -37,7 +37,9 @@
 		></script>
 	</head>
 
-	<body>
+	<body onload="uncover()">
+		<script>function uncover(){document.getElementById("cover").style.display = "none";}</script>
+		<div id="cover"></div>
 		<div>
 			<header>
 				<nav
@@ -76,16 +78,16 @@
 									<a class="nav-link" href="./ourdogs.html">Our Dogs</a>
 								</li>
 								<li class="nav-item" role="presentation">
-									<a class="nav-link" href="#">About</a>
+									<a class="nav-link" href="./About.html">About</a>
 								</li>
 								<li class="nav-item" role="presentation">
-									<a class="nav-link" href="#">Contact</a>
+									<a class="nav-link" href="./Contact.html">Contact</a>
 								</li>
 								<li>
 									<a
 										id="adopt"
 										class="btn btn-primary "
-										href="#"
+										href="./Adopt.html"
 										role="button"
 									>
 										ADOPT
@@ -912,14 +914,14 @@
 		<div class="row text-center text-xs-center text-sm-left text-md-left">
 			<div class="col-xs-12 col-sm-4 col-md-4">
 				<div class="row justify-content-center"><h5>Quick links</h5></div>
-				<div class="row justify-content-center">
+				<div class="row">
 					
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Our Dogs</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Contact</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Adopt</a></li>
+						<li><a href="./index.html"><i class="fa fa-angle-double-right"></i>Home</a></li>
+						<li><a href="./ourdogs.html"><i class="fa fa-angle-double-right"></i>Our Dogs</a></li>
+						<li><a href="./About.html"><i class="fa fa-angle-double-right"></i>About</a></li>
+						<li><a href="./Contact.html"><i class="fa fa-angle-double-right"></i>Contact</a></li>
+						<li><a href="./Adopt.html"><i class="fa fa-angle-double-right"></i>Adopt</a></li>
 					</ul>
 
 				</div>
@@ -929,14 +931,14 @@
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4">
 				<div class="row justify-content-center"><h5>Contact Info</h5></div>
-				<div class="row justify-content-center">
+				<div class="row">
 					
 					<ul class="list-unstyled quick-links">
 						<li><a href="javascript:void();"><i class="fas fa-phone"></i> Phone</a></li>
 						<li><a href="javascript:void();"><i class="fas fa-envelope"></i> Email</a></li>
 						<li><a href="javascript:void();"><i class="fab fa-facebook"></i> Facebook</a></li>
 						<li><a href="javascript:void();"><i class="fab fa-instagram"></i> Instagram</a></li>
-						<li><a href="javascript:void();"><i class="fas fa-map-marker-alt"></i> Location</a></li>
+						<li><a href="javascript:void();"><i class="fas fa-map-marker-alt"></i> Burley, Idaho</a></li>
 					</ul>
 
 				</div>

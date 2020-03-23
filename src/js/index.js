@@ -1,8 +1,9 @@
 import "babel-polyfill";
 import "../index.html";
-import "./imports.js";
-import "./headerfooterimageimports.js";
+import "./sharedimports.js";
+
 import "./homeimageimports.js";
+import "./gallery.js";
 //import instagramPosts from "./instagram-posts.js";
 //const instagramPosts = require("./instagram-posts");
 

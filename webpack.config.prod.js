@@ -11,7 +11,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = function(env, argv) {
 	return {
 		mode: "production",
-		entry: ["./src/js/index.js", "./src/js/ourdogs.js"],
+		entry: { index: "./src/js/index.js", ourdogs: "./src/js/ourdogs.js" },
 		output: {
 			path: path.resolve(__dirname + "/dist"),
 			filename: "js/[name].bundle.js",
@@ -26,18 +26,39 @@ module.exports = function(env, argv) {
 						name: "vendors",
 						chunks: "all"
 					}
+					// test: { test: /ourdogs/, name: "ourdogs", chunks: "all" }
 				}
 			}
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
-				template: path.resolve("./src/index.html")
+				template: path.resolve("./src/index.html"),
+				chunks: "index"
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/ourdogs.html"),
-				filename: "ourdogs.html"
+				filename: "ourdogs.html",
+				chunks: "ourdogs"
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/About.html"),
+				filename: "about.html",
+				chunks: "ourdogs"
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/Contact.html"),
+				filename: "contact.html",
+				chunks: "ourdogs"
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/Adopt.html"),
+				filename: "adopt.html",
+				chunks: "ourdogs"
 			}),
 			new MiniCssExtractPlugin({
 				filename: "[name].css",

@@ -34,15 +34,30 @@ module.exports = function() {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: "Webpack starter project",
+				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/index.html"),
-				chunks: ["index"]
+				chunks: "index"
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/ourdogs.html"),
 				filename: "ourdogs.html",
-				chunks: ["ourdogs"]
+				chunks: "ourdogs"
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/About.html"),
+				filename: "about.html"
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/Contact.html"),
+				filename: "contact.html"
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/Adopt.html"),
+				filename: "adopt.html"
 			}),
 			new webpack.HotModuleReplacementPlugin()
 		],
