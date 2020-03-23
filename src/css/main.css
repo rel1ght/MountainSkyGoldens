@@ -177,9 +177,17 @@ html {
 	background-image: url("./sleepy.jpg");
 }
 .parallax5 {
-	background-image: url("./sleepy.jpg");
+	background-image: url("./tennisballcroppeddark.jpg");
 }
-
+.parallax6 {
+	background-image: url("./familydark.jpg");
+}
+.parallax7 {
+	background-image: url("./lickdark.jpg");
+}
+.parallax8 {
+	background-image: url("./nosedark.jpg");
+}
 .input-group-btn {
 	display: inline;
 }
