@@ -48,7 +48,7 @@ section .section-title {
 	color: #eeeeee;
 }
 #footer ul.quick-links {
-	padding-left: 25%;
+	margin: auto;
 }
 #footer ul.quick-links li {
 	padding: 3px 0;
