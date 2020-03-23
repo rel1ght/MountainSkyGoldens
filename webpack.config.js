@@ -5,7 +5,16 @@ const path = require("path");
 module.exports = function() {
 	return {
 		mode: "development",
-		entry: ["babel-polyfill", "./src/js/index.js"],
+		entry: {
+			babel: "babel-polyfill",
+			index: "./src/js/index.js",
+			ourdogs: "./src/js/ourdogs.js"
+		},
+		output: {
+			path: path.resolve(__dirname + "../dist"),
+			filename: "[name].bundle.js",
+			publicPath: "/"
+		},
 		watch: true,
 		watchOptions: {
 			aggregateTimeout: 300, // Process all changes which happened in this time into one rebuild
@@ -26,7 +35,14 @@ module.exports = function() {
 		plugins: [
 			new HtmlWebpackPlugin({
 				title: "Webpack starter project",
-				template: path.resolve("./src/index.html")
+				template: path.resolve("./src/index.html"),
+				chunks: ["index"]
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/ourdogs.html"),
+				filename: "ourdogs.html",
+				chunks: ["ourdogs"]
 			}),
 			new webpack.HotModuleReplacementPlugin()
 		],
@@ -35,11 +51,6 @@ module.exports = function() {
 			fs: "empty",
 			net: "mock",
 			dns: "mock"
-		},
-		output: {
-			path: path.resolve(__dirname + "../dist"),
-			filename: "bundle.js",
-			publicPath: "/"
 		},
 		module: {
 			rules: [

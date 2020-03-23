@@ -1,5 +1,8 @@
 import "babel-polyfill";
+import "../index.html";
 import "./imports.js";
+import "./headerfooterimageimports.js";
+import "./homeimageimports.js";
 //import instagramPosts from "./instagram-posts.js";
 //const instagramPosts = require("./instagram-posts");
 
@@ -19,7 +22,7 @@ async function main() {
 	let user = await instaUserGrabber("ellies_golden_years");
 	let postsArray = await jsonDestructor(user);
 	let htmlArray = await postsHTMLGenerator(postsArray);
-	console.log("main htmlarray: ", htmlArray);
+	//console.log("main htmlarray: ", htmlArray);
 	let response = await htmlInjector(htmlArray);
 	window.instgrm.Embeds.process();
 }

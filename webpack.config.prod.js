@@ -2,38 +2,66 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const BrotliPlugin = require("brotli-webpack-plugin");
 const MinifyPlugin = require("babel-minify-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const path = require("path");
-
+const webpack = require("webpack");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = function(env, argv) {
 	return {
 		mode: "production",
-		entry: ["./src/js/index.js"],
-		// optimization: {
-		// 	minimizer: [new OptimizeCSSAssetsPlugin()]
-		// },
+		entry: ["./src/js/index.js", "./src/js/ourdogs.js"],
+		output: {
+			path: path.resolve(__dirname + "/dist"),
+			filename: "js/[name].bundle.js",
+			publicPath: "./"
+		},
+		optimization: {
+			minimizer: [new OptimizeCSSAssetsPlugin(), new UglifyJsPlugin()],
+			splitChunks: {
+				cacheGroups: {
+					commons: {
+						test: /[\\/]node_modules[\\/]/,
+						name: "vendors",
+						chunks: "all"
+					}
+				}
+			}
+		},
 		plugins: [
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/index.html")
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/ourdogs.html"),
+				filename: "ourdogs.html"
+			}),
+			new MiniCssExtractPlugin({
+				filename: "[name].css",
+				chunkFilename: "[id].css"
+			}),
+			// new CopyWebpackPlugin([
+			// 	{ from: "./src/ourdogs.html", to: "./ourdogs.html" }
+			// ]),
+			new MinifyPlugin(),
+			new webpack.optimize.ModuleConcatenationPlugin(),
+			new BrotliPlugin({
+				asset: "[path].br[query]",
+				test: /\.(js|css|html|svg)$/,
+				threshold: 10240,
+				minRatio: 0.8
 			})
-			// new MiniCssExtractPlugin({
-			// 	filename: "[name].css",
-			// 	chunkFilename: "[id].css"
-			// }),
-			// new MinifyPlugin()
 		],
 
-		output: {
-			path: path.resolve(__dirname + "/dist"),
-			filename: "bundle.js",
-			publicPath: "/"
-		},
 		module: {
 			rules: [
 				{
 					test: /\.scss$/,
 					use: [
+						"style-loader",
 						//MiniCssExtractPlugin.loader,
 						"css-loader",
 						"sass-loader"
@@ -84,7 +112,7 @@ module.exports = function(env, argv) {
 						// 		},
 						// 		// optipng.enabled: false will disable optipng
 						// 		optipng: {
-						// 			enabled: true
+						// 			enabled: false
 						// 		},
 						// 		pngquant: {
 						// 			quality: "65-90",
@@ -104,9 +132,12 @@ module.exports = function(env, argv) {
 				},
 				{
 					test: /\.html$/,
-					use: {
-						loader: "html-loader"
-					}
+					use: [
+						{
+							loader: "html-loader",
+							options: { attrs: ["img:src", "link:href"] }
+						}
+					]
 				}
 			]
 		}

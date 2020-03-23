@@ -87,6 +87,9 @@ No media query for `xs` since this is the default in Bootstrap */
 	html {
 		font-size: 14px !important;
 	}
+	.parallax {
+		background-attachment: scroll !important;
+	}
 }
 
 /* Medium devices (tablets, 768px and down) */
@@ -100,7 +103,9 @@ No media query for `xs` since this is the default in Bootstrap */
 /* Extra large devices (large desktops, 1200px and down) */
 @media (max-width: 1200px) {
 }
-
+html {
+	scroll-behavior: smooth;
+}
 .card,
 .card li {
 	background-color: var(--light) !important;
@@ -113,7 +118,8 @@ No media query for `xs` since this is the default in Bootstrap */
 
 .jumbotron {
 	background: none !important;
-
+}
+.jumbotron-home {
 	height: 500px;
 }
 
@@ -150,42 +156,28 @@ No media query for `xs` since this is the default in Bootstrap */
 	justify-content: center;
 	align-items: center;
 	/* Set a specific height */
-	min-height: 500px;
+	min-height: 100px !important;
 	/* Create the parallax scrolling effect */
 	background-attachment: fixed;
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+.parallax1 {
+	background-image: url("./smile2croppeddark.jpg");
+	min-height: 500px;
 }
 .parallax2 {
 	background-image: url("./bandanadark.jpg");
-	min-height: 100px;
-	display: flex;
-	/* Create the parallax scrolling effect */
-	background-attachment: fixed;
-	background-position: top;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 .parallax3 {
 	background-image: url("./tennisballcroppeddark.jpg");
-	min-height: 100px;
-	display: flex;
-	/* Create the parallax scrolling effect */
-	background-attachment: fixed;
-	background-position: top;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 .parallax4 {
 	background-image: url("./sleepy.jpg");
-	min-height: 100px;
-	display: flex;
-	/* Create the parallax scrolling effect */
-	background-attachment: fixed;
-	background-position: top;
-	background-repeat: no-repeat;
-	background-size: cover;
+}
+.parallax5 {
+	background-image: url("./sleepy.jpg");
 }
 
 .input-group-btn {
@@ -202,8 +194,7 @@ No media query for `xs` since this is the default in Bootstrap */
 	margin-top: 5px;
 	box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.2);
 }
-.parent-card {
-}
+
 .input-div {
 	overflow: hidden;
 }
@@ -239,84 +230,21 @@ a {
 .thumb {
 	margin-top: 15px;
 	margin-bottom: 15px;
+	padding: 0px 0px;
+	display: flex;
+	justify-content: center;
 }
 
-/* FOOTER STYLES */
-section {
-	padding: 60px 0;
-}
-
-section .section-title {
-	text-align: center;
-
-	margin-bottom: 50px;
-	text-transform: uppercase;
-}
-#footer {
-	background-image: url("./footer.jpg") !important;
-}
-#footer h5 {
-	border-bottom: 3px solid #eeeeee;
-	padding-bottom: 6px;
-	margin-bottom: 20px;
-	color: #ffffff;
-}
-#footer a {
-	color: #ffffff;
-	text-decoration: none !important;
-	background-color: transparent;
-	-webkit-text-decoration-skip: objects;
-}
-#footer ul.social li {
-	padding: 3px 0;
-}
-#footer ul.social li a i {
-	margin-right: 5px;
-	font-size: 25px;
-	-webkit-transition: 0.5s all ease;
-	-moz-transition: 0.5s all ease;
-	transition: 0.5s all ease;
-}
-#footer ul.social li:hover a i {
-	font-size: 30px;
-	margin-top: -10px;
-}
-#footer ul.social li a,
-#footer ul.quick-links li a {
-	color: #ffffff;
-}
-#footer ul.social li a:hover {
-	color: #eeeeee;
-}
-#footer ul.quick-links li {
-	padding: 3px 0;
-	-webkit-transition: 0.5s all ease;
-	-moz-transition: 0.5s all ease;
-	transition: 0.5s all ease;
-}
-#footer ul.quick-links li:hover {
-	padding: 3px 0;
-	margin-left: 5px;
-	font-weight: 700;
-}
-
-#footer ul.quick-links li:hover a i {
-	font-weight: 700;
-}
-#footer svg {
-	padding-right: 3px;
-}
-
-@media (max-width: 767px) {
-	#footer h5 {
-		padding-left: 0;
-		border-left: transparent;
-		padding-bottom: 0px;
-		margin-bottom: 10px;
-	}
-}
 #logoColor {
 	object-fit: contain !important;
 	height: 100%;
 	width: 100%;
+}
+#logoColor2 {
+	object-fit: contain !important;
+	height: 100%;
+	width: 100%;
+}
+.testfix {
+	margin: 0;
 }
