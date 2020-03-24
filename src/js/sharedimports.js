@@ -1,3 +1,4 @@
+import "babel-polyfill";
 //CSS
 import "../scss/style.scss";
 import "../css/main.css";

@@ -1,5 +1,11 @@
-import "babel-polyfill";
 import "../ourdogs.html";
 import "./sharedimports.js";
-
-import "./ourdogsimageimports.js";
+import elliePic from "../img/ellieheadshotcropped.jpg";
+const ellieBioPic = document.getElementById("ellieBioPic");
+ellieBioPic.src = elliePic;
+import magnumPic from "../img/magnumheadshotcropped.jpg";
+const magnumBioPic = document.getElementById("magnumBioPic");
+magnumBioPic.src = magnumPic;
+import puppyTemp from "../img/temppuppythumb.jpg";
+const puppyThumb = document.getElementById("puppyTemp");
+puppyThumb.src = puppyTemp;

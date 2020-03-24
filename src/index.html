@@ -37,10 +37,9 @@
 		></script>
 	</head>
 
-	<body onload="uncover()">
-		<script>function uncover(){document.getElementById("cover").style.display = "none";}</script>
-		<div id="cover"></div>
-		<div>
+	<body>
+
+		<div id="hidden" style="visibility: hidden;">
 			<header>
 				<nav
 					class="navbar navbar-light navbar-expand-lg fixed-top bg-white transparency border-bottom border-light"
@@ -114,7 +113,8 @@
 								Enter your email to be notified when the puppies
 								arrive.
 							</p>
-							<form class="form-group">
+							<form class="form-group" action = "https://getsimpleform.com/messages?form_api_token=3bd0cf7eb5726598edaa05bdd425b15a" method="post">
+								<input type='hidden' name='redirect_to' value='https://tylermanion.xyz/MountainSkyGoldens' />
 								<span class="input-group-btn">
 									<button
 										class="btn btn-secondary"
@@ -129,6 +129,7 @@
 										type="email"
 										class="form-control"
 										id="email-input"
+										name="email"
 										placeholder="example@address.com"
 										aria-describedby="emailHelp"
 									/>
@@ -262,7 +263,7 @@
 										</ul>
 
 										<a
-											href="#"
+											href="./ourdogs.html/#ellie"
 											class="btn btn-primary float-right"
 											>Read More</a
 										>
@@ -374,7 +375,7 @@
 										</ul>
 
 										<a
-											href="#"
+											href="./ourdogs.html/#magnum"
 											class="btn btn-primary float-right"
 											>Read More</a
 										>
@@ -911,8 +912,8 @@
 <!-- Footer -->
 <section id="footer">
 	<div class="container">
-		<div class="row text-center text-xs-center text-sm-left text-md-left">
-			<div class="col-xs-12 col-sm-4 col-md-4">
+		<div class="row  text-sm-left text-md-left">
+			<div class="col-6 col-sm-4 col-md-4">
 				<div class="row justify-content-center"><h5>Quick links</h5></div>
 				<div class="row">
 					
@@ -926,19 +927,33 @@
 
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4">
-				<img id="logoColor" src="" alt="logo footer">
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4">
+			<div class="col-6  d-sm-none pb-5">
 				<div class="row justify-content-center"><h5>Contact Info</h5></div>
 				<div class="row">
 					
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fas fa-phone"></i> Phone</a></li>
-						<li><a href="javascript:void();"><i class="fas fa-envelope"></i> Email</a></li>
-						<li><a href="javascript:void();"><i class="fab fa-facebook"></i> Facebook</a></li>
-						<li><a href="javascript:void();"><i class="fab fa-instagram"></i> Instagram</a></li>
-						<li><a href="javascript:void();"><i class="fas fa-map-marker-alt"></i> Burley, Idaho</a></li>
+						<li><a href="tel:1+2905432"><i class="fas fa-phone"></i><small> (402) 290-5432</small> </a></li>
+						<li><a href="mailto:mountainskygoldens@gmail.com"><i class="fas fa-envelope"></i><small> mountainskygoldens<br>@gmail.com </small></a></li>
+						<li><a href="javascript:void();"><i class="fab fa-facebook"></i><small>	Facebook</small></a></li>
+						<li><a href="https://www.instagram.com/ellies_golden_years/"><i class="fab fa-instagram"></i> <small> @ellies_golden_years</small></a></li>
+						<li><a href="javascript:void();"><i class="fas fa-map-marker-alt"></i> <small> Burley, Idaho</small></a></li>
+					</ul>
+
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<img id="logoColor" src="" alt="logo footer">
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 d-none d-sm-block">
+				<div class="row justify-content-center"><h5>Contact Info</h5></div>
+				<div class="row">
+					
+					<ul class="list-unstyled quick-links">
+						<li><a href="tel:1+2905432"><i class="fas fa-phone"></i><small> (402) 290-5432</small> </a></li>
+						<li><a href="mailto:mountainskygoldens@gmail.com"><i class="fas fa-envelope"></i><small> mountainskygoldens<br>@gmail.com </small></a></li>
+						<li><a href="javascript:void();"><i class="fab fa-facebook"></i><small>	Facebook</small></a></li>
+						<li><a href="https://www.instagram.com/ellies_golden_years/"><i class="fab fa-instagram"></i> <small> @ellies_golden_years</small></a></li>
+						<li><a href="javascript:void();"><i class="fas fa-map-marker-alt"></i> <small> Burley, Idaho</small></a></li>
 					</ul>
 
 				</div>
@@ -955,8 +970,6 @@
 	</div>
 </section>
 <!-- ./Footer -->
-		
-		
-		
+<script type="text/javascript">window.onload = function(){document.getElementById("hidden").style.visibility= "visible"}</script>
 	</body>
 </html>

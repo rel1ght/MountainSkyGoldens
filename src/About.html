@@ -33,10 +33,9 @@
 		
 	</head>
 
-	<body onload="uncover()">
-		<script>function uncover(){document.getElementById("cover").style.display = "none";}</script>
-		<div id="cover"></div>
-		<div>
+	<body>
+
+		<div id="hidden" style="visibility: hidden;">
 			<header>
 				<nav
 					class="navbar navbar-light navbar-expand-lg fixed-top bg-white transparency border-bottom border-light"
@@ -115,11 +114,20 @@
 			<section class="py-5">
 				<div class="container">
 					<div class="heading mx-auto">
-						<h2 class="display-6">Title</h2>
+						<h2 class="display-6">Our Family</h2>
 					</div>
 					<hr />
 					<div class="container">
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis nemo ea quae inventore sunt, nam aut provident error quibusdam pariatur quia esse minima, neque fugit. Deleniti vitae doloribus voluptatem quo nam deserunt, quam modi sed aspernatur nesciunt suscipit delectus asperiores? Rem et animi magni sunt deleniti illo quasi sed id, ipsa laboriosam commodi modi ea dignissimos? Qui nulla quae adipisci aperiam voluptate. Eius, veniam alias? Illum, repellat minus. Totam dolores accusamus non nemo obcaecati cumque est vel placeat nam tempore odio praesentium reprehenderit modi, sequi iusto. Tempore voluptatibus, ullam animi minus harum reprehenderit totam. In commodi esse, ad eligendi laborum eum nisi? Delectus temporibus eius accusantium necessitatibus, quod, mollitia atque iure quaerat voluptatum, neque laborum corrupti qui voluptatibus soluta sit. Facere sit sunt suscipit! Natus laborum dicta aliquam? Quaerat laudantium fugiat quos ullam. Alias eligendi quas recusandae at, quis sunt veritatis. Hic accusamus sequi saepe praesentium recusandae assumenda sit laudantium, esse doloremque est eaque ex beatae eius, molestias numquam nobis. Officiis facere cupiditate natus error quisquam nihil quo assumenda facilis possimus hic itaque voluptatibus, culpa odio. Voluptatibus ex culpa dicta quisquam alias aspernatur doloremque omnis! Eius et esse atque quas totam corrupti, alias necessitatibus accusamus laboriosam ipsum rerum animi magnam voluptate, debitis inventore asperiores similique soluta reiciendis culpa autem voluptatibus. Esse, cumque asperiores facilis sit deserunt debitis doloribus magnam fuga ducimus. Quas itaque magnam optio unde assumenda debitis consequatur quam, sequi fuga doloremque aliquid eos similique dolor ad. Laboriosam omnis, fugit eveniet odit, non qui adipisci repudiandae quae illum delectus aliquam eligendi, pariatur quis at. Repellendus nemo exercitationem, debitis dolores veniam asperiores commodi aspernatur quod! Quaerat placeat ea id quod veritatis quos voluptatem libero doloribus eligendi autem vel reiciendis, voluptas porro labore harum animi facere beatae incidunt non veniam modi quasi! Aliquam necessitatibus dolor sunt sed minima ipsa praesentium asperiores!</p>
+						<div class="row">
+							<div class="col-sm-12 col-md-6 pb-5">
+								<img id="family-picture"class="rounded img-fluid"src="" alt="">
+
+							</div>
+							<div class="col-sm-12 col-md-6">
+								<p>Hi, we're the Manions! We’ve been dog owners for over 20 years and decided that we wanted to share the love, so we started breeding Golden Retrievers. We are a hobby breeder located in Burley, ID. We hold ourselves to high breeding standards and are dedicated to the betterment of the breed. That means that each of the dogs have OFA hip and elbow clearances of good or better and are free from known genetic defects common in Goldens. Our dogs are part of our family. They play with us, snuggle with us, and they love to love and be loved!</p>
+
+							</div>
+						</div>
 						<hr />
 					</div>
 				</div>
@@ -133,8 +141,8 @@
 <!-- Footer -->
 <section id="footer">
 	<div class="container">
-		<div class="row text-center text-xs-center text-sm-left text-md-left">
-			<div class="col-xs-12 col-sm-4 col-md-4">
+		<div class="row  text-sm-left text-md-left">
+			<div class="col-6 col-sm-4 col-md-4">
 				<div class="row justify-content-center"><h5>Quick links</h5></div>
 				<div class="row">
 					
@@ -148,19 +156,33 @@
 
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4">
-				<img id="logoColor" src="" alt="logo footer">
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4">
+			<div class="col-6  d-sm-none pb-5">
 				<div class="row justify-content-center"><h5>Contact Info</h5></div>
 				<div class="row">
 					
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fas fa-phone"></i> Phone</a></li>
-						<li><a href="javascript:void();"><i class="fas fa-envelope"></i> Email</a></li>
-						<li><a href="javascript:void();"><i class="fab fa-facebook"></i> Facebook</a></li>
-						<li><a href="javascript:void();"><i class="fab fa-instagram"></i> Instagram</a></li>
-						<li><a href="javascript:void();"><i class="fas fa-map-marker-alt"></i> Burley, Idaho</a></li>
+						<li><a href="tel:1+2905432"><i class="fas fa-phone"></i><small> (402) 290-5432</small> </a></li>
+						<li><a href="mailto:mountainskygoldens@gmail.com"><i class="fas fa-envelope"></i><small> mountainskygoldens<br>@gmail.com </small></a></li>
+						<li><a href="javascript:void();"><i class="fab fa-facebook"></i><small>	Facebook</small></a></li>
+						<li><a href="https://www.instagram.com/ellies_golden_years/"><i class="fab fa-instagram"></i> <small> @ellies_golden_years</small></a></li>
+						<li><a href="javascript:void();"><i class="fas fa-map-marker-alt"></i> <small> Burley, Idaho</small></a></li>
+					</ul>
+
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<img id="logoColor" src="" alt="logo footer">
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 d-none d-sm-block">
+				<div class="row justify-content-center"><h5>Contact Info</h5></div>
+				<div class="row">
+					
+					<ul class="list-unstyled quick-links">
+						<li><a href="tel:1+2905432"><i class="fas fa-phone"></i><small> (402) 290-5432</small> </a></li>
+						<li><a href="mailto:mountainskygoldens@gmail.com"><i class="fas fa-envelope"></i><small> mountainskygoldens<br>@gmail.com </small></a></li>
+						<li><a href="javascript:void();"><i class="fab fa-facebook"></i><small>	Facebook</small></a></li>
+						<li><a href="https://www.instagram.com/ellies_golden_years/"><i class="fab fa-instagram"></i> <small> @ellies_golden_years</small></a></li>
+						<li><a href="javascript:void();"><i class="fas fa-map-marker-alt"></i> <small> Burley, Idaho</small></a></li>
 					</ul>
 
 				</div>
@@ -177,5 +199,6 @@
 	</div>
 </section>
 <!-- ./Footer -->
+<script type="text/javascript">window.onload = function(){document.getElementById("hidden").style.visibility= "visible"}</script>
 	</body>
 </html>

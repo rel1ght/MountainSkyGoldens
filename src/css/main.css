@@ -188,6 +188,10 @@ html {
 .parallax8 {
 	background-image: url("./nosedark.jpg");
 }
+.parallax9 {
+	min-height: 30px !important;
+	background-image: url("./fuzzBg.jpg");
+}
 .input-group-btn {
 	display: inline;
 }
@@ -256,12 +260,12 @@ a {
 .testfix {
 	margin: 0;
 }
-#cover {
-	position: fixed;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	background: #fff;
-	z-index: 9999;
+#formRequired {
+	color: red;
+}
+.borderless {
+	border: none;
+}
+.ourDogsPuppyPic {
+	max-width: 200px;
 }
