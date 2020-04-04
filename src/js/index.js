@@ -10,8 +10,8 @@ main();
 async function instagrabber(url) {
 	return new Promise(async (resolve, reject) => {
 		await fetch(url)
-			.then(res => res.json())
-			.then(json => {
+			.then((res) => res.json())
+			.then((json) => {
 				//console.log("jsonhtml: ", json.html);
 				resolve(json.html);
 			});
@@ -24,6 +24,8 @@ async function main() {
 	let htmlArray = await postsHTMLGenerator(postsArray);
 	//console.log("main htmlarray: ", htmlArray);
 	let response = await htmlInjector(htmlArray);
+	document.getElementById("insta-loading").style.display = "none";
+	document.getElementById("insta-ready").classList.remove("d-none");
 	window.instgrm.Embeds.process();
 }
 
@@ -47,7 +49,7 @@ async function postsHTMLGenerator(PostsArray) {
 		] = `https://api.instagram.com/oembed?url=https://www.instagram.com/p/${post.node.shortcode}/`;
 		promises.push(instagrabber(urlArray[i]));
 	}
-	await Promise.all(promises).then(results => {
+	await Promise.all(promises).then((results) => {
 		//console.log("finished: ", results);
 		htmlArray = results;
 		//console.log("htmlArray: ", htmlArray);
@@ -58,8 +60,8 @@ async function postsHTMLGenerator(PostsArray) {
 async function instaUserGrabber(url) {
 	let response;
 	await fetch(`https://api.instagram.com/${url}/?__a=1`)
-		.then(res => res.json())
-		.then(json => (response = json));
+		.then((res) => res.json())
+		.then((json) => (response = json));
 	return response;
 }
 async function jsonDestructor(user) {
