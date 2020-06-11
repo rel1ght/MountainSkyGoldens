@@ -8,7 +8,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-module.exports = function(env, argv) {
+module.exports = function (env, argv) {
 	return {
 		mode: "production",
 		entry: {
@@ -16,12 +16,13 @@ module.exports = function(env, argv) {
 			ourdogs: "./src/js/ourdogs.js",
 			about: "./src/js/about.js",
 			contact: "./src/js/contact.js",
-			adopt: "./src/js/adopt.js"
+			adopt: "./src/js/adopt.js",
+			deposit: "./src/js/deposit.js",
 		},
 		output: {
 			path: path.resolve(__dirname + "/dist"),
 			filename: "js/[name].bundle.js",
-			publicPath: "./"
+			publicPath: "./",
 		},
 		optimization: {
 			minimizer: [new OptimizeCSSAssetsPlugin(), new UglifyJsPlugin()],
@@ -30,52 +31,58 @@ module.exports = function(env, argv) {
 					commons: {
 						test: /[\\/]node_modules[\\/]/,
 						name: "vendors",
-						chunks: "all"
-					}
+						chunks: "all",
+					},
 					// test: { test: /ourdogs/, name: "ourdogs", chunks: "all" }
-				}
-			}
+				},
+			},
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/index.html"),
 				chunks: ["index"],
-				filename: "index.html"
+				filename: "index.html",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/ourdogs.html"),
 				chunks: ["ourdogs"],
-				filename: "ourdogs.html"
+				filename: "ourdogs.html",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/About.html"),
 				chunks: ["about"],
-				filename: "about.html"
+				filename: "about.html",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/Contact.html"),
 				chunks: ["contact"],
-				filename: "contact.html"
+				filename: "contact.html",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/Adopt.html"),
 				chunks: ["adopt"],
-				filename: "adopt.html"
+				filename: "adopt.html",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/adoptSubmitted.html"),
 				chunks: ["adopt"],
-				filename: "adoptsubmitted.html"
+				filename: "adoptsubmitted.html",
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/deposit.html"),
+				chunks: ["deposit"],
+				filename: "deposit.html",
 			}),
 			new MiniCssExtractPlugin({
 				filename: "[name].css",
-				chunkFilename: "[id].css"
+				chunkFilename: "[id].css",
 			}),
 			// new CopyWebpackPlugin([
 			// 	{ from: "./src/ourdogs.html", to: "./ourdogs.html" }
@@ -86,8 +93,8 @@ module.exports = function(env, argv) {
 				asset: "[path].br[query]",
 				test: /\.(js|css|html|svg)$/,
 				threshold: 10240,
-				minRatio: 0.8
-			})
+				minRatio: 0.8,
+			}),
 		],
 
 		module: {
@@ -98,12 +105,12 @@ module.exports = function(env, argv) {
 						"style-loader",
 						//MiniCssExtractPlugin.loader,
 						"css-loader",
-						"sass-loader"
-					]
+						"sass-loader",
+					],
 				},
 				{
 					test: /\.css$/,
-					use: ["style-loader", "css-loader"]
+					use: ["style-loader", "css-loader"],
 				},
 				{
 					test: /\.(eot|woff|otf|woff2|ttf)(\?\S*)?$/,
@@ -112,10 +119,10 @@ module.exports = function(env, argv) {
 							loader: "file-loader",
 							options: {
 								outputPath: "./fonts",
-								name: "[name].[ext]"
-							}
-						}
-					]
+								name: "[name].[ext]",
+							},
+						},
+					],
 				},
 				{
 					test: /\.m?js$/,
@@ -123,9 +130,9 @@ module.exports = function(env, argv) {
 					use: {
 						loader: "babel-loader",
 						options: {
-							presets: ["@babel/preset-env"]
-						}
-					}
+							presets: ["@babel/preset-env"],
+						},
+					},
 				},
 				{
 					test: /\.(jpg|jpeg|gif|png|svg|webp)$/,
@@ -134,9 +141,9 @@ module.exports = function(env, argv) {
 							loader: "file-loader",
 							options: {
 								outputPath: "./img",
-								name: "[name].[ext]"
-							}
-						}
+								name: "[name].[ext]",
+							},
+						},
 						// {
 						// 	loader: "image-webpack-loader",
 						// 	options: {
@@ -162,18 +169,18 @@ module.exports = function(env, argv) {
 						// 		}
 						// 	}
 						// }
-					]
+					],
 				},
 				{
 					test: /\.html$/,
 					use: [
 						{
 							loader: "html-loader",
-							options: { attrs: ["img:src", "link:href"] }
-						}
-					]
-				}
-			]
-		}
+							options: { attrs: ["img:src", "link:href"] },
+						},
+					],
+				},
+			],
+		},
 	};
 };

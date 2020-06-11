@@ -192,6 +192,9 @@ html {
 	min-height: 30px !important;
 	background-image: url("./fuzzBg.jpg");
 }
+.parallax10 {
+	background-image: url("./runningdark.jpg");
+}
 .input-group-btn {
 	display: inline;
 }
@@ -271,4 +274,15 @@ a {
 }
 #insta-loading {
 	height: 500px;
+}
+.disabled {
+	filter: grayscale(100%);
+	pointer-events: none;
+}
+.depositBorder {
+	border: medium solid var(--teal);
+	border-radius: 3px;
+}
+#paypalContainer {
+	transition: all 0.1s linear;
 }
