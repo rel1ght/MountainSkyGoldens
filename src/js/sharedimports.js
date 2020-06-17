@@ -15,3 +15,6 @@ import "bootstrap";
 
 //FONTS - ICONS
 import "@fortawesome/fontawesome-free/js/all.js";
+
+import Rellax from "rellax";
+var rellax = new Rellax(".rellax");

@@ -69,3 +69,4 @@ async function jsonDestructor(user) {
 	let postsArray = user.graphql.user.edge_owner_to_timeline_media.edges;
 	return postsArray;
 }
+//var rellax = new Rellax(".rellax");
