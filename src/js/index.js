@@ -5,7 +5,8 @@ import "./homeimageimports.js";
 import "./gallery.js";
 //import instagramPosts from "./instagram-posts.js";
 //const instagramPosts = require("./instagram-posts");
-
+const ACCESS_TOKEN =
+	"IGQVJYWndTZA2p1UzAwZAnFxSVVsY2hYWkkyVlZAkTnhCZA3h5OGIxaHdfVlFVa3J2Mk5MMWlrS3lIMUxyRjdSUldrQ0U0NE5lN3F1cXJLTnJHeC1CWjZAIeVpUVGRBMW45N3FWb3VPd01idFYzeVo3LVBVWQZDZD";
 main();
 async function instagrabber(url) {
 	return new Promise(async (resolve, reject) => {
@@ -19,10 +20,11 @@ async function instagrabber(url) {
 }
 
 async function main() {
-	let user = await instaUserGrabber("ellies_golden_years");
-	let postsArray = await jsonDestructor(user);
+	let user = await instaUserGrabber(ACCESS_TOKEN);
+	console.log("user: ", user);
+	let postsArray = await responseDestructor(user);
 	let htmlArray = await postsHTMLGenerator(postsArray);
-	//console.log("main htmlarray: ", htmlArray);
+	console.log("main htmlarray: ", htmlArray);
 	let response = await htmlInjector(htmlArray);
 	document.getElementById("insta-loading").style.display = "none";
 	document.getElementById("insta-ready").classList.remove("d-none");
@@ -42,11 +44,8 @@ async function postsHTMLGenerator(PostsArray) {
 	let htmlArray = [];
 	let promises = [];
 	for (let i = 0; i < PostsArray.length; i++) {
-		let post = PostsArray[i];
-
-		urlArray[
-			i
-		] = `https://api.instagram.com/oembed?url=https://www.instagram.com/p/${post.node.shortcode}/`;
+		let post = PostsArray[i].permalink;
+		urlArray[i] = `https://api.instagram.com/oembed?url=${post}`;
 		promises.push(instagrabber(urlArray[i]));
 	}
 	await Promise.all(promises).then((results) => {
@@ -57,16 +56,18 @@ async function postsHTMLGenerator(PostsArray) {
 	return htmlArray;
 }
 
-async function instaUserGrabber(url) {
+async function instaUserGrabber(token) {
 	let response;
-	await fetch(`https://api.instagram.com/${url}/?__a=1`)
+	await fetch(
+		`https://graph.instagram.com/me/media?fields=permalink&access_token=${token}/`
+	)
 		.then((res) => res.json())
 		.then((json) => (response = json));
 	return response;
 }
-async function jsonDestructor(user) {
-	//console.log("posts: ", user.graphql.user.edge_owner_to_timeline_media.edges);
-	let postsArray = user.graphql.user.edge_owner_to_timeline_media.edges;
+async function responseDestructor(user) {
+	let postsArray = user.data;
 	return postsArray;
 }
+
 //var rellax = new Rellax(".rellax");
