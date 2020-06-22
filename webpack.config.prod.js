@@ -43,42 +43,49 @@ module.exports = function (env, argv) {
 				template: path.resolve("./src/index.html"),
 				chunks: ["index"],
 				filename: "index.html",
+				favicon: "src/img/favicon.ico",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/ourdogs.html"),
 				chunks: ["ourdogs"],
 				filename: "ourdogs.html",
+				favicon: "src/img/favicon.ico",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/About.html"),
 				chunks: ["about"],
 				filename: "about.html",
+				favicon: "src/img/favicon.ico",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/Contact.html"),
 				chunks: ["contact"],
 				filename: "contact.html",
+				favicon: "src/img/favicon.ico",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/Adopt.html"),
 				chunks: ["adopt"],
 				filename: "adopt.html",
+				favicon: "src/img/favicon.ico",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/adoptSubmitted.html"),
 				chunks: ["adopt"],
 				filename: "adoptsubmitted.html",
+				favicon: "src/img/favicon.ico",
 			}),
 			new HtmlWebpackPlugin({
 				title: "Mountain Sky Goldens",
 				template: path.resolve("./src/deposit.html"),
 				chunks: ["deposit"],
 				filename: "deposit.html",
+				favicon: "src/img/favicon.ico",
 			}),
 			new MiniCssExtractPlugin({
 				filename: "[name].css",
@@ -135,7 +142,7 @@ module.exports = function (env, argv) {
 					},
 				},
 				{
-					test: /\.(jpg|jpeg|gif|png|svg|webp)$/,
+					test: /\.(jpg|jpeg|gif|png|svg|webp|ico)$/,
 					use: [
 						{
 							loader: "file-loader",

@@ -5,7 +5,8 @@ import "../css/main.css";
 import "../fonts/stylesheet.css";
 import "../css/-Fixed-Navbar-start-with-transparency-background-BS4-.css";
 import "../css/footer.css";
-console.log("imports here!");
+
+//import "../img/favicon.ico";
 
 //JS
 import "./headerfooterimageimports.js";
