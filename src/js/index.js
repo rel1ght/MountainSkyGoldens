@@ -21,10 +21,10 @@ async function instagrabber(url) {
 
 async function main() {
 	let user = await instaUserGrabber(ACCESS_TOKEN);
-	console.log("user: ", user);
+	//console.log("user: ", user);
 	let postsArray = await responseDestructor(user);
 	let htmlArray = await postsHTMLGenerator(postsArray);
-	console.log("main htmlarray: ", htmlArray);
+	//console.log("main htmlarray: ", htmlArray);
 	let response = await htmlInjector(htmlArray);
 	document.getElementById("insta-loading").style.display = "none";
 	document.getElementById("insta-ready").classList.remove("d-none");
