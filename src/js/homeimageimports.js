@@ -8,11 +8,44 @@ import magnumheadshot from "../img/magnumheadshotcropped.jpg";
 const magnumheadshotdom = document.getElementById("magnumheadshot");
 magnumheadshotdom.src = magnumheadshot;
 
-import puppytemp from "../img/temppuppythumb.jpg";
-const puppies = document.getElementsByClassName("puppytemp");
-for (let puppy of puppies) {
-	puppy.src = puppytemp;
-}
+// import puppytemp from "../img/temppuppythumb.jpg";
+// const puppies = document.getElementsByClassName("puppytemp");
+// for (let puppy of puppies) {
+// 	puppy.src = puppytemp;
+// }
+
+import lightBlue from "../img/light_blue.jpg";
+const lightBluePup = document.getElementById("lightBluePup");
+lightBluePup.src = lightBlue;
+
+import darkBlue from "../img/dark_blue.jpg";
+const darkBluePup = document.getElementById("darkBluePup");
+darkBluePup.src = darkBlue;
+
+import lightGreen from "../img/light_green.jpg";
+const lightGreenPup = document.getElementById("lightGreenPup");
+lightGreenPup.src = lightGreen;
+
+import darkGreen from "../img/dark_green.jpg";
+const darkGreenPup = document.getElementById("darkGreenPup");
+darkGreenPup.src = darkGreen;
+
+import gray from "../img/gray.jpg";
+const grayPup = document.getElementById("grayPup");
+grayPup.src = gray;
+
+import black from "../img/black.jpg";
+const blackPup = document.getElementById("blackPup");
+blackPup.src = black;
+
+import orange from "../img/orange.jpg";
+const oragePup = document.getElementById("orangePup");
+orangePup.src = orange;
+
+import purple from "../img/purple.jpg";
+const purplePup = document.getElementById("purplePup");
+purplePup.src = purple;
+
 //IMAGES - Gallery
 let galleryArray = [];
 import gallery1 from "../img/thumbs/1Thumb.jpg";

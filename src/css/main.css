@@ -28,6 +28,14 @@
 	--danger: #703b3b;
 	--light: #f8f8f6;
 	--dark: #555;
+	--light-blue-border: rgb(111, 172, 243);
+	--dark-blue-border: rgb(37, 21, 133);
+	--light-green-border: rgb(88, 248, 173);
+	--dark-green-border: rgb(0, 151, 28);
+	--purple-border: rgb(136, 51, 170);
+	--orange-border: rgb(196, 105, 44);
+	--gray-border: rgb(112, 112, 112);
+	--black-border: rgb(15, 15, 15);
 }
 
 /* SIZES SELECTED AND LARGER */
@@ -177,7 +185,7 @@ html {
 	background-image: url("./sleepy.jpg");
 }
 .parallax5 {
-	background-image: url("./tennisballcroppeddark.jpg");
+	background-image: url("./onBlanketDark.jpg");
 }
 .parallax6 {
 	background-image: url("./familydark.jpg");
@@ -288,4 +296,33 @@ a {
 }
 #paypalContainer {
 	transition: all 0.1s linear;
+}
+.puppyPic {
+	border-radius: 0.2rem;
+	border-width: 0.5rem;
+	border-style: solid;
+}
+#lightBluePup {
+	border-color: var(--light-blue-border);
+}
+#darkBluePup {
+	border-color: var(--dark-blue-border);
+}
+#lightGreenPup {
+	border-color: var(--light-green-border);
+}
+#darkGreenPup {
+	border-color: var(--dark-green-border);
+}
+#grayPup {
+	border-color: var(--gray-border);
+}
+#orangePup {
+	border-color: var(--orange-border);
+}
+#purplePup {
+	border-color: var(--purple-border);
+}
+#blackPup {
+	border-color: var(--black-border);
 }
