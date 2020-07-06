@@ -202,6 +202,10 @@ html {
 }
 .parallax10 {
 	background-image: url("./runningdark.jpg");
+	min-height: 300px !important;
+}
+.parallaxShort {
+	background-image: url("./footer.jpg");
 }
 .input-group-btn {
 	display: inline;

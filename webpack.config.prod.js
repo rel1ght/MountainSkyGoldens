@@ -18,6 +18,7 @@ module.exports = function (env, argv) {
 			contact: "./src/js/contact.js",
 			adopt: "./src/js/adopt.js",
 			deposit: "./src/js/deposit.js",
+			contract: "./src/js/about.js",
 		},
 		output: {
 			path: path.resolve(__dirname + "/dist"),
@@ -85,6 +86,13 @@ module.exports = function (env, argv) {
 				template: path.resolve("./src/deposit.html"),
 				chunks: ["deposit"],
 				filename: "deposit.html",
+				favicon: "src/img/favicon.ico",
+			}),
+			new HtmlWebpackPlugin({
+				title: "Mountain Sky Goldens",
+				template: path.resolve("./src/contract.html"),
+				chunks: ["contract"],
+				filename: "contract.html",
 				favicon: "src/img/favicon.ico",
 			}),
 			new MiniCssExtractPlugin({
