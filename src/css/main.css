@@ -330,3 +330,6 @@ a {
 #blackPup {
 	border-color: var(--black-border);
 }
+iframe {
+	height: 70rem;
+}
