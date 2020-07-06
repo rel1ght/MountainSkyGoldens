@@ -2,6 +2,7 @@
 User-agent: Googlebot
 Disallow: /deposit.html
 Disallow: /adoptSubmitted.html
+Disallow: /contract.html
 # Group 2
 User-agent: *
 Allow: /
