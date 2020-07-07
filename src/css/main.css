@@ -98,6 +98,9 @@ No media query for `xs` since this is the default in Bootstrap */
 	.parallax {
 		background-attachment: scroll !important;
 	}
+	iframe {
+		height: 50rem;
+	}
 }
 
 /* Medium devices (tablets, 768px and down) */
@@ -176,7 +179,7 @@ html {
 	min-height: 500px;
 }
 .parallax2 {
-	background-image: url("./bandanadark.jpg");
+	background-image: url("./benchCompressedDark.jpg");
 }
 .parallax3 {
 	background-image: url("./tennisballcroppeddark.jpg");
@@ -202,10 +205,11 @@ html {
 }
 .parallax10 {
 	background-image: url("./runningdark.jpg");
-	min-height: 300px !important;
 }
+
 .parallaxShort {
 	background-image: url("./footer.jpg");
+	min-height: 300px !important;
 }
 .input-group-btn {
 	display: inline;
