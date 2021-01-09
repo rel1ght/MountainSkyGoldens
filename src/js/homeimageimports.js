@@ -4,15 +4,15 @@ import ellieheadshot from "../img/ellieheadshotcropped.jpg";
 const ellieheadshotdom = document.getElementById("ellieheadshot");
 ellieheadshotdom.src = ellieheadshot;
 
-import magnumheadshot from "../img/magnumheadshotcropped.jpg";
-const magnumheadshotdom = document.getElementById("magnumheadshot");
-magnumheadshotdom.src = magnumheadshot;
+import dukeheadshot from "../img/dukeheadshotcropped.jpg";
+const dukeheadshotdom = document.getElementById("dukeheadshot");
+dukeheadshotdom.src = dukeheadshot;
 
-// import puppytemp from "../img/temppuppythumb.jpg";
-// const puppies = document.getElementsByClassName("puppytemp");
-// for (let puppy of puppies) {
-// 	puppy.src = puppytemp;
-// }
+import puppytemp from "../img/temppuppythumb.jpg";
+const puppies = document.getElementsByClassName("puppytemp");
+for (let puppy of puppies) {
+	puppy.src = puppytemp;
+}
 
 import lightBlue from "../img/light_blue.jpg";
 const lightBluePup = document.getElementById("lightBluePup");
