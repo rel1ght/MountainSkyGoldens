@@ -142,6 +142,29 @@
 							<div class="form-group"><label for="oftenHomeInput"><span id= "formRequired">*</span> How often is someone home?</label>
 								<textarea class="form-control" name="oftenHome" id="oftenHomeInput"rows="2"placeholder="enter text here"required></textarea>
 							</div>
+							<div class="form-group"><label for="homeTypeInput"><span id= "formRequired">*</span> What type of home do you live in? (Home, Apartment, Condo, Townhome, etc.)</label>
+								<textarea class="form-control" name="homeType" id="homeTypeInput"rows="1" placeholder="enter text here"required></textarea>
+							</div>
+							<div class="form-group"><label for="yardInput"><span id= "formRequired">*</span> Do you have a yard? If so, what is it like? (Fenced? Size? etc.)</label>
+								<textarea class="form-control" name="yard" id="yardInput"rows="3" placeholder="enter text here"required></textarea>
+							</div>
+							<div class="form-group"><label for="ownOrRentInput" class="form-check-label"><span id= "formRequired">*</span> Do you own or rent?  (If you rent, please finish completing this form and additionally supply a letter from your landlord acknowledging their approval of a pet. Failure to do so may result in deposits not being refunded. PLEASE BE RESPONSIBLE!
+							</label>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="ownOrRent" id="ownOrRentOwn" value="own"></input>
+								<label for="ownOrRentOwn" class="form-check-label">Own</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio"name="ownOrRent" id="ownOrRentRent" value="rent"></input>
+								<label for="ownOrRentRent" class="form-check-label">Rent</label>
+							</div>
+							</div>
+							<div class="form-group"><label for="petsInput"><span id= "formRequired">*</span> Do you have other pets? If so, please describe them.</label>
+								<textarea class="form-control" name="pets" id="petsInput"rows="3" placeholder="enter text here"required></textarea>
+							</div>
+							<div class="form-group"><label for="dogHistoryInput"><span id= "formRequired">*</span> Please tell us about your history with dogs.</label>
+								<textarea class="form-control" name="dogHistory" id="dogHistoryInput"rows="3" placeholder="enter text here"required></textarea>
+							</div>
 							<div class="form-group"><label for="trainingAttitudeInput"><span id= "formRequired">*</span> What is your attitude towards training and obedience?</label>
 								<input class="form-control" type="text"name="trainingAttitude" id="trainingAttitudeInput"rows="3"placeholder="enter text here"required></input>
 							</div>
@@ -181,6 +204,16 @@
 									<input class="form-check-input" type="checkbox" name="costs" id="costsConfirm" value="yes" required></input>
 									<label for="costsConfirm" class="form-check-label">Yes</label>
 								</div>
+							</div>
+							<div class="form-group" id="breedingCheck"><label for="breedingCheck" class="form-check-label"><span id= "formRequired">*</span> We do not sell breeding rights with our puppies. Do you guarantee not to breed, re-home, or resell this puppy without prior approval from the breeder? 
+							</label>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="breeding" id="breedingConfirm" value="yes" required></input>
+									<label for="breedingConfirm" class="form-check-label">Yes</label>
+								</div>
+							</div>
+							<div class="form-group"><label for="puppyPreferencesInput"><span id= "formRequired">*</span> We will guarantee you a puppy. We will not and cannot guarantee color, gender, or temperament. Having said that, if you had preferences in your puppy, what would they be?</label>
+								<textarea class="form-control" name="puppyPreferences" id="puppyPreferencesInput"rows="2" placeholder="enter text here"required></textarea>
 							</div>
 							<div class="form-group"><label for="hearAboutInput"><span id= "formRequired">*</span> How did you hear about us?</label>
 								<input class="form-control" type="text"name="hearAbout" id="hearAboutInput"rows="2"placeholder="enter text here"required></input>
