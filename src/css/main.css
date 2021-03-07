@@ -335,5 +335,6 @@ a {
 	border-color: var(--black-border);
 }
 iframe {
-	max-height: 70rem;
+	max-height: 90vh;
+	min-height: 90vh;
 }
