@@ -33,6 +33,8 @@
 	--light-green-border: rgb(88, 248, 173);
 	--dark-green-border: rgb(0, 151, 28);
 	--purple-border: rgb(136, 51, 170);
+	--yellow-border: rgb(247, 236, 84);
+	--tan-border: rgb(150, 136, 100);
 	--orange-border: rgb(196, 105, 44);
 	--gray-border: rgb(112, 112, 112);
 	--black-border: rgb(15, 15, 15);
@@ -310,28 +312,34 @@ a {
 	border-width: 0.5rem;
 	border-style: solid;
 }
-#lightBluePup {
+.lightBluePup {
 	border-color: var(--light-blue-border);
 }
-#darkBluePup {
+.darkBluePup {
 	border-color: var(--dark-blue-border);
 }
-#lightGreenPup {
+.lightGreenPup {
 	border-color: var(--light-green-border);
 }
-#darkGreenPup {
+.darkGreenPup {
 	border-color: var(--dark-green-border);
 }
-#grayPup {
+.grayPup {
 	border-color: var(--gray-border);
 }
-#orangePup {
+.yellowPup {
+	border-color: var(--yellow-border);
+}
+.tanPup {
+	border-color: var(--tan-border);
+}
+.orangePup {
 	border-color: var(--orange-border);
 }
-#purplePup {
+.purplePup {
 	border-color: var(--purple-border);
 }
-#blackPup {
+.blackPup {
 	border-color: var(--black-border);
 }
 iframe {

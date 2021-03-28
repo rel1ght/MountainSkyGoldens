@@ -14,6 +14,38 @@ for (let puppy of puppies) {
 	puppy.src = puppytemp;
 }
 
+import winnie from "../img/winnie.jpg";
+const winniePup = document.getElementById("winnie");
+winniePup.src = winnie;
+
+import dolly from "../img/dolly.jpg";
+const dollyPup = document.getElementById("dolly");
+dollyPup.src = dolly;
+
+import faith from "../img/faith.jpg";
+const faithPup = document.getElementById("faith");
+faithPup.src = faith;
+
+import loretta from "../img/loretta.jpg";
+const lorettaPup = document.getElementById("loretta");
+lorettaPup.src = loretta;
+
+import patsy from "../img/patsy.jpg";
+const patsyPup = document.getElementById("patsy");
+patsyPup.src = patsy;
+
+import shelton from "../img/shelton.jpg";
+const sheltonPup = document.getElementById("shelton");
+sheltonPup.src = shelton;
+
+import willie from "../img/willie.jpg";
+const williePup = document.getElementById("willie");
+williePup.src = willie;
+
+import cash from "../img/cash.jpg";
+const cashPup = document.getElementById("cash");
+cashPup.src = cash;
+
 import lightBlue from "../img/light_blue.jpg";
 const lightBluePup = document.getElementById("lightBluePup");
 lightBluePup.src = lightBlue;

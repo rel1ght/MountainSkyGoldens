@@ -6,7 +6,7 @@ import "./gallery.js";
 //import instagramPosts from "./instagram-posts.js";
 //const instagramPosts = require("./instagram-posts");
 const ACCESS_TOKEN =
-	"IGQVJVVGdfa2FPOXZAYRkV5bjZAYRklaMXpkanZAyNVJfTS1WVGJuWDctRkVTUUhoZA2M0Vmc1eFlVR1NLdG13aHhENDR3Uk5IcWRwbS1oa1JCZAkZAMbW1rLVBnZAXFSZAkxkaHNCTFdnVl8zTWFPU2pINVFZAcAZDZD";
+	"IGQVJVR1Ytb3FGMExobS1xaVNJS1RLRHBFOUN5dURpWWRNdmc4V0RnZAWg2amlJNVc5QXNSclVlTHZA4WDN1N1VwVjd3aGltRWEwYTdNM012S0ttSGU0MkxEYmpYbC1EaEtLMDRIdWNOc3ZADaFhHck1ERwZDZD";
 const APP_ID = "2570617276529988";
 const CLIENT_ID = "a57c245d7c1852f81288d10deae84a68";
 main();
