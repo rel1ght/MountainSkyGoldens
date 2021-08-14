@@ -6,11 +6,13 @@ import "./gallery.js";
 //import instagramPosts from "./instagram-posts.js";
 //const instagramPosts = require("./instagram-posts");
 const ACCESS_TOKEN =
-	"IGQVJXX0FDbVVIcmZAhV3o3MVlMcEY0d20zUTZAWOWVQNndsZAXpSN05hT2JNLWRNbXRQREpNR0huNWFhZAXY4OFVOUlJiN0FjSS13aERham5KbkRuZAnp1VUpsVXRfVWdRQ3ZADT2lKUm81WnlXWnBUWUgzegZDZD";
-const APP_ID = "2570617276529988";
+	"IGQVJXam5UZA0N3aUZAWOFVqNElENnV2TWVKUmhpN0VpdjZAPcFBaenBNeDNTaWV0Qm5ndzNyTDAwc0Q1VVRiSEluV2d5VUt0WUthcWZAvUlZAFbFVzdWQ5ZAlhlTVBhbGVnNkFSdWtoSWtFRDFOM0dvWndJMAZDZD";
+// const APP_ID = "2570617276529988";
+const APP_ID = "726122631510738";
 const CLIENT_ID = "a57c245d7c1852f81288d10deae84a68";
 main();
 async function instagrabber(url) {
+	console.log("url: ", url);
 	return new Promise(async (resolve, reject) => {
 		await fetch(url, {
 			mode: "cors",
@@ -47,11 +49,13 @@ async function postsHTMLGenerator(PostsArray) {
 	let urlArray = [];
 	let htmlArray = [];
 	let promises = [];
+	const appToken = `${APP_ID}|${CLIENT_ID}`;
+	const devToken = `${ACCESS_TOKEN}`;
 	for (let i = 0; i < PostsArray.length; i++) {
 		let post = PostsArray[i].permalink;
 		urlArray[
 			i
-		] = `https://graph.facebook.com/v9.0/instagram_oembed?url=${post}&access_token=${APP_ID}|${CLIENT_ID}`;
+		] = `https://graph.facebook.com/v11.0/instagram_oembed?url=${post}&access_token=${appToken}`;
 		promises.push(instagrabber(urlArray[i]));
 	}
 	await Promise.all(promises).then((results) => {
@@ -59,6 +63,7 @@ async function postsHTMLGenerator(PostsArray) {
 		htmlArray = results;
 		//console.log("htmlArray: ", htmlArray);
 	});
+	console.log("htmlArray: ", htmlArray);
 	return htmlArray;
 }
 
@@ -72,6 +77,7 @@ async function instaUserGrabber(token) {
 	)
 		.then((res) => res.json())
 		.then((json) => (response = json));
+	console.log("instaUserGrabberResponse: ", response);
 	return response;
 }
 async function responseDestructor(user) {
