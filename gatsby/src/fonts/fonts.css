@@ -1,0 +1,8 @@
+@font-face {
+	font-family: "Phamelo";
+	src: url("phamelo-webfont.eot");
+	src: url("phamelo-webfont.eot?#iefix") format("embedded-opentype"),
+		url("phamelo-webfont.woff") format("woff"),
+		url("phamelo-webfont.ttf") format("truetype"),
+		url("phamelo-webfont.svg#webfont") format("svg");
+}
