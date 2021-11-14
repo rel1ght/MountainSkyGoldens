@@ -7,8 +7,13 @@ export default function Layout({ title, children }) {
 	return (
 		<Box sx={{ width: 1 }}>
 			<NavBar />
-			<Box sx={{ minHeight: "93vh", width: 1 }}>
-				<Box sx={{ height: "7vh" }} />
+			<Box
+				sx={{
+					minHeight: (theme) => `calc(100vh - ${theme.mixins.appbarHeight})`,
+					width: 1,
+				}}
+			>
+				<Box sx={{ height: (theme) => theme.mixins.appbarHeight }} />
 				{children}
 			</Box>
 			<Footer />
