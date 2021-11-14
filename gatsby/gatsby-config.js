@@ -1,11 +1,11 @@
 require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
-import path from "path";
+const path = require("path");
 
 module.exports = {
 	siteMetadata: {
-		siteUrl: "https://www.yourdomain.tld",
+		siteUrl: "https://mountainskygoldens.com",
 		title: "Mountain Sky Goldens",
 	},
 	plugins: [
@@ -15,9 +15,12 @@ module.exports = {
 		// 		component: require.resolve("./src/components/layout.js"),
 		// 	},
 		// },
-		"gatsby-image",
+		"gatsby-plugin-image",
 		"gatsby-transformer-sharp",
-		"gatsby-plugin-sharp",
+		{
+			resolve: `gatsby-plugin-sharp`,
+			options: {},
+		},
 		"gatsby-plugin-react-helmet",
 		"gatsby-theme-material-ui",
 		{
@@ -60,6 +63,27 @@ module.exports = {
 				spaceId: `rghby61rtlrc`,
 				// Learn about environment variables: https://gatsby.dev/env-vars
 				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+			},
+		},
+		{
+			resolve: "gatsby-plugin-react-svg",
+			options: {
+				rule: {
+					include: /images\/.*\.svg/,
+				},
+				filters: [
+					(value) => {
+						console.log(value);
+					},
+				],
+				// omitKeys: [
+				// 	// "xmlnsDc",
+				// 	// "xmlnsCc",
+				// 	// "xmlnsRdf",
+				// 	// "xmlnsSvg",
+				// 	// "xmlnsSodipodi",
+				// 	// "xmlnsInkscape",
+				// ],
 			},
 		},
 	],

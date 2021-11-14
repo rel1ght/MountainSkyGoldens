@@ -17,6 +17,7 @@
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.1.0",
     "@mui/material": "^5.0.4",
     "bootstrap": "^5.0.2",
     "cross-env": "^7.0.3",
@@ -29,15 +30,16 @@
     "gatsby-plugin-sharp": "^4.0.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-contentful": "^6.0.0",
+    "gatsby-source-filesystem": "^4.0.0",
     "gatsby-theme-material-ui": "^5.0.0",
+    "gatsby-transformer-sharp": "^4.0.0",
     "history": "^5.0.1",
+    "path": "^0.12.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-rellax-wrapper": "^1.0.6",
     "react-router-dom": "^6.0.0-beta.1",
-    "sharp": "^0.29.2",
-    "gatsby-source-filesystem": "^4.0.0",
-    "gatsby-transformer-sharp": "^4.0.0",
-    "path": "^0.12.7"
+    "sharp": "^0.29.2"
   }
 }
