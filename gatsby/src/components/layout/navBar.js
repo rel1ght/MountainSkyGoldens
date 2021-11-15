@@ -9,8 +9,6 @@ import {
 } from "@mui/material";
 import Logo from "../logo";
 import { Link, Button } from "gatsby-theme-material-ui";
-import { StaticImage } from "gatsby-plugin-image";
-// import Logo from "../../images/svg/logo-thumb-white.svg";
 
 export default function NavBar() {
 	const scrollTrigger = useScrollTrigger({
@@ -65,7 +63,11 @@ export default function NavBar() {
 					<Box sx={{ display: "flex", alignItems: "center" }}>
 						{links.map((link) => {
 							return link?.variant === "button" ? (
-								<Button variant='contained' to={link.value}>
+								<Button
+									className='hoverWiggle'
+									variant='contained'
+									to={link.value}
+								>
 									{link.title}
 								</Button>
 							) : (

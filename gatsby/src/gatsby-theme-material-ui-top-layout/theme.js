@@ -104,7 +104,38 @@ theme.components = {
 					cursor: "pointer",
 				},
 			},
-
+			".hoverWiggle": {
+				"&&:hover": {
+					animation: "swing .3s ease-out",
+					animationIterationCount: 1,
+				},
+				"@keyframes swing": {
+					"15%": {
+						webkitTransform: "rotate(5deg)",
+						transform: "rotate(5deg)",
+					},
+					"30%": {
+						webkitTransform: "rotate(-5deg)",
+						transform: "rotate(-5deg)",
+					},
+					"50%": {
+						webkitTransform: "rotate(3deg)",
+						transform: "rotate(3deg)",
+					},
+					"65%": {
+						webkitTransform: "rotate(-3deg)",
+						transform: "rotate(-3deg)",
+					},
+					"80%": {
+						webkitTransform: "rotate(2deg)",
+						transform: "rotate(-2deg)",
+					},
+					"100%": {
+						webkitTransform: "rotate(0)",
+						transform: "rotate(0)",
+					},
+				},
+			},
 			".hoverLift": {
 				transition: theme.transitions.create("all", {
 					duration: theme.transitions.duration.shortest,
