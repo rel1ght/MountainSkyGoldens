@@ -2,7 +2,6 @@ import React from "react";
 import { SvgIcon } from "@mui/material";
 
 export default function Logo(props) {
-	console.log(props);
 	return (
 		<SvgIcon {...props} viewBox='0 0 38.95 45.42'>
 			<path

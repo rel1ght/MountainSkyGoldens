@@ -8,7 +8,7 @@ const theme = createTheme({
 			main: "#865580",
 		},
 		secondary: {
-			main: "#c0bedb",
+			main: "#a6a3d1",
 		},
 		yellow: {
 			main: "#ffed88",
@@ -56,6 +56,10 @@ const theme = createTheme({
 			fontSize: "1.25rem",
 			fontWeight: 300,
 		},
+		body1: { fontSize: "1.1rem" },
+		body2: { fontSize: "1rem" },
+		subtitle1: { fontSize: "1.1rem", fontWeight: 300 },
+		subtitle2: { fontSize: "1rem", fontWeight: 300 },
 	},
 	shape: { borderRadius: 10 },
 	components: {
@@ -65,6 +69,16 @@ const theme = createTheme({
 					props: { variant: "cursive" },
 					style: {
 						fontFamily: "Phamelo",
+					},
+				},
+			],
+		},
+		MuiDivider: {
+			variants: [
+				{
+					props: { variant: "thick" },
+					style: {
+						borderBottomWidth: ".2rem",
 					},
 				},
 			],
@@ -115,6 +129,7 @@ theme.components = {
 				position: "relative",
 				height: "100%",
 				width: "100%",
+				zIndex: 2,
 
 				"&::before": {
 					content: '""',
@@ -125,7 +140,14 @@ theme.components = {
 					bottom: 0,
 					left: 0,
 					opacity: 0.3,
+					zIndex: 0,
 				},
+			},
+			".cardRow": {
+				display: "flex",
+				width: "100%",
+				justifyContent: "space-between",
+				alignItems: "baseline",
 			},
 		},
 	},

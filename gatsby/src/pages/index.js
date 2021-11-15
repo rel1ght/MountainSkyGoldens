@@ -6,22 +6,24 @@ import {
 	Button,
 	TextField,
 	InputBase,
+	Tabs,
+	Tab,
 } from "@mui/material";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Parallax from "../components/utils/parallax";
 import Layout from "../components/layout/layout";
-
+import { pageNames } from "../utils/constants";
+import formatPageData from "../utils/formatPageData";
+import formatLitterData from "../utils/formatLitterData";
+import LittersTabs from "../components/littersHomepage";
+import SectionBlock from "../components/layout/sectionBlock";
 // Homepage
 export default function IndexPage({ data }) {
 	console.log("date: ", data);
-	const homePageData = data?.allContentfulHomepageBanner?.edges[0]?.node || {};
-	const { title, subtitle } = homePageData;
-	const backgroundImage = getImage(homePageData.backgroundPicture);
-
-	// litters map
-	// look at object structure
+	const { title, subtitle, backgroundImage } = formatPageData(data);
+	const litters = formatLitterData(data);
 
 	return (
 		<Layout>
@@ -31,7 +33,12 @@ export default function IndexPage({ data }) {
 				<Box
 					sx={{ position: "fixed", top: 0, height: 1, width: 1, zIndex: -1 }}
 				>
-					<GatsbyImage image={backgroundImage} alt='Mountain Sky Goldens' />
+					<GatsbyImage
+						style={{ width: "100%" }}
+						loading='eager'
+						image={backgroundImage}
+						alt='Mountain Sky Goldens'
+					/>
 				</Box>
 				{/* content wrapper above arrow */}
 				<Parallax speed={-2}>
@@ -41,7 +48,7 @@ export default function IndexPage({ data }) {
 							flexDirection: "column",
 							justifyContent: "center",
 							alignItems: "center",
-							mt: 20,
+							pt: 20,
 						}}
 					>
 						<Box sx={{ flex: "0 1 auto" }}>
@@ -103,7 +110,13 @@ export default function IndexPage({ data }) {
 					</Box>
 				</Parallax>
 				<Box
-					sx={{ width: 1, mt: 22, display: "flex", justifyContent: "center" }}
+					sx={{
+						position: "absolute",
+						bottom: "10vh",
+						width: 1,
+						display: "flex",
+						justifyContent: "center",
+					}}
 				>
 					{/* arrow */}
 					<Parallax speed={1.1}>
@@ -114,11 +127,12 @@ export default function IndexPage({ data }) {
 				</Box>
 			</Box>
 			{/* Parents container */}
-			<Box className='paperGrain'>
+			<SectionBlock>
+				<LittersTabs litters={litters} />
 				{/* parents tabs */}
 				{/* Parents.map */}
 				<Box sx={{ height: "2000px" }}>{/* Parent */}</Box>
-			</Box>
+			</SectionBlock>
 			{/* Children container */}
 			<Box sx={{ height: "4000px" }}>
 				{/* children tabs */}
@@ -132,28 +146,53 @@ export default function IndexPage({ data }) {
 		</Layout>
 	);
 }
-
+// TODO: make the eq: "home" dynamic
 export const query = graphql`
 	{
-		allContentfulHomepageBanner {
-			edges {
-				node {
+		contentfulPage(pageName: { eq: "home" }) {
+			pageName
+			subtitle
+			title
+			backgroundImage {
+				gatsbyImageData
+			}
+		}
+		allContentfulLitter {
+			nodes {
+				puppy {
 					id
-					backgroundPicture {
-						id
-						file {
-							url
-							fileName
-							contentType
-						}
-						fluid {
-							src
-						}
-						gatsbyImageData(placeholder: BLURRED, quality: 90)
+					associatedColor
+					gender
+					mainPicture {
+						gatsbyImageData
+						title
 					}
-					title
-					subtitle
+					name
+					status
 				}
+				contentfulparent {
+					id
+					owner
+					ownerWebsiteLink
+					pedigreeLink
+					role
+					status
+					weight
+					hipCertification
+					elbowCertification
+					breed
+					bio {
+						id
+						bio
+					}
+					mainPicture {
+						gatsbyImageData
+					}
+					name
+				}
+				dateOfLitter
+				status
+				title
 			}
 		}
 	}
