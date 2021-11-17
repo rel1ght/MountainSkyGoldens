@@ -21,6 +21,18 @@ const theme = createTheme({
 		warning: { main: "#ffed88" },
 		light: { main: "#f8f8f6" },
 		dark: { main: "#555555" },
+		puppyColors: {
+			lightBlue: "rgb(111, 172, 243)",
+			darkBlue: "rgb(37, 21, 133)",
+			lightGreen: "rgb(88, 248, 173)",
+			darkGreen: "rgb(0, 151, 28)",
+			purple: "rgb(136, 51, 170)",
+			yellow: "rgb(247, 236, 84)",
+			tan: "rgb(150, 136,100)",
+			orange: "rgb(196, 105, 44)",
+			gray: "rgb(112, 112, 112)",
+			black: "rgb(15, 15, 15)",
+		},
 	},
 	typography: {
 		fontFamily: ["Poppins", "Roboto", "sans-serif"].join(","),
@@ -172,6 +184,28 @@ theme.components = {
 					left: 0,
 					opacity: 0.3,
 					zIndex: 0,
+				},
+			},
+			".debugBreakpoints": {
+				[theme.breakpoints.up("xs")]: {
+					// backgroundColor: 'BlueViolet',
+					backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='40px' width='60px'><text x='0' y='30' fill='rgba(0,0,0,0.1)' font-size='20'>XS</text></svg>")`,
+				},
+				[theme.breakpoints.up("sm")]: {
+					// backgroundColor: 'CornflowerBlue',
+					backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='40px' width='60px'><text x='0' y='30' fill='rgba(0,0,0,0.1)' font-size='20'>SM</text></svg>")`,
+				},
+				[theme.breakpoints.up("md")]: {
+					// backgroundColor: 'PaleVioletRed',
+					backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='40px' width='60px'><text x='0' y='30' fill='rgba(0,0,0,0.1)' font-size='20'>MD</text></svg>")`,
+				},
+				[theme.breakpoints.up("lg")]: {
+					// backgroundColor: 'DarkSeaGreen',
+					backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='40px' width='60px'><text x='0' y='30' fill='rgba(0,0,0,0.1)' font-size='20'>LG</text></svg>")`,
+				},
+				[theme.breakpoints.up("xl")]: {
+					// backgroundColor: 'Plum',
+					backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='40px' width='60px'><text x='0' y='30' fill='rgba(0,0,0,0.1)' font-size='20'>XL</text></svg>")`,
 				},
 			},
 			".cardRow": {

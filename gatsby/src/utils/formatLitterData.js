@@ -1,4 +1,5 @@
-export default function formatPageData(data) {
+import placeholderPuppy from "../images/temppuppythumb.jpg";
+export default function formatLitterData(data) {
 	const litters = data.allContentfulLitter.nodes || [];
 	console.log("litters: ", litters);
 	const formattedLitters = litters
@@ -7,12 +8,19 @@ export default function formatPageData(data) {
 			return {
 				...litter,
 				title: litter.title || formatDateString(litter.dateOfLitter),
-				puppies: litter.puppy.map((puppy) => {
-					return {
-						...puppy,
-						collarColor: formatPuppyColor(puppy.associatedColor),
-					};
-				}),
+				puppies: litter.puppy
+					? litter.puppy.map((puppy) => {
+							return {
+								...puppy,
+								collarColor: formatPuppyColor(puppy.collarColor),
+							};
+					  })
+					: Array.from({ length: 8 }, () => ({
+							collarColor: formatPuppyColor(),
+							status: "Coming Soon!",
+							name: "Unnamed",
+							mainPicture: placeholderPuppy,
+					  })),
 				parents: litter.contentfulparent.map((parent) => {
 					return { ...parent };
 				}),
@@ -30,5 +38,5 @@ function formatDateString(date) {
 }
 
 function formatPuppyColor(colorString) {
-	return null;
+	return !colorString ? "#888" : `#${colorString}`;
 }

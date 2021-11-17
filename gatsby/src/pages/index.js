@@ -28,13 +28,17 @@ export default function IndexPage({ data }) {
 	return (
 		<Layout>
 			{/* hero box */}
-			<Box sx={{ height: "85vh" }}>
+			<Box sx={{ maxHeight: "85vh" }}>
 				{/* background image */}
 				<Box
 					sx={{ position: "fixed", top: 0, height: 1, width: 1, zIndex: -1 }}
 				>
 					<GatsbyImage
-						style={{ width: "100%" }}
+						style={{
+							width: "100%",
+							height: "100%",
+						}}
+						imgStyle={{ objectPosition: "center 15%" }}
 						loading='eager'
 						image={backgroundImage}
 						alt='Mountain Sky Goldens'
@@ -48,7 +52,7 @@ export default function IndexPage({ data }) {
 							flexDirection: "column",
 							justifyContent: "center",
 							alignItems: "center",
-							pt: 20,
+							mt: "25vh",
 						}}
 					>
 						<Box sx={{ flex: "0 1 auto" }}>
@@ -111,8 +115,7 @@ export default function IndexPage({ data }) {
 				</Parallax>
 				<Box
 					sx={{
-						position: "absolute",
-						bottom: "10vh",
+						mt: "20vh",
 						width: 1,
 						display: "flex",
 						justifyContent: "center",
@@ -161,7 +164,7 @@ export const query = graphql`
 			nodes {
 				puppy {
 					id
-					associatedColor
+					collarColor
 					gender
 					mainPicture {
 						gatsbyImageData
