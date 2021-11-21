@@ -38,7 +38,7 @@ export default function LittersTabs({ litters }) {
 							fontWeight: index === tabsIndex ? 500 : 300,
 						}}
 						key={litter.dateOfLitter}
-						value={index}
+						// value={index}
 						label={litter.title}
 					/>
 				))}

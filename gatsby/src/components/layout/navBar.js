@@ -67,6 +67,7 @@ export default function NavBar() {
 									className='hoverWiggle'
 									variant='contained'
 									to={link.value}
+									sx={{ boxShadow: 5 }}
 								>
 									{link.title}
 								</Button>

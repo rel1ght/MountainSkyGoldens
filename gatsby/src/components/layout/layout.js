@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Box } from "@mui/material";
 import NavBar from "./navBar";
-import Footer from ".//footer";
+import Footer from "./footer";
 
 export default function Layout({ title, children }) {
 	return (

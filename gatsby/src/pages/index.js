@@ -24,7 +24,12 @@ export default function IndexPage({ data }) {
 	console.log("date: ", data);
 	const { title, subtitle, backgroundImage } = formatPageData(data);
 	const litters = formatLitterData(data);
-
+	const [tabValue, setTabValue] = React.useState(0);
+	function handleChange(val1, val2) {
+		console.log("val1: ", val1);
+		console.log("val2: ", val2);
+		setTabValue(val2);
+	}
 	return (
 		<Layout>
 			{/* hero box */}
@@ -137,7 +142,11 @@ export default function IndexPage({ data }) {
 				<Box sx={{ height: "2000px" }}>{/* Parent */}</Box>
 			</SectionBlock>
 			{/* Children container */}
-			<Box sx={{ height: "4000px" }}>
+			<Box>
+				<Tabs value={tabValue} onChange={handleChange}>
+					<Tab label='test1' />
+					<Tab label='test2' />
+				</Tabs>
 				{/* children tabs */}
 				{/* Children.map */}
 				<Box>{/* Children */}</Box>
