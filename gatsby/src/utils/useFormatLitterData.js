@@ -1,7 +1,22 @@
-import placeholderPuppy from "../images/temppuppythumb.jpg";
-export default function formatLitterData(data) {
+import { useStaticQuery, graphql } from "gatsby";
+export default function useFormatLitterData(data) {
 	const litters = data.allContentfulLitter.nodes || [];
 	console.log("litters: ", litters);
+	
+	const {placeholderPuppy, placeholderParent} = useStaticQuery(graphql`
+	query {
+		placeholderPuppy: file(relativePath: {eq: "temppuppythumb.jpg"}) {
+			childImageSharp {
+				gatsbyImageData
+      		}
+		}
+		placeholderParent: file(relativePath: {eq: "litterParentPlaceholder.jpg"}) {
+			childImageSharp {
+				gatsbyImageData
+      		}
+		}
+	}
+	`)
 	const formattedLitters = litters
 		.sort((a, b) => new Date(b.dateOfLitter) - new Date(a.dateOfLitter))
 		.map((litter) => {
@@ -10,6 +25,7 @@ export default function formatLitterData(data) {
 				title: litter.title || formatDateString(litter.dateOfLitter),
 				puppies: litter.puppy
 					? litter.puppy.map((puppy) => {
+						console.log('puppy: ', puppy);
 							return {
 								...puppy,
 								collarColor: formatPuppyColor(puppy.collarColor),
@@ -19,10 +35,10 @@ export default function formatLitterData(data) {
 							collarColor: formatPuppyColor(),
 							status: "Coming Soon!",
 							name: "Unnamed",
-							mainPicture: placeholderPuppy,
+							mainPicture: {image: placeholderPuppy},
 					  })),
 				parents: litter.contentfulparent.map((parent) => {
-					return { ...parent };
+					return { ...parent, mainPicture: parent.mainPicture ? parent.mainPicture :  {image:placeholderParent}};
 				}),
 			};
 		});

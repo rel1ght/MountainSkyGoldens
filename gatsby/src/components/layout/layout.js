@@ -10,12 +10,17 @@ export default function Layout({ title, children }) {
 			<Box
 				className='debugBreakpoints'
 				sx={{
-					minHeight: (theme) => `calc(100vh - ${theme.mixins.appbarHeight})`,
+					height: 1,
+					minHeight: (theme) => `calc(100vh - ${theme.mixins.minFooterHeight})`,
 					width: 1,
+					display: 'flex',
+					flexDirection:'column'
 				}}
 			>
 				<Box sx={{ height: (theme) => theme.mixins.appbarHeight }} />
-				{children}
+				<Box sx={{width: 1, flexGrow: 1}}>
+					{children}
+				</Box>
 			</Box>
 			<Footer />
 		</Box>

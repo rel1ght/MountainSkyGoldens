@@ -50,7 +50,8 @@ export default function LittersTabs({ litters }) {
 		return (
 			<Grid container justifyContent='center' alignItems='center'>
 				{currentLitter.parents.map((dog) => {
-					const dogImage = getImage(dog.mainPicture);
+					const dogImage = getImage(dog.mainPicture.image);
+					console.log('dogImage: ', dogImage);
 					const dogAttributes = [
 						{ title: "Breed", value: dog.breed },
 						{ title: "Weight", value: dog.weight },
@@ -176,7 +177,10 @@ export default function LittersTabs({ litters }) {
 		return (
 			<Grid container justifyContent='center' alignItems='center'>
 				{currentLitter.puppies.map((dog) => {
-					const dogImage = getImage(dog.mainPicture);
+					if (dog.mainPicture === null) {
+						console.log('dog: ', dog);
+					}
+					const dogImage = getImage(dog.mainPicture.image);
 					const dogAttributes = [
 						{ title: "Breed", value: dog.breed },
 						{ title: "Weight", value: dog.weight },
