@@ -31,28 +31,38 @@ function processContentBlocks(blocks) {
 
 function processAdditionalContent(content) {
   const contactItems = [];
+  const forms = [];
   content.forEach((item) => {
     const contentType = determineContentType(item);
+    const fields = { ...item };
+    //  Object.keys(item).reduce((prev, current) => {
+    //   return { ...prev, [current]: item[current] };
+    // }, {});
+
     switch (contentType) {
       case "contact": {
         contactItems.push({
-          link: item.link,
-          contactType: item.contactType,
-          showOnContactPage: item.showOnContactPage,
-          title: item.title,
+          ...fields,
         });
       }
+      case "form": {
+        console.log("fields: ", fields);
+        forms.push({ ...fields });
+      }
       default:
-        console.error("reached default statement in processAdditionalContent");
     }
   });
-  return { contactItems };
+  return { contactItems, forms };
 }
 
 function processDocuments(documents) {}
 
 function determineContentType(contentItem) {
+  console.log("contentItem: ", contentItem);
   if (contentItem?.internal?.type === "ContentfulContactInfoField") {
     return "contact";
+  }
+  if (contentItem?.internal?.type === "ContentfulForm") {
+    return "form";
   }
 }

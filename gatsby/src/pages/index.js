@@ -61,7 +61,8 @@ export default function IndexPage({ data }) {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              mt: "25vh",
+              mt: "35vh",
+              p: 2,
             }}
           >
             <Box sx={{ flex: "0 1 auto" }}>
