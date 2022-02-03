@@ -25,12 +25,12 @@ import LittersTabs from "../components/littersHomepage";
 import SectionBlock from "../components/layout/sectionBlock";
 import GetContactIcon from "../utils/getContactIcon";
 
-export default function ContactPage({ data }) {
+export default function AboutPage({ data }) {
   const { title, subtitle, backgroundImage, additionalContent } =
     formatPageData(data);
   const { contactItems = [] } = additionalContent;
   return (
-    <Layout title="contact">
+    <Layout title="about">
       {/* hero box */}
       <Box
         sx={{

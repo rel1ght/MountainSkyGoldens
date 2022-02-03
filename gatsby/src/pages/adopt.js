@@ -27,7 +27,7 @@ export default function AdoptPage({ data }) {
   console.log("additionalContent: ", additionalContent);
 
   return (
-    <Layout>
+    <Layout title="adopt">
       <SmallImagePageLayout
         title={title}
         subtitle={subtitle}

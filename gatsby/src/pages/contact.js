@@ -32,7 +32,7 @@ export default function ContactPage({ data }) {
   console.log("additionalContent: ", additionalContent);
   const { contactItems = [] } = additionalContent;
   return (
-    <Layout>
+    <Layout title="contact">
       <SmallImagePageLayout
         title={title}
         subtitle={subtitle}

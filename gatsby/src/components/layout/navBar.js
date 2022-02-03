@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Logo from "../logo";
 import { Link, Button } from "gatsby-theme-material-ui";
-import { Link as GatsbyLink } from "gatsby";
+
 export default function NavBar({ currentPage = "" }) {
   const scrollThreshold = ["home"].includes(currentPage.toLowerCase())
     ? 200
@@ -24,10 +24,7 @@ export default function NavBar({ currentPage = "" }) {
     { value: "contact", title: "Contact" },
     { value: "adopt", title: "Adopt", variant: "button" },
   ];
-  const isPartiallyActive = ({ isPartiallyCurrent }) => {
-    console.log("isPartiallyCurrent: ", isPartiallyCurrent);
-    return isPartiallyCurrent ? { className: "active" } : {};
-  };
+
   return (
     <AppBar
       position="fixed"
@@ -74,10 +71,14 @@ export default function NavBar({ currentPage = "" }) {
           </Box>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {links.map((link) => {
+              console.log("link: ", link);
+              console.log("link.value: ", link.value);
+              console.log("currentPage: ", currentPage);
               return link?.variant === "button" ? (
                 <Button
                   className="hoverWiggle"
-                  variant="contained"
+                  disabled={link.value === currentPage}
+                  variant={link.value === currentPage ? "text" : "contained"}
                   to={`../${link.value}`}
                   sx={{ boxShadow: 5 }}
                 >
@@ -86,35 +87,32 @@ export default function NavBar({ currentPage = "" }) {
               ) : (
                 <Box
                   sx={{ mr: 2 }}
-                  className=" hoverLift hoverShadow clickPressDown"
+                  className={
+                    link.value !== currentPage
+                      ? "hoverLift hoverShadow clickPressDown"
+                      : ""
+                  }
                 >
-                  <GatsbyLink
-                    activeClassName="active"
-                    getProps={isPartiallyActive}
-                    style={{ textDecoration: "none" }}
-                    to={`../${link.value}`}
-                    partiallyActive={true}
-                  >
-                    <Typography
-                      className="defaultTransition"
-                      color={scrollTrigger ? "text.secondary" : "white"}
-                    >
-                      {link.title}
-                    </Typography>
-                  </GatsbyLink>
-                  {/* <Link
-                    getProps={isPartiallyActive}
+                  <Link
+                    sx={{
+                      pointerEvents: link.value === currentPage ? "none" : "",
+                    }}
                     underline="none"
-                    activeClassName="test"
                     to={`../${link.value}`}
                   >
                     <Typography
                       className="defaultTransition"
-                      color={scrollTrigger ? "text.secondary" : "white"}
+                      color={
+                        link.value === currentPage
+                          ? "secondary.light"
+                          : scrollTrigger
+                          ? "text.secondary"
+                          : "white"
+                      }
                     >
                       {link.title}
                     </Typography>
-                  </Link> */}
+                  </Link>
                 </Box>
               );
             })}

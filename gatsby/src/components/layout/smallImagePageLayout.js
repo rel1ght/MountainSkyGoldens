@@ -12,8 +12,7 @@ export default function SmallImagePageLayout({
   children,
 }) {
   return (
-    <Layout>
-      {/* hero box */}
+    <>
       <Box
         sx={{
           maxHeight: {
@@ -92,6 +91,6 @@ export default function SmallImagePageLayout({
       <SectionBlock>
         <Box sx={{ width: 1, py: 8, minHeight: "30rem" }}>{children}</Box>
       </SectionBlock>
-    </Layout>
+    </>
   );
 }
