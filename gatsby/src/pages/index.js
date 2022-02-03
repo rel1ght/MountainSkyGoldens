@@ -21,6 +21,7 @@ import LittersTabs from "../components/littersHomepage";
 import SectionBlock from "../components/layout/sectionBlock";
 // Homepage
 export default function IndexPage({ data }) {
+  console.log("date: ", data);
   const { title, subtitle, backgroundImage } = formatPageData(data);
   const litters = useFormatLitterData(data);
   const [tabValue, setTabValue] = React.useState(0);

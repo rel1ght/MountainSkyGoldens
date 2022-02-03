@@ -57,7 +57,12 @@ export default function NavBar({ currentPage = "" }) {
             }}
           >
             <Box sx={{ width: "2.2rem" }}>
-              <Logo sx={{ fontSize: "2.8rem" }} />
+              <Link color="inherit" to={`../`}>
+                <Logo
+                  className="hoverLift hoverShadow clickPressDown"
+                  sx={{ fontSize: "2.8rem" }}
+                />
+              </Link>
             </Box>
             <Typography variant="cursive" sx={{ ml: 2 }}>
               Mountain Sky Goldens
