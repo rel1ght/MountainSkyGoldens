@@ -71,16 +71,18 @@ export default function NavBar({ currentPage = "" }) {
           </Box>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {links.map((link) => {
-              console.log("link: ", link);
-              console.log("link.value: ", link.value);
-              console.log("currentPage: ", currentPage);
+              const isActive = link.value === currentPage;
               return link?.variant === "button" ? (
                 <Button
                   className="hoverWiggle"
-                  disabled={link.value === currentPage}
-                  variant={link.value === currentPage ? "text" : "contained"}
+                  variant={isActive ? "outlined" : "contained"}
                   to={`../${link.value}`}
-                  sx={{ boxShadow: 5 }}
+                  sx={{
+                    boxShadow: 5,
+                    backgroundColor: isActive ? "white" : "primary.main",
+                    color: isActive ? "text.primary" : "white",
+                    pointerEvents: isActive ? "none" : undefined,
+                  }}
                 >
                   {link.title}
                 </Button>
@@ -88,14 +90,12 @@ export default function NavBar({ currentPage = "" }) {
                 <Box
                   sx={{ mr: 2 }}
                   className={
-                    link.value !== currentPage
-                      ? "hoverLift hoverShadow clickPressDown"
-                      : ""
+                    !isActive ? "hoverLift hoverShadow clickPressDown" : ""
                   }
                 >
                   <Link
                     sx={{
-                      pointerEvents: link.value === currentPage ? "none" : "",
+                      pointerEvents: isActive ? "none" : undefined,
                     }}
                     underline="none"
                     to={`../${link.value}`}
@@ -103,7 +103,7 @@ export default function NavBar({ currentPage = "" }) {
                     <Typography
                       className="defaultTransition"
                       color={
-                        link.value === currentPage
+                        isActive
                           ? "secondary.light"
                           : scrollTrigger
                           ? "text.secondary"
