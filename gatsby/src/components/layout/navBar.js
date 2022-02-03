@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Logo from "../logo";
 import { Link, Button } from "gatsby-theme-material-ui";
-
+import { Link as GatsbyLink } from "gatsby";
 export default function NavBar({ currentPage = "" }) {
   const scrollThreshold = ["home"].includes(currentPage.toLowerCase())
     ? 200
@@ -24,6 +24,10 @@ export default function NavBar({ currentPage = "" }) {
     { value: "contact", title: "Contact" },
     { value: "adopt", title: "Adopt", variant: "button" },
   ];
+  const isPartiallyActive = ({ isPartiallyCurrent }) => {
+    console.log("isPartiallyCurrent: ", isPartiallyCurrent);
+    return isPartiallyCurrent ? { className: "active" } : {};
+  };
   return (
     <AppBar
       position="fixed"
@@ -57,7 +61,7 @@ export default function NavBar({ currentPage = "" }) {
             }}
           >
             <Box sx={{ width: "2.2rem" }}>
-              <Link color="inherit" to={`../`}>
+              <Link color="inherit" to={`/`}>
                 <Logo
                   className="hoverLift hoverShadow clickPressDown"
                   sx={{ fontSize: "2.8rem" }}
@@ -70,7 +74,6 @@ export default function NavBar({ currentPage = "" }) {
           </Box>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {links.map((link) => {
-              console.log("link: ", link);
               return link?.variant === "button" ? (
                 <Button
                   className="hoverWiggle"
@@ -85,14 +88,33 @@ export default function NavBar({ currentPage = "" }) {
                   sx={{ mr: 2 }}
                   className=" hoverLift hoverShadow clickPressDown"
                 >
-                  <Link underline="none" to={`../${link.value}`}>
+                  <GatsbyLink
+                    activeClassName="active"
+                    getProps={isPartiallyActive}
+                    style={{ textDecoration: "none" }}
+                    to={`../${link.value}`}
+                    partiallyActive={true}
+                  >
                     <Typography
                       className="defaultTransition"
                       color={scrollTrigger ? "text.secondary" : "white"}
                     >
                       {link.title}
                     </Typography>
-                  </Link>
+                  </GatsbyLink>
+                  {/* <Link
+                    getProps={isPartiallyActive}
+                    underline="none"
+                    activeClassName="test"
+                    to={`../${link.value}`}
+                  >
+                    <Typography
+                      className="defaultTransition"
+                      color={scrollTrigger ? "text.secondary" : "white"}
+                    >
+                      {link.title}
+                    </Typography>
+                  </Link> */}
                 </Box>
               );
             })}

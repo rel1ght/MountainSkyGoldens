@@ -110,6 +110,14 @@ theme.components = {
       ".capitalize": {
         "&&:first-letter": { textTransform: "capitalize" },
       },
+      ".active": {
+        color: `${theme.palette.secondary.light} !important`,
+        fontWeight: 600,
+        "& *": {
+          color: "inherit !important",
+          fontWeight: "inherit !important",
+        },
+      },
       ".defaultTransition": {
         transition: `${theme.transitions.create("all", {
           duration: 500,
