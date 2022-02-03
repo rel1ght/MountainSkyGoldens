@@ -6,7 +6,7 @@ import Footer from "./footer";
 export default function Layout({ title, children }) {
   return (
     <Box sx={{ width: 1 }}>
-      <NavBar />
+      <NavBar currentPage={title} />
       <Box
         className="debugBreakpoints"
         sx={{

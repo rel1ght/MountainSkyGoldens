@@ -19,6 +19,7 @@ const theme = createTheme({
       primary: "rgba(0,0,0,0.7)",
       secondary: "rgba(0,0,0,0.55)",
     },
+    error: { main: "#a61330" },
     success: { main: "#63e792" },
     danger: { main: "#703b3b" },
     info: { main: "#ebc44e" },
@@ -67,6 +68,7 @@ const theme = createTheme({
     h6: {
       fontFamily: ["Crete Round"],
       fontWeight: 500,
+      fontSize: "1.1rem",
     },
     lead1: {
       fontSize: "1.25rem",

@@ -28,10 +28,9 @@ import GetContactIcon from "../utils/getContactIcon";
 export default function ContactPage({ data }) {
   const { title, subtitle, backgroundImage, additionalContent } =
     formatPageData(data);
-  console.log("additionalContent: ", additionalContent);
   const { contactItems = [] } = additionalContent;
   return (
-    <Layout>
+    <Layout title="contact">
       {/* hero box */}
       <Box
         sx={{

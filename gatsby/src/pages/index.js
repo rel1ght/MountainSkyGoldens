@@ -21,17 +21,14 @@ import LittersTabs from "../components/littersHomepage";
 import SectionBlock from "../components/layout/sectionBlock";
 // Homepage
 export default function IndexPage({ data }) {
-  console.log("date: ", data);
   const { title, subtitle, backgroundImage } = formatPageData(data);
   const litters = useFormatLitterData(data);
   const [tabValue, setTabValue] = React.useState(0);
   function handleChange(val1, val2) {
-    console.log("val1: ", val1);
-    console.log("val2: ", val2);
     setTabValue(val2);
   }
   return (
-    <Layout>
+    <Layout title="home">
       {/* hero box */}
       <Box
         sx={{

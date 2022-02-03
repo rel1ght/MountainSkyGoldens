@@ -10,10 +10,13 @@ import {
 import Logo from "../logo";
 import { Link, Button } from "gatsby-theme-material-ui";
 
-export default function NavBar() {
+export default function NavBar({ currentPage = "" }) {
+  const scrollThreshold = ["home"].includes(currentPage.toLowerCase())
+    ? 200
+    : 100;
   const scrollTrigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 200,
+    threshold: scrollThreshold,
   });
   const links = [
     { value: "ourdogs", title: "Our Dogs" },
