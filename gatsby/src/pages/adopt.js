@@ -54,55 +54,7 @@ export default function AdoptPage({ data }) {
 export const query = graphql`
   {
     contentfulPage(pageName: { eq: "adopt" }) {
-      pageName
-      subtitle
-      title
-      backgroundImage {
-        image {
-          gatsbyImageData(quality: 100)
-        }
-      }
-      documents {
-        file {
-          details {
-            size
-          }
-          contentType
-          fileName
-          url
-        }
-      }
-      options {
-        flag
-        name
-      }
-      contentBlock {
-        name
-        layout
-        header
-      }
-      additionalContent {
-        ... on ContentfulForm {
-          id
-          name
-          postUrl
-          field {
-            validation
-            title
-            placeholder
-            required
-            option
-            helperText
-            fieldType
-            internal {
-              type
-            }
-          }
-          internal {
-            type
-          }
-        }
-      }
+      ...PageInformation
     }
   }
 `;

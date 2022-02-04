@@ -101,56 +101,7 @@ function ContactCard({ info }) {
 export const query = graphql`
   {
     contentfulPage(pageName: { eq: "contact" }) {
-      pageName
-      subtitle
-      title
-      backgroundImage {
-        image {
-          gatsbyImageData(quality: 100)
-        }
-        focalPoint {
-          focalPoint {
-            x
-            y
-          }
-        }
-      }
-      contentBlock {
-        name
-        layout
-        header
-        body {
-          body
-        }
-      }
-      documents {
-        file {
-          details {
-            size
-          }
-          contentType
-          fileName
-          url
-        }
-        title
-        description
-        gatsbyImageData
-      }
-      options {
-        flag
-        name
-      }
-      additionalContent {
-        ... on ContentfulContactInfoField {
-          contactType
-          showOnContactPage
-          title
-          link
-          internal {
-            type
-          }
-        }
-      }
+      ...PageInformation
     }
   }
 `;

@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Parallax from "../utils/parallax";
-import Layout from "./layout";
 import SectionBlock from "./sectionBlock";
 
 export default function SmallImagePageLayout({

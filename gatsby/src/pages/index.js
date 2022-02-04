@@ -19,6 +19,7 @@ import formatPageData from "../utils/formatPageData";
 import useFormatLitterData from "../utils/useFormatLitterData";
 import LittersTabs from "../components/littersHomepage";
 import SectionBlock from "../components/layout/sectionBlock";
+import { queries, pageQuery } from "../utils/queryFragments";
 // Homepage
 export default function IndexPage({ data }) {
   console.log("date: ", data);
@@ -165,69 +166,8 @@ export default function IndexPage({ data }) {
 export const query = graphql`
   {
     contentfulPage(pageName: { eq: "home" }) {
-      pageName
-      subtitle
-      title
-      backgroundImage {
-        image {
-          gatsbyImageData
-        }
-      }
+      ...PageInformation
     }
-    allContentfulLitter {
-      nodes {
-        puppy {
-          id
-          collarColor
-          gender
-          mainPicture {
-            title
-            image {
-              gatsbyImageData
-            }
-          }
-          name
-          status
-        }
-        contentfulparent {
-          id
-          owner
-          ownerWebsiteLink
-          pedigreeLink
-          role
-          status
-          weight
-          hipCertification
-          elbowCertification
-          breed
-          bio {
-            id
-            bio
-          }
-          mainPicture {
-            puppy {
-              mainPicture {
-                childContentfulImageWithFocalPointFocalPointJsonNode {
-                  id
-                }
-                focalPoint {
-                  id
-                }
-                image {
-                  gatsbyImageData
-                }
-              }
-            }
-            image {
-              gatsbyImageData
-            }
-          }
-          name
-        }
-        dateOfLitter
-        status
-        title
-      }
-    }
+    ...LitterInformation
   }
 `;
