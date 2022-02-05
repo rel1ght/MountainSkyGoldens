@@ -23,6 +23,7 @@ import { queries, pageQuery } from "../utils/queryFragments";
 // Homepage
 export default function IndexPage({ data }) {
   const { title, subtitle, backgroundImage } = formatPageData(data);
+  console.log("backgroundImage: ", backgroundImage);
   const litters = useFormatLitterData(data);
   const [tabValue, setTabValue] = React.useState(0);
   function handleChange(val1, val2) {
@@ -45,9 +46,9 @@ export default function IndexPage({ data }) {
               width: "100%",
               height: "100%",
             }}
-            imgStyle={{ objectPosition: "center 15%" }}
+            imgStyle={backgroundImage.focalStyle}
             loading="eager"
-            image={backgroundImage}
+            image={backgroundImage.gatsbyImage}
             alt="Mountain Sky Goldens"
           />
         </Box>

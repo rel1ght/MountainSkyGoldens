@@ -16,6 +16,7 @@ import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import { useTheme } from "@mui/material/styles";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import SwipeableViews from "react-swipeable-views";
+import { processImage } from "../utils/formatPageData";
 
 export default function LittersTabs({ litters }) {
   const theme = useTheme();
@@ -50,7 +51,7 @@ export default function LittersTabs({ litters }) {
     return (
       <Grid container justifyContent="center" alignItems="center">
         {currentLitter.parents.map((dog) => {
-          const dogImage = getImage(dog.mainPicture.image);
+          const dogImage = processImage(dog.mainPicture);
           const dogAttributes = [
             { title: "Breed", value: dog.breed },
             { title: "Weight", value: dog.weight },
@@ -118,10 +119,11 @@ export default function LittersTabs({ litters }) {
                 <Box>
                   <GatsbyImage
                     alt={`${dog.name}`}
-                    image={dogImage}
+                    image={dogImage.gatsbyImage}
+                    imgStyle={dogImage.focalStyle}
                     quality={100}
                     style={{
-                      maxHeight: "275px",
+                      height: "15rem",
                       width: "100%",
                       borderTopLeftRadius: `${theme.shape.borderRadius}px`,
                       borderTopRightRadius: `${theme.shape.borderRadius}px`,
@@ -176,7 +178,9 @@ export default function LittersTabs({ litters }) {
     return (
       <Grid container justifyContent="center" alignItems="center">
         {currentLitter.puppies.map((dog) => {
-          const dogImage = getImage(dog.mainPicture.image);
+          console.log("dog: ", dog);
+          const dogImage = processImage(dog.mainPicture);
+          console.log("dogImage: ", dogImage);
           const dogAttributes = [
             { title: "Breed", value: dog.breed },
             { title: "Weight", value: dog.weight },
@@ -258,7 +262,8 @@ export default function LittersTabs({ litters }) {
                   >
                     <GatsbyImage
                       alt={`${dog.name}`}
-                      image={dogImage}
+                      image={dogImage.gatsbyImage}
+                      imgStyle={dogImage.focalStyle}
                       quality={85}
                       style={{
                         width: "100%",

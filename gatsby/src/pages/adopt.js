@@ -24,7 +24,6 @@ import ProcessedForm from "../components/utils/formFactory";
 export default function AdoptPage({ data }) {
   const { title, subtitle, backgroundImage, additionalContent } =
     formatPageData(data);
-  console.log("additionalContent: ", additionalContent);
 
   return (
     <Layout title="adopt">

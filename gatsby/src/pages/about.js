@@ -20,14 +20,9 @@ import Parallax from "../components/utils/parallax";
 import Layout from "../components/layout/layout";
 import { pageNames } from "../utils/constants";
 import formatPageData from "../utils/formatPageData";
-import useFormatLitterData from "../utils/useFormatLitterData";
-import LittersTabs from "../components/littersHomepage";
-import SectionBlock from "../components/layout/sectionBlock";
-import GetContactIcon from "../utils/getContactIcon";
 import SmallImagePageLayout from "../components/layout/smallImagePageLayout";
 import ContentBlock from "../components/contentBlock";
 export default function AboutPage({ data, uri }) {
-  console.log("data: ", data);
   const { title, subtitle, backgroundImage, additionalContent, contentBlocks } =
     formatPageData(data);
   return (

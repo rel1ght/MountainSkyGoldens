@@ -44,9 +44,9 @@ export default function SmallImagePageLayout({
               height: "100%",
               filter: "brightness(0.5) contrast(70%)",
             }}
-            imgStyle={{ objectPosition: "center 15%" }}
+            imgStyle={backgroundImage.focalStyle}
             loading="eager"
-            image={backgroundImage}
+            image={backgroundImage.gatsbyImage}
             alt="Mountain Sky Goldens"
           />
         </Box>

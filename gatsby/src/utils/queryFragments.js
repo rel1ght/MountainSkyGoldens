@@ -32,6 +32,12 @@ export const queries = {
               image {
                 gatsbyImageData
               }
+              focalPoint {
+                focalPoint {
+                  x
+                  y
+                }
+              }
             }
             name
             status
@@ -52,21 +58,14 @@ export const queries = {
               bio
             }
             mainPicture {
-              puppy {
-                mainPicture {
-                  childContentfulImageWithFocalPointFocalPointJsonNode {
-                    id
-                  }
-                  focalPoint {
-                    id
-                  }
-                  image {
-                    gatsbyImageData
-                  }
-                }
-              }
               image {
                 gatsbyImageData
+              }
+              focalPoint {
+                focalPoint {
+                  x
+                  y
+                }
               }
             }
             name
