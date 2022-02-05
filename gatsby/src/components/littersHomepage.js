@@ -178,9 +178,7 @@ export default function LittersTabs({ litters }) {
     return (
       <Grid container justifyContent="center" alignItems="center">
         {currentLitter.puppies.map((dog) => {
-          console.log("dog: ", dog);
           const dogImage = processImage(dog.mainPicture);
-          console.log("dogImage: ", dogImage);
           const dogAttributes = [
             { title: "Breed", value: dog.breed },
             { title: "Weight", value: dog.weight },

@@ -3,9 +3,9 @@ import { getImage } from "gatsby-plugin-image";
 export default function formatPageData(data) {
   const page = data.contentfulPage || {};
   const { title, subtitle } = page;
-  console.log("data: ", data);
+  // console.log("data: ", data);
   const backgroundImage = page.backgroundImage
-    ? processImage(page.backgroundImage, true)
+    ? processImage(page.backgroundImage)
     : null;
   const contentBlocks = page.contentBlock
     ? processContentBlocks(page.contentBlock)
@@ -13,6 +13,7 @@ export default function formatPageData(data) {
   const additionalContent = page.additionalContent
     ? processAdditionalContent(page.additionalContent)
     : {};
+  const options = page.options ? processOptions(page.options) : {};
   const documents = page.documents ? processDocuments(page.documents) : [];
   return {
     title,
@@ -20,8 +21,17 @@ export default function formatPageData(data) {
     backgroundImage,
     contentBlocks,
     additionalContent,
+    options,
     documents,
   };
+}
+
+function processOptions(options) {
+  const formattedOptions = {};
+  options.forEach((option) => {
+    formattedOptions[option.name] = option.flag;
+  });
+  return formattedOptions;
 }
 
 function processContentBlocks(blocks) {
@@ -51,10 +61,7 @@ function processContentBlocks(blocks) {
     };
   });
 }
-export function processImage(imageObj, test) {
-  if (test) {
-    console.log("imageObj: ", imageObj);
-  }
+export function processImage(imageObj) {
   const { image = {}, focalPoint: focalPointContainer = {} } = imageObj;
   const { focalPoint } = focalPointContainer;
   const { height: imageHeight, width: imageWidth } =
@@ -62,7 +69,6 @@ export function processImage(imageObj, test) {
   const imageDetails = { imageWidth, imageHeight };
   const focalStyle = processImageFocalPoint({ imageDetails, focalPoint });
   const gatsbyImage = image ? getImage(image) : {};
-  console.log("gatsbyImage: ", gatsbyImage);
   return { gatsbyImage, focalStyle };
 }
 export function processImageFocalPoint({ imageDetails = {}, focalPoint = {} }) {

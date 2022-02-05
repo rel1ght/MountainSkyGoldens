@@ -22,8 +22,14 @@ import SectionBlock from "../components/layout/sectionBlock";
 import { queries, pageQuery } from "../utils/queryFragments";
 // Homepage
 export default function IndexPage({ data }) {
-  const { title, subtitle, backgroundImage } = formatPageData(data);
-  console.log("backgroundImage: ", backgroundImage);
+  const {
+    title,
+    subtitle,
+    backgroundImage,
+    options = {},
+  } = formatPageData(data);
+  const { enableEmail, enableInstagram } = options;
+  console.log("options: ", options);
   const litters = useFormatLitterData(data);
   const [tabValue, setTabValue] = React.useState(0);
   function handleChange(val1, val2) {
@@ -86,38 +92,45 @@ export default function IndexPage({ data }) {
               </Box>
               <Box>
                 {/* input */}
-                <Paper
-                  sx={{
-                    borderRadius: 1,
-                    display: "flex",
-                    alignItems: "stretch",
-                    justifyContent: "center",
-                  }}
-                >
-                  <InputBase
-                    sx={{
-                      m: 1,
-                      mx: 2,
-                      borderRadius: (theme) =>
-                        `${theme.shape.borderRadius}px 0px ${theme.shape.borderRadius}px 0px`,
-                    }}
-                    fullWidth
-                    placeholder="example@address.com"
-                  />
-                  <Button
-                    onClick={() => {}}
-                    variant="contained"
-                    color="secondary"
-                    size="large"
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: (theme) =>
-                        `0px ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0px`,
-                    }}
-                  >
-                    <Typography>Submit</Typography>
-                  </Button>
-                </Paper>
+                {enableEmail && (
+                  <form action="https://formspree.io/f/xvodolkn" method="POST">
+                    <Paper
+                      sx={{
+                        borderRadius: 1,
+                        display: "flex",
+                        alignItems: "stretch",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <InputBase
+                        sx={{
+                          m: 1,
+                          mx: 2,
+                          borderRadius: (theme) =>
+                            `${theme.shape.borderRadius}px 0px ${theme.shape.borderRadius}px 0px`,
+                        }}
+                        name="email"
+                        type="email"
+                        fullWidth
+                        placeholder="example@address.com"
+                      />
+                      <Button
+                        // onClick={() => {}}
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                        size="large"
+                        sx={{
+                          textTransform: "none",
+                          borderRadius: (theme) =>
+                            `0px ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0px`,
+                        }}
+                      >
+                        <Typography>Submit</Typography>
+                      </Button>
+                    </Paper>
+                  </form>
+                )}
               </Box>
             </Box>
           </Box>
