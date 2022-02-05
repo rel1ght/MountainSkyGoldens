@@ -25,5 +25,6 @@ export const query = graphql`
     contentfulPage(pageName: { eq: "ourdogs" }) {
       ...PageInformation
     }
+    ...LitterInformation
   }
 `;

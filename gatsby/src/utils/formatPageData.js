@@ -26,7 +26,38 @@ export default function formatPageData(data) {
 }
 
 function processContentBlocks(blocks) {
-  return blocks.map((block) => {});
+  return blocks.map((block) => {
+    console.log("block: ", block);
+    const {
+      body = {},
+      header,
+      imageGallery = [],
+      layout,
+      mainImage = {},
+      name,
+    } = block;
+
+    const { body: bodyText } = body;
+
+    const blockImage = mainImage ? getImage(mainImage.image) : null;
+    console.log("imageGallery: ", imageGallery);
+    const processedImageGallery =
+      Array.isArray(imageGallery) && imageGallery.length
+        ? imageGallery.map((photo) => processImageGallery(photo))
+        : null;
+    return {
+      body: bodyText,
+      mainImage: blockImage,
+      gallery: processedImageGallery,
+      header,
+      layout,
+      name,
+    };
+  });
+}
+
+function processImageGallery(photo) {
+  return null;
 }
 
 function processAdditionalContent(content) {

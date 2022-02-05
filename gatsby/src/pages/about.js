@@ -25,10 +25,11 @@ import LittersTabs from "../components/littersHomepage";
 import SectionBlock from "../components/layout/sectionBlock";
 import GetContactIcon from "../utils/getContactIcon";
 import SmallImagePageLayout from "../components/layout/smallImagePageLayout";
+import ContentBlock from "../components/contentBlock";
 export default function AboutPage({ data, uri }) {
-  const { title, subtitle, backgroundImage, additionalContent } =
+  console.log("data: ", data);
+  const { title, subtitle, backgroundImage, additionalContent, contentBlocks } =
     formatPageData(data);
-  const { contactItems = [] } = additionalContent;
   return (
     <Layout title="about">
       <SmallImagePageLayout
@@ -36,7 +37,13 @@ export default function AboutPage({ data, uri }) {
         subtitle={subtitle}
         backgroundImage={backgroundImage}
       >
-        <Grid container justifyContent="space-between"></Grid>
+        <Grid container justifyContent="space-between">
+          <Grid item>
+            {contentBlocks.map((block) => {
+              return <ContentBlock block={block} key={block.name} />;
+            })}
+          </Grid>
+        </Grid>
       </SmallImagePageLayout>
     </Layout>
   );

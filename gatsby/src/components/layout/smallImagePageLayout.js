@@ -66,7 +66,6 @@ export default function SmallImagePageLayout({
                   <Typography
                     variant="h1"
                     color="yellow.light"
-                    variantMapping="h1"
                     align="center"
                     sx={{ mb: 2 }}
                   >

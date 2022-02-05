@@ -81,7 +81,65 @@ export const queries = {
   contentBlockInfo: graphql`
     fragment ContentBlockInformation on ContentfulPage {
       contentBlock {
+        imageGallery {
+          childrenContentfulImageWithFocalPointFocalPointJsonNode {
+            focalPoint {
+              x
+              y
+            }
+            children {
+              id
+            }
+          }
+          focalPoint {
+            focalPoint {
+              x
+              y
+            }
+          }
+          image {
+            gatsbyImageData
+            title
+            file {
+              fileName
+              details {
+                size
+                image {
+                  height
+                  width
+                }
+              }
+              contentType
+              url
+            }
+          }
+          title
+        }
         name
+        mainImage {
+          focalPoint {
+            focalPoint {
+              x
+              y
+            }
+          }
+          image {
+            gatsbyImageData
+            title
+            file {
+              fileName
+              url
+              contentType
+              details {
+                image {
+                  height
+                  width
+                }
+                size
+              }
+            }
+          }
+        }
         layout
         header
         body {
@@ -123,6 +181,15 @@ export const queries = {
               type
             }
           }
+          internal {
+            type
+          }
+        }
+        ... on ContentfulContactInfoField {
+          contactType
+          showOnContactPage
+          title
+          link
           internal {
             type
           }
