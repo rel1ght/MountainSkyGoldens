@@ -18,6 +18,7 @@ import { pageNames } from "../utils/constants";
 import formatPageData from "../utils/formatPageData";
 import useFormatLitterData from "../utils/useFormatLitterData";
 import LittersTabs from "../components/littersHomepage";
+import ContentBlock from "../components/contentBlock";
 import SectionBlock from "../components/layout/sectionBlock";
 import { queries, pageQuery } from "../utils/queryFragments";
 // Homepage
@@ -26,6 +27,7 @@ export default function IndexPage({ data }) {
     title,
     subtitle,
     backgroundImage,
+    contentBlocks,
     options = {},
   } = formatPageData(data);
   const { enableEmail, enableInstagram } = options;
@@ -40,12 +42,18 @@ export default function IndexPage({ data }) {
       {/* hero box */}
       <Box
         sx={{
-          maxHeight: "85vh",
+          height: "90vh",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {/* background image */}
         <Box
-          sx={{ position: "fixed", top: 0, height: 1, width: 1, zIndex: -1 }}
+          sx={{ position: "absolute", top: 0, height: 1, width: 1, zIndex: -1 }}
         >
           <GatsbyImage
             style={{
@@ -66,29 +74,31 @@ export default function IndexPage({ data }) {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              mt: "35vh",
+              mt: "30vh",
               p: 2,
             }}
           >
-            <Box sx={{ flex: "0 1 auto" }}>
-              <Box sx={{ mb: 2 }}>
+            <Box sx={{ flex: "0 1 auto", minHeight: "12rem" }}>
+              <Box sx={{ mb: 2, maxWidth: "50rem" }}>
                 <Typography
                   variant="h1"
                   color="yellow.light"
                   variantMapping="h1"
                   align="center"
-                  sx={{ mb: 2 }}
+                  sx={{ mb: 4, lineHeight: 0.9 }}
                 >
                   {title}
                 </Typography>
                 {/* puppy status */}
-                <Typography
-                  variant="lead1"
-                  sx={{ ml: ".25rem" }}
-                  color="yellow.light"
-                >
-                  {subtitle}
-                </Typography>
+                <Box sx={{ maxWidth: "45rem", mx: "auto", p: 1 }}>
+                  <Typography
+                    variant="lead1"
+                    sx={{ lineHeight: 0.8 }}
+                    color="yellow.light"
+                  >
+                    {subtitle}
+                  </Typography>
+                </Box>
               </Box>
               <Box>
                 {/* input */}
@@ -115,7 +125,6 @@ export default function IndexPage({ data }) {
                         placeholder="example@address.com"
                       />
                       <Button
-                        // onClick={() => {}}
                         type="submit"
                         variant="contained"
                         color="secondary"
@@ -137,7 +146,7 @@ export default function IndexPage({ data }) {
         </Parallax>
         <Box
           sx={{
-            mt: "20vh",
+            mt: "10vh",
             width: 1,
             display: "flex",
             justifyContent: "center",
@@ -156,14 +165,12 @@ export default function IndexPage({ data }) {
         <LittersTabs litters={litters} />
         {/* parents tabs */}
         {/* Parents.map */}
-        <Box sx={{ height: "2000px" }}>{/* Parent */}</Box>
+        {contentBlocks.map((block) => {
+          return <ContentBlock block={block} key={block.name} />;
+        })}
       </SectionBlock>
       {/* Children container */}
       <Box>
-        <Tabs value={tabValue} onChange={handleChange}>
-          <Tab label="test1" />
-          <Tab label="test2" />
-        </Tabs>
         {/* children tabs */}
         {/* Children.map */}
         <Box>{/* Children */}</Box>

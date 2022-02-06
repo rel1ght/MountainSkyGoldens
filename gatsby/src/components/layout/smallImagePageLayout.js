@@ -9,18 +9,20 @@ export default function SmallImagePageLayout({
   title,
   subtitle,
   children,
+  bigBackgroundImage,
 }) {
   return (
     <>
       <Box
         sx={{
-          maxHeight: {
+          maxHeight: !bigBackgroundImage && {
             xs: "85vh",
             sm: "60vh",
             md: "50vh",
             lg: "45vh",
             xl: "30vh",
           },
+          height: bigBackgroundImage && "100vh",
           position: "relative",
           overflow: "hidden",
           display: "flex",
@@ -86,9 +88,11 @@ export default function SmallImagePageLayout({
           </Box>
         </Parallax>
       </Box>
-      <SectionBlock>
-        <Box sx={{ width: 1, py: 8, minHeight: "30rem" }}>{children}</Box>
-      </SectionBlock>
+      {children && (
+        <SectionBlock>
+          <Box sx={{ width: 1, py: 8, minHeight: "30rem" }}>{children}</Box>
+        </SectionBlock>
+      )}
     </>
   );
 }

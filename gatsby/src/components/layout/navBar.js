@@ -57,17 +57,22 @@ export default function NavBar({ currentPage = "" }) {
               mb: scrollTrigger ? -1 : 0,
             }}
           >
-            <Box sx={{ width: "2.2rem" }}>
-              <Link color="inherit" to={`/`}>
-                <Logo
-                  className="hoverLift hoverShadow clickPressDown"
-                  sx={{ fontSize: "2.8rem" }}
-                />
+            <Box className="hoverLift hoverShadow clickPressDown">
+              <Link
+                color="inherit"
+                to={`/`}
+                underline="none"
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <Logo sx={{ fontSize: "2.8rem" }} />
+                <Typography
+                  variant="cursive"
+                  sx={{ ml: 2, display: { xs: "none", md: "block" } }}
+                >
+                  Mountain Sky Goldens
+                </Typography>
               </Link>
             </Box>
-            <Typography variant="cursive" sx={{ ml: 2 }}>
-              Mountain Sky Goldens
-            </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {links.map((link) => {
@@ -78,7 +83,7 @@ export default function NavBar({ currentPage = "" }) {
                   variant={isActive ? "outlined" : "contained"}
                   to={`../${link.value}`}
                   sx={{
-                    boxShadow: 5,
+                    boxShadow: isActive ? 0 : 5,
                     backgroundColor: isActive ? "white" : "primary.main",
                     color: isActive ? "text.primary" : "white",
                     pointerEvents: isActive ? "none" : undefined,

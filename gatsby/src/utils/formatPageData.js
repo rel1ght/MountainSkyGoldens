@@ -36,6 +36,7 @@ function processOptions(options) {
 
 function processContentBlocks(blocks) {
   return blocks.map((block) => {
+    console.log("block: ", block);
     const {
       body = {},
       header,
@@ -44,12 +45,12 @@ function processContentBlocks(blocks) {
       mainImage = {},
       name,
     } = block;
-    const { body: bodyText } = body;
+    const { body: bodyText } = body || {};
 
     const blockImage = mainImage ? processImage(mainImage) : null;
     const processedImageGallery =
       Array.isArray(imageGallery) && imageGallery.length
-        ? imageGallery.map((photo) => processImageGallery(photo))
+        ? processImageGallery(imageGallery)
         : null;
     return {
       body: bodyText,
@@ -76,15 +77,21 @@ export function processImageFocalPoint({ imageDetails = {}, focalPoint = {} }) {
   const { x: focalX, y: focalY } = focalPoint;
   const focalXRatio = Number((focalX / imageWidth) * 100).toFixed(0);
   const focalYRatio = Number((focalY / imageHeight) * 100).toFixed(0);
-  const xRemainder = 100 - focalXRatio;
-  const yRemainder = 100 - focalYRatio;
-  // if xRemainder is greater than image frame width, add difference to focalXRatio
-
   return { objectPosition: `${focalXRatio}% ${focalYRatio}%` };
 }
 
-export function processImageGallery(photo) {
-  return null;
+export function processImageGallery(gallery) {
+  console.log("gallery: ", gallery);
+  return gallery.map((photo) => {
+    console.log("photo: ", photo);
+    const gatsbyImage = getImage(photo.image);
+    return {
+      thumb: gatsbyImage,
+      full: gatsbyImage,
+      alt: photo.title,
+      title: photo.title,
+    };
+  });
 }
 
 function processAdditionalContent(content) {
