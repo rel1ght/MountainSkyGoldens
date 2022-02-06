@@ -1,7 +1,7 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import "../fonts/fonts.css";
 import backgroundPaper from "../images/paper_1.png";
-
+import footerBackground from "../images/footer_background.jpg";
 const theme = createTheme({
   palette: {
     primary: {
@@ -182,6 +182,27 @@ theme.components = {
         "&&:active": {
           transform: "translateY(.2rem)",
           cursor: "pointer",
+        },
+      },
+      ".footerGrain": {
+        // backgroundColor: theme.palette.background.default,
+        backgroundImage: `url(${footerBackground})`,
+
+        position: "relative",
+        height: "100%",
+        width: "100%",
+        zIndex: 2,
+
+        "&::before": {
+          content: '""',
+          backgroundImage: `url(${footerBackground})`,
+          position: "absolute",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          opacity: 1,
+          zIndex: 0,
         },
       },
       ".paperGrain": {

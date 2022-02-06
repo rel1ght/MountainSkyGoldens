@@ -19,7 +19,7 @@ import { useTheme } from "@mui/material/styles";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Gallery from "@browniebroke/gatsby-image-gallery";
 import GalleryThumbnail from "./galleryThumbnail";
-export default function ContentBlock({ block }) {
+export default function ContentBlock({ block, disableMx }) {
   const { body, mainImage, gallery, header, layout, name } = block;
   return (
     <Box>
@@ -35,10 +35,10 @@ export default function ContentBlock({ block }) {
       <Grid
         container
         direction={layout === "Horizontal" ? "row" : "column"}
-        sx={{ p: 4 }}
+        sx={{}}
       >
         {mainImage && (
-          <Grid item xs sx={{ p: 4, pt: 5 }}>
+          <Grid item xs sx={{ m: 4, pt: 5 }}>
             <Box sx={{ borderRadius: 2, overflow: "hidden" }}>
               <GatsbyImage
                 style={{
@@ -54,13 +54,13 @@ export default function ContentBlock({ block }) {
           </Grid>
         )}
         {body && (
-          <Grid item xs sx={{ p: 4 }}>
+          <Grid item xs sx={{ m: 4, mx: disableMx && 0 }}>
             <Typography>{body}</Typography>
           </Grid>
         )}
 
         {gallery && !!gallery.length && (
-          <Grid item xs={12} sx={{ p: 4, pt: 0 }}>
+          <Grid item xs={12} sx={{ m: 4, pt: 0 }}>
             <Box
               sx={{
                 display: "flex",

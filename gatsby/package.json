@@ -23,6 +23,7 @@
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.1.0",
     "@mui/material": "^5.0.4",
+    "@paypal/react-paypal-js": "^7.6.0",
     "bootstrap": "^5.0.2",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",

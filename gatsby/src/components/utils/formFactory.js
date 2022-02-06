@@ -10,7 +10,7 @@ import {
   Button,
 } from "@mui/material";
 // import { useForm, Controller } from "react-hook-form";
-export default function ProcessedForm({ form }) {
+export default function ProcessedForm({ form, submitAction }) {
   //   const {
   //     register,
   //     handleSubmit,
@@ -19,6 +19,13 @@ export default function ProcessedForm({ form }) {
   //     control,
   //   } = useForm();
   //   function onSubmit(data) {}
+
+  function onSubmit(e) {
+    if (typeof submitAction === "function") {
+      e.preventDefault();
+      submitAction(e);
+    }
+  }
   return (
     <Box sx={{ m: 1, width: 1 }}>
       <Box sx={{ m: 1 }}>
@@ -33,6 +40,7 @@ export default function ProcessedForm({ form }) {
         component="form"
         autoComplete="off"
         action={form.postUrl}
+        onSubmit={onSubmit}
         method="POST"
         target=""
         //   onSubmit={handleSubmit(onSubmit)}

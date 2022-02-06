@@ -38,7 +38,7 @@ export default function AdoptSubmittedPage({ data }) {
         subtitle={subtitle}
         backgroundImage={backgroundImage}
         bigBackgroundImage={options?.bigBackgroundImage}
-      ></SmallImagePageLayout>
+      />
     </Layout>
   );
 }

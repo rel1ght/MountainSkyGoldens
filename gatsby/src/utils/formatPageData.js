@@ -6,7 +6,7 @@ export default function formatPageData(data) {
   // console.log("data: ", data);
   const backgroundImage = page.backgroundImage
     ? processImage(page.backgroundImage)
-    : null;
+    : {};
   const contentBlocks = page.contentBlock
     ? processContentBlocks(page.contentBlock)
     : [];

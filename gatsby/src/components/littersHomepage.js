@@ -104,7 +104,8 @@ export default function LittersTabs({ litters }) {
             <Grid
               item
               xs={12}
-              sm={6}
+              sm={8}
+              md={6}
               lg={5}
               sx={{ p: { xs: 1, sm: 3, md: 5 } }}
             >
