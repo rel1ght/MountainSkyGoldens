@@ -150,6 +150,7 @@ export const queries = {
   documentInfo: graphql`
     fragment DocumentInformation on ContentfulPage {
       documents {
+        title
         file {
           details {
             size

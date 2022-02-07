@@ -3,7 +3,7 @@ import { getImage } from "gatsby-plugin-image";
 export default function formatPageData(data) {
   const page = data.contentfulPage || {};
   const { title, subtitle } = page;
-  // console.log("data: ", data);
+  console.log("data: ", data);
   const backgroundImage = page.backgroundImage
     ? processImage(page.backgroundImage)
     : {};
@@ -119,13 +119,10 @@ function processAdditionalContent(content) {
   return { contactItems, forms };
 }
 
-function processDocuments(documents) {}
-
-function determineContentType(contentItem) {
-  if (contentItem?.internal?.type === "ContentfulContactInfoField") {
-    return "contact";
-  }
-  if (contentItem?.internal?.type === "ContentfulForm") {
-    return "form";
-  }
+function processDocuments(documents) {
+  // todo: handle other document types
+  return documents.map((document) => {
+    const { file = {} } = document;
+    return { title: document.title, url: file.url, type: file.title };
+  });
 }
