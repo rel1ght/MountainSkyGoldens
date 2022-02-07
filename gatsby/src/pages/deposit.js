@@ -33,7 +33,7 @@ export default function Deposit({ data, uri }) {
     contentBlocks,
     options,
   } = formatPageData(data);
-  const paymentAmount = options?.paymentAmount ?? 500;
+  const paymentAmount = options?.amount ? Number(options.amount) : 500;
   console.log("additionalContent: ", additionalContent);
   console.log("contentBlocks: ", contentBlocks);
   console.log("options: ", options);

@@ -29,7 +29,7 @@ export default function formatPageData(data) {
 function processOptions(options) {
   const formattedOptions = {};
   options.forEach((option) => {
-    formattedOptions[option.name] = option.flag;
+    formattedOptions[option.name] = option?.optionalValue ?? option.flag;
   });
   return formattedOptions;
 }
@@ -125,4 +125,12 @@ function processDocuments(documents) {
     const { file = {} } = document;
     return { title: document.title, url: file.url, type: file.title };
   });
+}
+function determineContentType(contentItem) {
+  if (contentItem?.internal?.type === "ContentfulContactInfoField") {
+    return "contact";
+  }
+  if (contentItem?.internal?.type === "ContentfulForm") {
+    return "form";
+  }
 }

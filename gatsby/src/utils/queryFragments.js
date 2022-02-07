@@ -202,6 +202,7 @@ export const queries = {
       options {
         flag
         name
+        optionalValue
       }
     }
   `,

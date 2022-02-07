@@ -191,7 +191,7 @@ theme.components = {
         position: "relative",
         height: "100%",
         width: "100%",
-        zIndex: 2,
+        zIndex: 0,
 
         "&::before": {
           content: '""',
@@ -202,7 +202,7 @@ theme.components = {
           bottom: 0,
           left: 0,
           opacity: 1,
-          zIndex: 0,
+          zIndex: -1,
         },
       },
       ".paperGrain": {
