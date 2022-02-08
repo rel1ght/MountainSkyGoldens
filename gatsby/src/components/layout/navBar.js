@@ -144,8 +144,6 @@ function NavLinks({ links, currentPage, scrollTrigger, isDrawer }) {
       }}
     >
       {links.map((link) => {
-        console.log("link: ", link);
-        console.log("currentPage: ", currentPage);
         const isActive = link.value === currentPage;
         return link?.variant === "button" ? (
           <Button

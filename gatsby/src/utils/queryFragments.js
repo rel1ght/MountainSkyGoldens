@@ -23,6 +23,7 @@ export const queries = {
     fragment LitterInformation on Query {
       allContentfulLitter {
         nodes {
+          title
           puppy {
             id
             collarColor
@@ -43,36 +44,8 @@ export const queries = {
             status
           }
           contentfulparent {
-            id
-            owner
-            ownerWebsiteLink
-            pedigreeLink
-            role
-            status
-            weight
-            hipCertification
-            elbowCertification
-            breed
-            bio {
-              id
-              bio
-            }
-            mainPicture {
-              image {
-                gatsbyImageData
-              }
-              focalPoint {
-                focalPoint {
-                  x
-                  y
-                }
-              }
-            }
-            name
+            ...ParentInformation
           }
-          dateOfLitter
-          status
-          title
         }
       }
     }
@@ -206,7 +179,63 @@ export const queries = {
       }
     }
   `,
+  parentsInfo: graphql`
+    fragment ParentsInformation on Query {
+      allContentfulParent {
+        nodes {
+          ...ParentInformation
+        }
+      }
+    }
+  `,
 };
+
+export const ParentInformation = graphql`
+  fragment ParentInformation on ContentfulParent {
+    id
+    owner
+    ownerWebsiteLink
+    pedigreeLink
+    role
+    status
+    weight
+    hipCertification
+    elbowCertification
+    breed
+    bio {
+      id
+      bio
+    }
+    mainPicture {
+      image {
+        gatsbyImageData
+      }
+      focalPoint {
+        focalPoint {
+          x
+          y
+        }
+      }
+      title
+    }
+    slug
+    gallery {
+      focalPoint {
+        focalPoint {
+          x
+          y
+        }
+      }
+      image {
+        gatsbyImageData
+        title
+      }
+      title
+    }
+    name
+  }
+`;
+
 export const pageQuery = graphql`
   fragment PageInformation on ContentfulPage {
     ...PageHeader

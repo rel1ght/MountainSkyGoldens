@@ -21,6 +21,7 @@ import { processImage } from "../utils/formatPageData";
 export default function LittersTabs({ litters }) {
   const theme = useTheme();
   const [tabsIndex, setTabsIndex] = React.useState(0);
+
   function handleTabChange(e, index) {
     setTabsIndex(index);
   }
@@ -51,6 +52,11 @@ export default function LittersTabs({ litters }) {
     return (
       <Grid container justifyContent="center" alignItems="center">
         {currentLitter.parents.map((dog) => {
+          console.log("dog: ", dog);
+          const ownerLink =
+            typeof dog.ownerWebsiteLink === "string"
+              ? dog.ownerWebsiteLink.trim()
+              : "";
           const dogImage = processImage(dog.mainPicture);
           const dogAttributes = [
             { title: "Breed", value: dog.breed },
@@ -59,14 +65,14 @@ export default function LittersTabs({ litters }) {
             { title: "Hip Certification", value: dog.hipCertification },
             {
               title: "Owner",
-              value: dog.ownerWebsiteLink ? (
+              value: ownerLink ? (
                 <Link
                   underline="always"
                   target="_blank"
                   rel="noreferrer"
                   color="primary"
                   className="hoverLift clickPressDown"
-                  href={dog.ownerWebsiteLink}
+                  href={ownerLink}
                 >
                   {dog.owner}
                 </Link>
@@ -163,7 +169,11 @@ export default function LittersTabs({ litters }) {
                       mt: 2,
                     }}
                   >
-                    <Button sx={{ textTransform: "none" }} variant="contained">
+                    <Button
+                      sx={{ textTransform: "none" }}
+                      variant="contained"
+                      href={`ourdogs?dog=${dog.slug}`}
+                    >
                       Read More
                     </Button>
                   </Box>

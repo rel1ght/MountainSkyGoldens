@@ -1,6 +1,22 @@
 import { getImage } from "gatsby-plugin-image";
-
+import { useStaticQuery, graphql } from "gatsby";
 export default function formatPageData(data) {
+  const { placeholderPuppy, placeholderParent } = useStaticQuery(graphql`
+    query {
+      placeholderPuppy: file(relativePath: { eq: "temppuppythumb.jpg" }) {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+      placeholderParent: file(
+        relativePath: { eq: "litterParentPlaceholder.jpg" }
+      ) {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+  `);
   const page = data.contentfulPage || {};
   const { title, subtitle } = page;
   console.log("data: ", data);
@@ -13,6 +29,10 @@ export default function formatPageData(data) {
   const additionalContent = page.additionalContent
     ? processAdditionalContent(page.additionalContent)
     : {};
+  const parents = data.allContentfulParent
+    ? processParents(data.allContentfulParent)
+    : [];
+  console.log("parents: ", parents);
   const options = page.options ? processOptions(page.options) : {};
   const documents = page.documents ? processDocuments(page.documents) : [];
   return {
@@ -22,6 +42,7 @@ export default function formatPageData(data) {
     contentBlocks,
     additionalContent,
     options,
+    parents,
     documents,
   };
 }
@@ -32,6 +53,33 @@ function processOptions(options) {
     formattedOptions[option.name] = option?.optionalValue ?? option.flag;
   });
   return formattedOptions;
+}
+
+function processParents(parents) {
+  const { nodes = [] } = parents;
+  const ourParents = [];
+  const otherParents = [];
+  nodes.forEach((parent) => {
+    const { mainPicture, gallery: imageGallery } = parent;
+    const mainImage = mainPicture
+      ? processImage(mainPicture)
+      : { image: placeholderParent };
+    const processedImageGallery =
+      Array.isArray(imageGallery) && imageGallery.length
+        ? processImageGallery(imageGallery)
+        : null;
+    const processedParent = {
+      ...parent,
+      mainImage,
+      gallery: processedImageGallery,
+    };
+    if (processedParent.owner === "Mountain Sky Goldens") {
+      ourParents.push(processedParent);
+    } else {
+      otherParents.push(processedParent);
+    }
+  });
+  return { ourParents, otherParents };
 }
 
 function processContentBlocks(blocks) {
