@@ -14,8 +14,10 @@ import GalleryThumbnail from "../components/galleryThumbnail";
 export default function OurDogsPage({ data, location }) {
   const dog = location.search ? location.search.split("=")[1] : null;
   const [dogScrollLink, setDogScrollLink] = React.useState(false);
+  const dogIdCheck =
+    typeof document !== undefined ? document.getElementById(dog) : {};
   React.useEffect(() => {
-    if (location.search) {
+    if (location.search && typeof document !== "undefined") {
       const dogId = document.getElementById(dog);
       if (dogId && !dogScrollLink) {
         setDogScrollLink(true);
@@ -27,7 +29,7 @@ export default function OurDogsPage({ data, location }) {
         }
       }
     }
-  }, [document.getElementById(dog)]);
+  }, [dogIdCheck.id]);
 
   const { title, subtitle, backgroundImage, additionalContent, parents } =
     formatPageData(data);
