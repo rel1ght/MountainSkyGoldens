@@ -8,7 +8,7 @@ export default function Layout({ title, children }) {
     <Box sx={{ width: 1 }}>
       <NavBar currentPage={title} />
       <Box
-        className="debugBreakpoints"
+        // className="debugBreakpoints"
         sx={{
           height: 1,
           minHeight: (theme) => `calc(100vh - ${theme.mixins.minFooterHeight})`,
