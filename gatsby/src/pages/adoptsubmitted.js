@@ -22,7 +22,6 @@ import formatPageData from "../utils/formatPageData";
 import SmallImagePageLayout from "../components/layout/smallImagePageLayout";
 import ProcessedForm from "../components/utils/formFactory";
 export default function AdoptSubmittedPage({ data }) {
-  console.log("data: ", data);
   const {
     title,
     subtitle,

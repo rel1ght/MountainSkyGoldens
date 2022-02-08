@@ -31,8 +31,7 @@ export default function Footer() {
   `);
   const links = pageLinks?.nodes ?? [];
   const contactInfo = contactInfoNodes.nodes ?? [];
-  console.log("contactInfo: ", contactInfo);
-  console.log("pageLinks: ", pageLinks);
+
   return (
     <Box
       className="footerGrain"

@@ -19,7 +19,7 @@ export default function formatPageData(data) {
   `);
   const page = data.contentfulPage || {};
   const { title, subtitle } = page;
-  console.log("data: ", data);
+
   const backgroundImage = page.backgroundImage
     ? processImage(page.backgroundImage)
     : {};
@@ -32,7 +32,7 @@ export default function formatPageData(data) {
   const parents = data.allContentfulParent
     ? processParents(data.allContentfulParent)
     : [];
-  console.log("parents: ", parents);
+
   const options = page.options ? processOptions(page.options) : {};
   const documents = page.documents ? processDocuments(page.documents) : [];
   return {
@@ -84,7 +84,6 @@ function processParents(parents) {
 
 function processContentBlocks(blocks) {
   return blocks.map((block) => {
-    console.log("block: ", block);
     const {
       body = {},
       header,
@@ -129,9 +128,7 @@ export function processImageFocalPoint({ imageDetails = {}, focalPoint = {} }) {
 }
 
 export function processImageGallery(gallery) {
-  console.log("gallery: ", gallery);
   return gallery.map((photo) => {
-    console.log("photo: ", photo);
     const gatsbyImage = getImage(photo.image);
     return {
       thumb: gatsbyImage,

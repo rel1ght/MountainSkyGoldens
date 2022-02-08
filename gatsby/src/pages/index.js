@@ -31,7 +31,7 @@ export default function IndexPage({ data }) {
     options = {},
   } = formatPageData(data);
   const { enableEmail, enableInstagram } = options;
-  console.log("options: ", options);
+
   const litters = useFormatLitterData(data);
   const [tabValue, setTabValue] = React.useState(0);
   function handleChange(val1, val2) {

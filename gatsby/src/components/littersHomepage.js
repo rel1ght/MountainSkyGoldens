@@ -52,7 +52,6 @@ export default function LittersTabs({ litters }) {
     return (
       <Grid container justifyContent="center" alignItems="center">
         {currentLitter.parents.map((dog) => {
-          console.log("dog: ", dog);
           const ownerLink =
             typeof dog.ownerWebsiteLink === "string"
               ? dog.ownerWebsiteLink.trim()

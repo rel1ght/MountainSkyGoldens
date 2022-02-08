@@ -11,7 +11,7 @@ dukeheadshotdom.src = dukeheadshot;
 import puppytemp from "../img/temppuppythumb.jpg";
 const puppies = document.getElementsByClassName("puppytemp");
 for (let puppy of puppies) {
-	puppy.src = puppytemp;
+  puppy.src = puppytemp;
 }
 
 import winnie from "../img/winnie.jpg";
@@ -104,10 +104,10 @@ import gallery11 from "../img/thumbs/11Thumb.jpg";
 galleryArray.push(gallery11);
 import gallery12 from "../img/thumbs/12Thumb.jpg";
 galleryArray.push(gallery12);
-console.log("galleryArray: ", galleryArray);
+
 const thumbs = document.getElementsByClassName("galleryThumb");
 for (let i = 0; i < thumbs.length; i++) {
-	thumbs[i].src = galleryArray[i];
+  thumbs[i].src = galleryArray[i];
 }
 import "../img/1.jpg";
 import "../img/2.jpg";

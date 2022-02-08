@@ -122,7 +122,7 @@ function ParentCard({ parent }) {
     },
   ];
   const { bio } = bioWrapper || {};
-  console.log("parent test: ", parent);
+
   return (
     <>
       <Grid item xs={12} md={11} lg={10} sx={{ mb: 10 }} id={`${parent.slug}`}>

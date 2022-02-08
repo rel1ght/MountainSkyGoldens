@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby";
 export default function useFormatLitterData(data) {
   const litters = data.allContentfulLitter.nodes || [];
-  console.log("litters: ", litters);
+
   const { placeholderPuppy, placeholderParent } = useStaticQuery(graphql`
     query {
       placeholderPuppy: file(relativePath: { eq: "temppuppythumb.jpg" }) {
