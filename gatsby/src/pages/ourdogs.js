@@ -29,7 +29,7 @@ export default function OurDogsPage({ data, location }) {
         }
       }
     }
-  }, [dogIdCheck.id]);
+  }, [dogIdCheck?.id]);
 
   const { title, subtitle, backgroundImage, additionalContent, parents } =
     formatPageData(data);
