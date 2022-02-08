@@ -15,7 +15,7 @@ export default function OurDogsPage({ data, location }) {
   const dog = location.search ? location.search.split("=")[1] : null;
   const [dogScrollLink, setDogScrollLink] = React.useState(false);
   const dogIdCheck =
-    typeof document !== undefined ? document.getElementById(dog) : {};
+    typeof document !== "undefined" ? document.getElementById(dog) : {};
   React.useEffect(() => {
     if (location.search && typeof document !== "undefined") {
       const dogId = document.getElementById(dog);
