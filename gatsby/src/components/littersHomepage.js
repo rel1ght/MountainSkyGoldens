@@ -62,6 +62,8 @@ export default function LittersTabs({ litters }) {
             { title: "Weight", value: dog.weight },
             { title: "Elbow Certification", value: dog.elbowCertification },
             { title: "Hip Certification", value: dog.hipCertification },
+            { title: "Eye Certification", value: dog.eyeCertification },
+            { title: "Heart Certification", value: dog.heartCertification },
             {
               title: "Owner",
               value: ownerLink ? (

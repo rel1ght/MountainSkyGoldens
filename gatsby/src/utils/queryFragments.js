@@ -201,6 +201,8 @@ export const ParentInformation = graphql`
     weight
     hipCertification
     elbowCertification
+    heartCertification
+    eyeCertification
     breed
     bio {
       id

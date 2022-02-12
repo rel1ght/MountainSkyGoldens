@@ -80,6 +80,8 @@ function ParentCard({ parent }) {
     { title: "Weight", value: parent.weight },
     { title: "Elbow Certification", value: parent.elbowCertification },
     { title: "Hip Certification", value: parent.hipCertification },
+    { title: "Eye Certification", value: dog.eyeCertification },
+    { title: "Heart Certification", value: dog.heartCertification },
     {
       title: "Owner",
       value: parent.ownerWebsiteLink ? (

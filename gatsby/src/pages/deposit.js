@@ -105,6 +105,9 @@ export default function Deposit({ data, uri }) {
                   onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                       // Your code here after capture the order
+                      alert(
+                        "Deposit made successfully! We'll contact you shortly. Congrats!"
+                      );
                       // do confetti
                     });
                   }}
