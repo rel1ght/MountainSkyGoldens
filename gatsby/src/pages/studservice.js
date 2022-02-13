@@ -16,34 +16,30 @@ import {
 } from "@mui/material";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Parallax from "../components/utils/parallax";
 import Layout from "../components/layout/layout";
 import { pageNames } from "../utils/constants";
 import formatPageData from "../utils/formatPageData";
 import SmallImagePageLayout from "../components/layout/smallImagePageLayout";
-import ProcessedForm from "../components/utils/formFactory";
-export default function AdoptPage({ data }) {
+import ContentBlock from "../components/contentBlock";
+export default function AboutPage({ data, uri }) {
   const { title, subtitle, backgroundImage, additionalContent, contentBlocks } =
     formatPageData(data);
+  console.log("data: ", data);
   return (
-    <Layout title="adopt">
+    <Layout title="studservice">
       <SmallImagePageLayout
         title={title}
         subtitle={subtitle}
         backgroundImage={backgroundImage}
       >
-        <>
-          <Typography align="center" variant="h4" sx={{ mb: 1 }}>
-            Adoption Form
-          </Typography>
-          <Typography align="center" variant="h6">
-            Thinking about adopting a puppy? Great! Fill out this form and we'll
-            review it.
-          </Typography>
-          <Divider sx={{ mt: 1, mb: 2 }} />
-          {!!additionalContent?.forms?.length && (
-            <ProcessedForm form={additionalContent.forms[0]} />
-          )}
-        </>
+        <Grid container justifyContent="space-between">
+          <Grid item>
+            {contentBlocks.map((block) => {
+              return <ContentBlock block={block} key={block.name} />;
+            })}
+          </Grid>
+        </Grid>
       </SmallImagePageLayout>
     </Layout>
   );
@@ -51,7 +47,7 @@ export default function AdoptPage({ data }) {
 
 export const query = graphql`
   {
-    contentfulPage(pageName: { eq: "adopt" }) {
+    contentfulPage(pageName: { eq: "Stud Service" }) {
       ...PageInformation
     }
   }

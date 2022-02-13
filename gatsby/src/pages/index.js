@@ -16,8 +16,6 @@ import Parallax from "../components/utils/parallax";
 import Layout from "../components/layout/layout";
 import { pageNames } from "../utils/constants";
 import formatPageData from "../utils/formatPageData";
-import useFormatLitterData from "../utils/useFormatLitterData";
-import LittersTabs from "../components/littersHomepage";
 import ContentBlock from "../components/contentBlock";
 import SectionBlock from "../components/layout/sectionBlock";
 import { queries, pageQuery } from "../utils/queryFragments";
@@ -32,11 +30,6 @@ export default function IndexPage({ data }) {
   } = formatPageData(data);
   const { enableEmail, enableInstagram } = options;
 
-  const litters = useFormatLitterData(data);
-  const [tabValue, setTabValue] = React.useState(0);
-  function handleChange(val1, val2) {
-    setTabValue(val2);
-  }
   return (
     <Layout title="home">
       {/* hero box */}
@@ -160,25 +153,11 @@ export default function IndexPage({ data }) {
           </Parallax>
         </Box>
       </Box>
-      {/* Parents container */}
       <SectionBlock>
-        <LittersTabs litters={litters} />
-        {/* parents tabs */}
-        {/* Parents.map */}
         {contentBlocks.map((block) => {
           return <ContentBlock block={block} key={block.name} />;
         })}
       </SectionBlock>
-      {/* Children container */}
-      <Box>
-        {/* children tabs */}
-        {/* Children.map */}
-        <Box>{/* Children */}</Box>
-      </Box>
-      {/* instagram */}
-      <Box>{/* instagram stuff */}</Box>
-      {/* gallery */}
-      <Box>{/* gallery map */}</Box>
     </Layout>
   );
 }
@@ -188,6 +167,5 @@ export const query = graphql`
     contentfulPage(pageName: { eq: "home" }) {
       ...PageInformation
     }
-    ...LitterInformation
   }
 `;

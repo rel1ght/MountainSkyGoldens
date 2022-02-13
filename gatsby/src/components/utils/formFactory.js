@@ -10,7 +10,7 @@ import {
   Button,
 } from "@mui/material";
 // import { useForm, Controller } from "react-hook-form";
-export default function ProcessedForm({ form, submitAction }) {
+export default function ProcessedForm({ form = {}, submitAction }) {
   //   const {
   //     register,
   //     handleSubmit,
@@ -67,7 +67,7 @@ export default function ProcessedForm({ form, submitAction }) {
         <div style={{ position: "absolute", left: -5000 }}>
           <input
             type="checkbox"
-            name="liberal_emerald_wavy_dolphin"
+            name={form.honeyPot}
             value="1"
             tabindex="-1"
             autocomplete="no"
@@ -168,7 +168,7 @@ function FormField({ field, control }) {
     }
     case "radio buttons": {
       return (
-        <RadioGroup>
+        <RadioGroup name={title}>
           {option.map((option) => (
             <FormControlLabel
               key={option}
@@ -181,7 +181,9 @@ function FormField({ field, control }) {
       );
     }
     case "checkbox": {
-      return <FormControlLabel control={<Checkbox />} label="Yes" />;
+      return (
+        <FormControlLabel name={title} control={<Checkbox />} label="Yes" />
+      );
     }
     default:
       return <></>;

@@ -1,8 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby";
 export default function useFormatLitterData(data) {
-  const litters = data.allContentfulLitter.nodes || [];
-
-  const { placeholderPuppy, placeholderParent } = useStaticQuery(graphql`
+  const queryData = useStaticQuery(graphql`
     query {
       placeholderPuppy: file(relativePath: { eq: "temppuppythumb.jpg" }) {
         childImageSharp {
@@ -16,8 +14,12 @@ export default function useFormatLitterData(data) {
           gatsbyImageData
         }
       }
+      ...LitterInformation
     }
   `);
+  const { placeholderParent, placeholderPuppy, allContentfulLitter } =
+    queryData;
+  const litters = allContentfulLitter?.nodes || [];
   const formattedLitters = litters
     .sort((a, b) => new Date(b.dateOfLitter) - new Date(a.dateOfLitter))
     .map((litter) => {

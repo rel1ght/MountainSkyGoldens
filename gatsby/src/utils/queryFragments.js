@@ -50,6 +50,85 @@ export const queries = {
       }
     }
   `,
+  additionalContentBlockInfo: graphql`
+    fragment AdditionalContentBlockInformation on ContentfulContentBlock {
+      id
+      additionalContent {
+        id
+        name
+      }
+    }
+  `,
+
+  documentInfo: graphql`
+    fragment DocumentInformation on ContentfulPage {
+      documents {
+        title
+        file {
+          details {
+            size
+          }
+          contentType
+          fileName
+          url
+        }
+      }
+    }
+  `,
+  additionalContentPageInfo: graphql`
+    fragment AdditionalContentPageInformation on ContentfulPage {
+      additionalContent {
+        ... on ContentfulForm {
+          id
+          name
+          postUrl
+          field {
+            validation
+            title
+            placeholder
+            required
+            option
+            helperText
+            fieldType
+            internal {
+              type
+            }
+          }
+          internal {
+            type
+          }
+        }
+        ... on ContentfulContactInfoField {
+          contactType
+          showOnContactPage
+          title
+          link
+          internal {
+            type
+          }
+        }
+      }
+    }
+  `,
+
+  optionsInfo: graphql`
+    fragment OptionsInformation on ContentfulPage {
+      options {
+        flag
+        name
+        optionalValue
+      }
+    }
+  `,
+  parentsInfo: graphql`
+    fragment ParentsInformation on Query {
+      allContentfulParent {
+        nodes {
+          ...ParentInformation
+        }
+      }
+    }
+  `,
   contentBlockInfo: graphql`
     fragment ContentBlockInformation on ContentfulPage {
       contentBlock {
@@ -117,74 +196,8 @@ export const queries = {
         body {
           body
         }
-      }
-    }
-  `,
-  documentInfo: graphql`
-    fragment DocumentInformation on ContentfulPage {
-      documents {
-        title
-        file {
-          details {
-            size
-          }
-          contentType
-          fileName
-          url
-        }
-      }
-    }
-  `,
-  additionalContentInfo: graphql`
-    fragment AdditionalContentInformation on ContentfulPage {
-      additionalContent {
-        ... on ContentfulForm {
-          id
-          name
-          postUrl
-          field {
-            validation
-            title
-            placeholder
-            required
-            option
-            helperText
-            fieldType
-            internal {
-              type
-            }
-          }
-          internal {
-            type
-          }
-        }
-        ... on ContentfulContactInfoField {
-          contactType
-          showOnContactPage
-          title
-          link
-          internal {
-            type
-          }
-        }
-      }
-    }
-  `,
-  optionsInfo: graphql`
-    fragment OptionsInformation on ContentfulPage {
-      options {
-        flag
-        name
-        optionalValue
-      }
-    }
-  `,
-  parentsInfo: graphql`
-    fragment ParentsInformation on Query {
-      allContentfulParent {
-        nodes {
-          ...ParentInformation
-        }
+        contentType
+        ...AdditionalContentBlockInformation
       }
     }
   `,
@@ -235,6 +248,8 @@ export const ParentInformation = graphql`
       title
     }
     name
+    showOnOurDogsPage
+    showOnStudServicePage
   }
 `;
 
@@ -243,7 +258,7 @@ export const pageQuery = graphql`
     ...PageHeader
     ...DocumentInformation
     ...OptionsInformation
-    ...AdditionalContentInformation
+    ...AdditionalContentPageInformation
     ...ContentBlockInformation
   }
 `;

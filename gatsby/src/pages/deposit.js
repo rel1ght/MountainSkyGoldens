@@ -34,7 +34,7 @@ export default function Deposit({ data, uri }) {
     options,
   } = formatPageData(data);
   const paymentAmount = options?.amount ? Number(options.amount) : 500;
-
+  console.log("data: ", data);
   const [termsAccepted, setTermsAccepted] = React.useState(false);
   return (
     <Layout title="deposit">

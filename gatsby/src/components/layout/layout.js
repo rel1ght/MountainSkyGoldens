@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Container, Box } from "@mui/material";
+import FavIcon from "../../images/favicon.ico";
 import NavBar from "./navBar";
 import Footer from "./footer";
 
@@ -10,7 +11,11 @@ export default function Layout({ title, children }) {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Mountain Sky Goldens | {title}</title>
-        <link rel="canonical" href="https://mountainskygoldens.com" />
+        <link
+          rel="canonical"
+          href={`https://mountainskygoldens.com/${title}`}
+        />
+        <link rel="icon" type="image/png" href={FavIcon} sizes="16x16" />
         <meta
           name="description"
           content="English Cream Golden Retriever Dog Breeder"

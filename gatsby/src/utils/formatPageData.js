@@ -91,6 +91,7 @@ function processContentBlocks(blocks) {
       layout,
       mainImage = {},
       name,
+      contentType,
     } = block;
     const { body: bodyText } = body || {};
 
@@ -100,11 +101,13 @@ function processContentBlocks(blocks) {
         ? processImageGallery(imageGallery)
         : null;
     return {
+      ...block,
       body: bodyText,
       mainImage: blockImage,
       gallery: processedImageGallery,
       header,
       layout,
+      contentType,
       name,
     };
   });
