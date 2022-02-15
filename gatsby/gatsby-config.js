@@ -15,6 +15,21 @@ module.exports = {
     // 		component: require.resolve("./src/components/layout.js"),
     // 	},
     // },
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://www.mountainskygoldens.com",
+        sitemap: "https://www.mountainskygoldens.com/sitemap/sitemap-index.xml",
+        policy: [
+          {
+            userAgent: "Googlebot",
+            disallow: ["/deposit", "/adoptSubmitted", "/studService"],
+          },
+          { userAgent: "*", allow: "/" },
+        ],
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     {
