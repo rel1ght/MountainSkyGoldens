@@ -22,12 +22,12 @@ import useFormatLitterData from "../utils/useFormatLitterData";
 import LittersTabs from "../components/littersHomepage";
 import { useTheme } from "@mui/material/styles";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
-import { processImage } from "../utils/formatPageData";
+import { processImage, processImageGallery } from "../utils/formatPageData";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Gallery from "@browniebroke/gatsby-image-gallery";
 import { useStaticQuery, graphql } from "gatsby";
 import SwipeableViews from "react-swipeable-views";
-import GalleryThumbnail from "./galleryThumbnail";
+import RoundedGalleryThumbnail from "./roundedGalleryThumbnail";
 import {
   autoPlay,
   virtualize,
@@ -46,7 +46,7 @@ export default function QuoteCarousel() {
   `);
   const quotes = queryData?.allContentfulTestimonial?.nodes || [];
   const theme = useTheme();
-  const carouselGroupings = { xs: 1, md: 2, lg: 3 };
+  const carouselGroupings = { xs: 1, md: 1, lg: 2 };
   let groupingAmount;
   let lgTrue = useMediaQuery(theme.breakpoints.up("lg"));
   let mdTrue = useMediaQuery(theme.breakpoints.up("md"));
@@ -83,14 +83,14 @@ export default function QuoteCarousel() {
       </Box>
       <Box
         sx={{
-          mx: { xs: -1, sm: -2, md: -6, lg: -12, xl: -20 },
+          mx: { xs: -1, sm: -2, md: -6, lg: -12, xl: -26 },
         }}
       >
         <AutoPlaySwipeableViews
           autoplay={quotePages.length > 1}
           enableMouseEvents
           axis="x"
-          interval={8000}
+          interval={10000}
           slideRenderer={(params) => slideRenderer(params, quotePages)}
         />
       </Box>
@@ -100,7 +100,7 @@ export default function QuoteCarousel() {
 
 function Quote({ quote }) {
   const { quote: quoteText, owner, dog, picture } = quote;
-
+  const theme = useTheme();
   const processedImage = picture ? processImage(picture) : null;
   return (
     <Box sx={{ position: "relative" }}>
@@ -109,7 +109,7 @@ function Quote({ quote }) {
           height: "max-content",
           position: "relative",
           fontFamily: "sans-serif",
-          maxWidth: "40rem",
+          maxWidth: { xs: "35rem", lg: "30rem", xl: "35rem" },
           background: "#fff",
           borderRadius: 2,
           padding: "2rem",
@@ -127,7 +127,11 @@ function Quote({ quote }) {
             borderTop: (theme) =>
               `${theme.spacing(1.5)} solid ${theme.palette.background.paper}`,
             borderBottom: (theme) => `${theme.spacing(2.5)} solid transparent`,
-            left: (theme) => theme.spacing(4),
+            left: {
+              xs: theme.spacing(8),
+              md: theme.spacing(6),
+              lg: theme.spacing(4),
+            },
             bottom: (theme) => `-${theme.spacing(3)}`,
           },
         }}
@@ -154,8 +158,9 @@ function Quote({ quote }) {
           position: "absolute",
           top: (theme) => theme.spacing(0.6),
           right: (theme) => `${theme.spacing(0.6)}`,
+          left: (theme) => `-${theme.spacing(0.6)}`,
           fontFamily: "sans-serif",
-          maxWidth: "40rem",
+          maxWidth: { xs: "35rem", lg: "30rem", xl: "35rem" },
           backgroundColor: "shade.main",
           borderRadius: 2,
           padding: "2rem",
@@ -175,40 +180,15 @@ function Quote({ quote }) {
             borderTop: (theme) =>
               `${theme.spacing(1.5)} solid ${theme.palette.shade.main}`,
             borderBottom: (theme) => `${theme.spacing(2.5)} solid transparent`,
-            left: (theme) => theme.spacing(4),
+            left: {
+              xs: theme.spacing(8),
+              md: theme.spacing(6),
+              lg: theme.spacing(4),
+            },
             bottom: (theme) => `-${theme.spacing(3)}`,
           },
         }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: "-6rem",
-            zIndex: 1000,
-            maxWidth: "6rem",
-            left: "-6rem",
-          }}
-        >
-          <Box
-            sx={{
-              borderRadius: "50%",
-              overflow: "hidden",
-              // width: "6rem",
-              // height: "6rem",
-            }}
-          >
-            <GatsbyImage
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-              imgStyle={processedImage.focalStyle}
-              loading="lazy"
-              image={processedImage.gatsbyImage}
-              alt="Mountain Sky Goldens"
-            />
-          </Box>
-        </Box>
         <QuoteContent
           processedImage={processedImage}
           owner={owner}
@@ -216,19 +196,49 @@ function Quote({ quote }) {
           dog={dog}
         />
       </Box>
+      <Box
+        sx={{
+          // position: "absolute",
+          position: "relative",
+          // zIndex: -2,
+          top: "-1rem",
+          maxWidth: "5rem",
+          left: { xs: "-1rem", md: "-2rem", lg: "-3rem" },
+        }}
+      >
+        <Box
+          sx={{
+            borderRadius: "50%",
+            overflow: "hidden",
+            // width: "6rem",
+            // height: "6rem",
+          }}
+        >
+          <Gallery
+            images={[
+              {
+                thumb: processedImage.gatsbyImage,
+                full: processedImage.gatsbyImage,
+                alt: owner,
+                title: owner,
+              },
+            ]}
+            customWrapper={RoundedGalleryThumbnail}
+          />
+        </Box>
+      </Box>
     </Box>
   );
 }
-function QuoteContent({ processedImage, quoteText, owner, dog }) {
+function QuoteContent({ quoteText, owner, dog }) {
   const { quote } = quoteText;
   return (
     <Grid container sx={{ width: 1, height: 1 }}>
-      {/* {processedImage && <Grid item xs={2}></Grid>} */}
       <Grid item xs={12}>
-        <Typography align="left" variant="body2">
+        <Typography align="left" variant="body2" sx={{ fontSize: ".9rem" }}>
           {quote}
         </Typography>
-        <Typography fullWidth align="right" variant="subtitle1">
+        <Typography fullWidth align="right" variant="subtitle2">
           - {owner}
         </Typography>
         {dog && (
@@ -250,12 +260,11 @@ function QuoteContent({ processedImage, quoteText, owner, dog }) {
 function slideRenderer(params, quotePages) {
   const { index, key } = params;
   const pageKey = mod(index, quotePages.length);
-
   return (
     <Box
       key={key}
       sx={{
-        // height: "30rem",
+        height: "30rem",
         width: 1,
         display: "flex",
         justifyContent: "center",

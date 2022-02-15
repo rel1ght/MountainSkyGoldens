@@ -75,7 +75,7 @@ export default function Deposit({ data, uri }) {
               <PayPalScriptProvider
                 options={{
                   "client-id":
-                    "AR0Vfdc7KLb8nJWqwdqt9BZBgmGFrEHVtP7uk3jLoueQ0CLQExrxeSx1u9ORvlPCrdOClJ24D2f0T9Uh",
+                    "AXZ8lSy8FziFUDTZNxpXOqRjd02IffpKgvBRWakFn-Yt0rz6n_7y5u3uVXfu8o4-848OKUdrGAippDES",
                   "enable-funding": "venmo",
                 }}
                 style={{ width: "100%" }}
@@ -111,7 +111,7 @@ export default function Deposit({ data, uri }) {
                       // do confetti
                     });
                   }}
-                  style={{ layout: "vertical", width: "100%" }}
+                  style={{ layout: "vertical", width: "100%", shape: "pill" }}
                 />
               </PayPalScriptProvider>
             </Box>

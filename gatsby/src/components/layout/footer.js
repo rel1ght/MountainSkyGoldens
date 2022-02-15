@@ -49,18 +49,29 @@ export default function Footer() {
         // alignItems: "center",
         boxShadow: "0px -5px 5px rgba(0, 0, 0, .2)",
         p: "7rem",
-        pt: "10rem",
+        pt: { md: "10rem", xs: "4rem" },
       }}
     >
-      <Grid container justifyContent="center" alignItems="flex-start">
+      <Grid container justifyContent="space-around" alignItems="flex-start">
         <Grid
           item
+          order={{ xs: 3, md: 1 }}
           xs={12}
-          md={4}
-          sx={{ display: "flex", justifyContent: "center" }}
+          sm={3}
+          sx={{
+            mb: 3,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+          }}
         >
           <Box>
-            <Typography variant="h5" color="white" align="center">
+            <Typography
+              variant="h5"
+              color="white"
+              align="center"
+              sx={{ width: "max-content" }}
+            >
               Quick Links
             </Typography>
             <Divider
@@ -100,9 +111,15 @@ export default function Footer() {
         </Grid>
         <Grid
           item
+          order={{ xs: 1, md: 2 }}
           xs={12}
-          md={4}
-          sx={{ display: "flex", justifyContent: "center" }}
+          md={6}
+          sx={{
+            mb: 3,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+          }}
         >
           <Box
             sx={{
@@ -110,6 +127,7 @@ export default function Footer() {
               justifyContent: "center",
               alignItems: "center",
               maxWidth: "20rem",
+              // px: 3,
             }}
           >
             <LogoPic />
@@ -117,9 +135,15 @@ export default function Footer() {
         </Grid>
         <Grid
           item
+          order={{ xs: 2, md: 3 }}
           xs={12}
-          md={4}
-          sx={{ display: "flex", justifyContent: "center" }}
+          sm={3}
+          sx={{
+            mb: 3,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+          }}
         >
           <Box>
             <Typography variant="h5" color="white" align="center">
@@ -134,6 +158,13 @@ export default function Footer() {
               const ContactIcon = GetContactIcon(contactItem.contactType, {
                 sx: { color: "inherit", mr: 1 },
               });
+              let processedText;
+              if (contactItem.contactType === "email") {
+                const splitArray = contactItem.title.split("@");
+                processedText = `${splitArray[0]}\n@${splitArray[1]}`;
+              } else {
+                processedText = contactItem.title;
+              }
               return (
                 <Box
                   key={contactItem.title}
@@ -150,17 +181,20 @@ export default function Footer() {
                       "&:hover": {
                         color: "secondary.main",
                       },
+                      lineHeight:
+                        contactItem.contactType === "email" && "1.2rem",
+                      whiteSpace: "pre-wrap",
                     }}
                   >
                     {ContactIcon}
-                    {contactItem.title}
+                    {processedText}
                   </Link>
                 </Box>
               );
             })}
           </Box>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} order={{ xs: 4 }}>
           <Typography variant="h6" sx={{ mt: 8 }} color="white" align="center">
             ©{new Date().getFullYear()} Mountain Sky Goldens
           </Typography>

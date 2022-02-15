@@ -65,7 +65,13 @@ function ContactCard({ info }) {
   const ContactIcon = GetContactIcon(contactType, {
     sx: { fontSize: 100, color: "primary.main" },
   });
-
+  let processedText;
+  if (contactType === "email") {
+    const splitArray = title.split("@");
+    processedText = `${splitArray[0]}\n@${splitArray[1]}`;
+  } else {
+    processedText = title;
+  }
   return (
     <Card variant="outline">
       <CardContent
@@ -84,9 +90,9 @@ function ContactCard({ info }) {
           align="center"
           className="wordBreak"
           href={link}
-          sx={{ m: 1 }}
+          sx={{ m: 1, whiteSpace: "pre-wrap" }}
         >
-          {title}
+          {processedText}
         </Link>
         <Divider sx={{ m: 1 }} flexItem />
         <Typography sx={{ m: 1 }} className="capitalize" variant="h6">
