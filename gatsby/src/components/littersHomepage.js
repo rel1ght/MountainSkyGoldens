@@ -331,6 +331,7 @@ export default function LittersTabs({ litters }) {
         <TabBar />
       </Box>
       <SwipeableViews
+        enableMouseEvents
         axis="x"
         index={tabsIndex}
         onChangeIndex={handleChangeIndex}
@@ -356,6 +357,7 @@ export default function LittersTabs({ litters }) {
           <TabBar />
         </Box>
         <SwipeableViews
+          enableMouseEvents
           axis="x"
           index={tabsIndex}
           onChangeIndex={handleChangeIndex}

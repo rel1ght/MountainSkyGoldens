@@ -19,6 +19,9 @@ const theme = createTheme({
       primary: "rgba(0,0,0,0.7)",
       secondary: "rgba(0,0,0,0.55)",
     },
+    shade: {
+      main: "#c6c4c4",
+    },
     error: { main: "#a61330" },
     success: { main: "#63e792" },
     danger: { main: "#703b3b" },

@@ -23,6 +23,7 @@ import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Gallery from "@browniebroke/gatsby-image-gallery";
 import GalleryThumbnail from "./galleryThumbnail";
+import QuoteCarousel from "./quoteCarousel";
 export default function ContentBlock({ parents = {}, block, disableMx }) {
   const { header } = block;
 
@@ -70,7 +71,11 @@ function GetContentComponent({ parents, block, form, disableMx }) {
 }
 
 function Testimonials({ block }) {
-  return <></>;
+  return (
+    <>
+      <QuoteCarousel />
+    </>
+  );
 }
 
 function Parents({ parents, ourParentsFlag }) {

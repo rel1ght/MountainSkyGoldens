@@ -19,6 +19,31 @@ export const queries = {
       }
     }
   `,
+  testimonialInfo: graphql`
+    fragment TestimonialInformation on Query {
+      allContentfulTestimonial {
+        nodes {
+          quote {
+            quote
+          }
+          owner
+          dog
+          picture {
+            title
+            image {
+              gatsbyImageData
+            }
+            focalPoint {
+              focalPoint {
+                x
+                y
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
   litterInfo: graphql`
     fragment LitterInformation on Query {
       allContentfulLitter {
