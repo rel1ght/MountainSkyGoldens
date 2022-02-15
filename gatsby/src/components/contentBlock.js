@@ -145,7 +145,7 @@ function Default({ block, disableMx }) {
       sx={{}}
     >
       {mainImage && (
-        <Grid item xs sx={{ m: 4, pt: 5 }}>
+        <Grid item xs={12} sm sx={{ m: 4, pt: 1 }}>
           <Box sx={{ borderRadius: 2, overflow: "hidden" }}>
             <GatsbyImage
               style={{
@@ -161,7 +161,7 @@ function Default({ block, disableMx }) {
         </Grid>
       )}
       {body && (
-        <Grid item xs sx={{ m: 4, mx: disableMx && 0 }}>
+        <Grid item xs={12} sm sx={{ m: 4, mx: disableMx && 0 }}>
           <Typography>{body}</Typography>
         </Grid>
       )}

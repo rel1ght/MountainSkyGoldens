@@ -14,8 +14,8 @@ export default function galleryThumbnail({ children, onClick }) {
     <Paper
       className="hoverLift hoverShadow clickPressDown"
       sx={{
-        width: "10rem",
-        m: 2,
+        width: { xs: "8rem", sm: "10rem" },
+        m: { xs: 1, sm: 2 },
       }}
     >
       <Box

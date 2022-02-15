@@ -264,7 +264,7 @@ function slideRenderer(params, quotePages) {
     <Box
       key={key}
       sx={{
-        height: "30rem",
+        minHeight: "30rem",
         width: 1,
         display: "flex",
         justifyContent: "center",
