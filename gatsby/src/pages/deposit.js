@@ -13,6 +13,8 @@ import {
   CardContent,
   Divider,
   Link,
+  Dialog,
+  DialogContent,
 } from "@mui/material";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
@@ -23,6 +25,8 @@ import formatPageData from "../utils/formatPageData";
 import SmallImagePageLayout from "../components/layout/smallImagePageLayout";
 import ContentBlock from "../components/contentBlock";
 import ProcessedForm from "../components/utils/formFactory";
+import useWindowSize from "../utils/useWindowSize";
+import Confetti from "react-confetti";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 export default function Deposit({ data, uri }) {
   const {
@@ -33,9 +37,17 @@ export default function Deposit({ data, uri }) {
     contentBlocks,
     options,
   } = formatPageData(data);
+  const { width, height } = useWindowSize();
   const paymentAmount = options?.amount ? Number(options.amount) : 500;
-  console.log("data: ", data);
   const [termsAccepted, setTermsAccepted] = React.useState(false);
+  const [showModal, setShowModal] = React.useState();
+  function handleOpen() {
+    setShowModal(true);
+  }
+  function handleClose() {
+    setTermsAccepted(false);
+    setShowModal(false);
+  }
   return (
     <Layout title="deposit">
       <SmallImagePageLayout
@@ -44,6 +56,52 @@ export default function Deposit({ data, uri }) {
         backgroundImage={backgroundImage}
       >
         <Grid container justifyContent="center" spacing={12}>
+          {showModal && (
+            <>
+              <Dialog open={showModal} onClose={handleClose}>
+                <Box
+                  sx={{
+                    position: "fixed",
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: -1,
+                  }}
+                >
+                  <Confetti
+                    confettiSource={{
+                      w: 10,
+                      h: 10,
+                      x: width / 2,
+                      y: height / 2,
+                    }}
+                    initialVelocityX={10}
+                    numberOfPieces={100}
+                    initialVelocityY={14}
+                    tweenDuration={1000}
+                    gravity={0.15}
+                    recycle={false}
+                    width={width}
+                    height={height}
+                  />
+                </Box>
+                <DialogContent sx={{ p: 3 }}>
+                  <Typography
+                    sx={{ mb: 2 }}
+                    variant="h4"
+                    align="center"
+                    color="primary"
+                  >
+                    Congrats!
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    Deposit made successfully. We'll contact you shortly!
+                  </Typography>
+                </DialogContent>
+              </Dialog>
+            </>
+          )}
           <Grid item xs={10} md={6}>
             {contentBlocks.map((block) => {
               return <ContentBlock block={block} key={block.name} disableMx />;
@@ -105,10 +163,7 @@ export default function Deposit({ data, uri }) {
                   onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                       // Your code here after capture the order
-                      alert(
-                        "Deposit made successfully! We'll contact you shortly. Congrats!"
-                      );
-                      // do confetti
+                      handleOpen();
                     });
                   }}
                   style={{ layout: "vertical", width: "100%", shape: "pill" }}
