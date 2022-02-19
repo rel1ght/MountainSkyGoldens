@@ -1,0 +1,19 @@
+{
+  "autoHide.autoHidePanel": false,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#573753",
+    "titleBar.activeBackground": "#422a3f",
+    "titleBar.activeForeground": "#FAFAD2"
+  },
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "gatsby",
+          "commands": ["cd gatsby", "npm run start"]
+        }
+      ]
+    }
+  ],
+  "editor.formatOnSave": true
+}
