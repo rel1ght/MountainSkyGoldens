@@ -8,7 +8,7 @@ export const queries = {
       title
       backgroundImage {
         image {
-          gatsbyImageData(quality: 95)
+          gatsbyImageData(quality: 95, formats: [JPG])
         }
         focalPoint {
           focalPoint {
@@ -31,7 +31,7 @@ export const queries = {
           picture {
             title
             image {
-              gatsbyImageData
+              gatsbyImageData(formats: [JPG])
             }
             focalPoint {
               focalPoint {
@@ -56,7 +56,7 @@ export const queries = {
             mainPicture {
               title
               image {
-                gatsbyImageData
+                gatsbyImageData(formats: [JPG])
               }
               focalPoint {
                 focalPoint {
@@ -174,7 +174,7 @@ export const queries = {
             }
           }
           image {
-            gatsbyImageData
+            gatsbyImageData(formats: [JPG])
             title
             file {
               fileName
@@ -200,7 +200,7 @@ export const queries = {
             }
           }
           image {
-            gatsbyImageData
+            gatsbyImageData(formats: [JPG])
             title
             file {
               fileName
@@ -248,7 +248,7 @@ export const ParentInformation = graphql`
     }
     mainPicture {
       image {
-        gatsbyImageData
+        gatsbyImageData(formats: [JPG])
       }
       focalPoint {
         focalPoint {
@@ -267,7 +267,7 @@ export const ParentInformation = graphql`
         }
       }
       image {
-        gatsbyImageData
+        gatsbyImageData(formats: [JPG])
         title
       }
       title

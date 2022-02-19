@@ -34,7 +34,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     {
       resolve: `gatsby-plugin-sharp`,
-      options: {},
+      options: { defaults: { formats: ["jpg", "png"] } },
     },
     "gatsby-plugin-react-helmet",
     "gatsby-theme-material-ui",

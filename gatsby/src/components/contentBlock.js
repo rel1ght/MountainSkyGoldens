@@ -148,6 +148,7 @@ function Default({ block, disableMx }) {
         <Grid item xs={12} sm sx={{ m: 4, pt: 1 }}>
           <Box sx={{ borderRadius: 2, overflow: "hidden" }}>
             <GatsbyImage
+              formats={["jpg", "png"]}
               style={{
                 width: "100%",
                 height: "100%",
