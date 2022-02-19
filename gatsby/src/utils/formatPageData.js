@@ -59,7 +59,6 @@ function processParents(parents) {
   const { nodes = [] } = parents;
   const ourParents = [];
   const otherParents = [];
-  console.log("nodes: ", nodes);
   nodes
     .sort((a, b) => a.order - b.order)
     .forEach((parent) => {

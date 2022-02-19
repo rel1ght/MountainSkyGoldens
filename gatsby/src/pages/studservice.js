@@ -25,7 +25,6 @@ import ContentBlock from "../components/contentBlock";
 export default function AboutPage({ data, uri }) {
   const { title, subtitle, backgroundImage, additionalContent, contentBlocks } =
     formatPageData(data);
-  console.log("data: ", data);
   return (
     <Layout title="studservice">
       <SmallImagePageLayout
