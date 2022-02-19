@@ -16,6 +16,8 @@ import {
   useMediaQuery,
   MobileStepper,
 } from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
+import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import FormatQuoteRoundedIcon from "@mui/icons-material/FormatQuoteRounded";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import useFormatLitterData from "../utils/useFormatLitterData";
@@ -44,7 +46,8 @@ export default function QuoteCarousel() {
       ...TestimonialInformation
     }
   `);
-  const quotes = queryData?.allContentfulTestimonial?.nodes || [];
+  const [index, setIndex] = React.useState(0);
+  const quotes = queryData?.allContentfulTestimonial?.nodes.sort((a, b)=> a.order - b.order) || [];
   const theme = useTheme();
   const carouselGroupings = { xs: 1, md: 1, lg: 2 };
   let groupingAmount;
@@ -72,7 +75,9 @@ export default function QuoteCarousel() {
   typeof document !== "undefined" && typeof window !== "undefined"
     ? window.innerWidth - document.body.clientWidth
     : 0;
-
+  function handleChangeIndex(index) {
+    setIndex(index % quotePages.length);
+  }
   return (
     <Box sx={{ mb: 3 }}>
       <Box sx={{ mb: 4 }}>
@@ -80,6 +85,9 @@ export default function QuoteCarousel() {
           Testimonials
         </Typography>
         <Divider variant="thick" sx={{ py: 1 }} flexItem />
+        {quotePages.length > 1 && (
+          <Dots amount={quotePages.length} currentIndex={index} />
+        )}
       </Box>
       <Box
         sx={{
@@ -90,10 +98,33 @@ export default function QuoteCarousel() {
           autoplay={quotePages.length > 1}
           enableMouseEvents
           axis="x"
-          interval={10000}
+          onChangeIndex={handleChangeIndex}
+          interval={20000}
           slideRenderer={(params) => slideRenderer(params, quotePages)}
         />
       </Box>
+    </Box>
+  );
+}
+
+function Dots({ amount, currentIndex }) {
+  return (
+    <Box
+      sx={{
+        m: 2,
+        width: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {[...Array(amount)].map((_, index) => {
+        return currentIndex === index ? (
+          <CircleIcon color="disabled" />
+        ) : (
+          <CircleOutlinedIcon color="disabled" />
+        );
+      })}
     </Box>
   );
 }

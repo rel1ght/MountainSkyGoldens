@@ -27,6 +27,7 @@ export const queries = {
             quote
           }
           owner
+          order
           dog
           picture {
             title

@@ -28,7 +28,7 @@ export default function ContentBlock({ parents = {}, block, disableMx }) {
   const { header } = block;
 
   return (
-    <Box>
+    <Box sx={{ mb: 4 }}>
       {header && (
         <>
           <Typography variant="h4" align="center">
@@ -139,14 +139,24 @@ function Default({ block, disableMx }) {
     additionalContent,
   } = block;
   return (
-    <Grid
-      container
-      direction={layout === "Horizontal" ? "row" : "column"}
-      sx={{}}
-    >
+    <Grid container direction={layout === "Horizontal" ? "row" : "column"}>
       {mainImage && (
-        <Grid item xs={12} sm sx={{ m: 4, pt: 1 }}>
-          <Box sx={{ borderRadius: 2, overflow: "hidden" }}>
+        <Grid
+          item
+          xs={12}
+          md
+          sx={{ m: 4, pt: 1, display: "flex", justifyContent: "center" }}
+        >
+          <Box
+            sx={{
+              borderRadius: 2,
+              overflow: "hidden",
+              display: "flex",
+              justifyContent: "center",
+              maxWidth: { xs: "30rem", md: "none" },
+              maxHeight: { xs: "20rem", md: "none" },
+            }}
+          >
             <GatsbyImage
               formats={["jpg", "png"]}
               style={{
@@ -162,7 +172,7 @@ function Default({ block, disableMx }) {
         </Grid>
       )}
       {body && (
-        <Grid item xs={12} sm sx={{ m: 4, mx: disableMx && 0 }}>
+        <Grid item xs={12} md sx={{ m: 4, mx: disableMx && 0 }}>
           <Typography>{body}</Typography>
         </Grid>
       )}
@@ -172,6 +182,7 @@ function Default({ block, disableMx }) {
             sx={{
               display: "flex",
               justifyContent: "center",
+              "& *": { justifyContent: "center" },
             }}
           >
             <Gallery images={gallery} customWrapper={GalleryThumbnail} />
