@@ -275,6 +275,7 @@ export const ParentInformation = graphql`
     name
     showOnOurDogsPage
     showOnStudServicePage
+    order
   }
 `;
 

@@ -59,26 +59,29 @@ function processParents(parents) {
   const { nodes = [] } = parents;
   const ourParents = [];
   const otherParents = [];
-  nodes.forEach((parent) => {
-    const { mainPicture, gallery: imageGallery } = parent;
-    const mainImage = mainPicture
-      ? processImage(mainPicture)
-      : { image: placeholderParent };
-    const processedImageGallery =
-      Array.isArray(imageGallery) && imageGallery.length
-        ? processImageGallery(imageGallery)
-        : null;
-    const processedParent = {
-      ...parent,
-      mainImage,
-      gallery: processedImageGallery,
-    };
-    if (processedParent.owner === "Mountain Sky Goldens") {
-      ourParents.push(processedParent);
-    } else {
-      otherParents.push(processedParent);
-    }
-  });
+  console.log("nodes: ", nodes);
+  nodes
+    .sort((a, b) => a.order - b.order)
+    .forEach((parent) => {
+      const { mainPicture, gallery: imageGallery } = parent;
+      const mainImage = mainPicture
+        ? processImage(mainPicture)
+        : { image: placeholderParent };
+      const processedImageGallery =
+        Array.isArray(imageGallery) && imageGallery.length
+          ? processImageGallery(imageGallery)
+          : null;
+      const processedParent = {
+        ...parent,
+        mainImage,
+        gallery: processedImageGallery,
+      };
+      if (processedParent.owner === "Mountain Sky Goldens") {
+        ourParents.push(processedParent);
+      } else {
+        otherParents.push(processedParent);
+      }
+    });
   return { ourParents, otherParents };
 }
 
