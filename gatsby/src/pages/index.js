@@ -38,6 +38,7 @@ export default function IndexPage({ data }) {
           height: "90vh",
           position: "relative",
           overflow: "hidden",
+          maskImage: "radial-gradient(white, black)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

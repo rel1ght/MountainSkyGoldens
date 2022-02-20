@@ -47,7 +47,10 @@ export default function QuoteCarousel() {
     }
   `);
   const [index, setIndex] = React.useState(0);
-  const quotes = queryData?.allContentfulTestimonial?.nodes.sort((a, b)=> a.order - b.order) || [];
+  const quotes =
+    queryData?.allContentfulTestimonial?.nodes.sort(
+      (a, b) => a.order - b.order
+    ) || [];
   const theme = useTheme();
   const carouselGroupings = { xs: 1, md: 1, lg: 2 };
   let groupingAmount;
@@ -185,8 +188,9 @@ function Quote({ quote }) {
       </Box>
       <Box
         sx={{
-          height: "max-content",
+          height: "auto",
           position: "absolute",
+          width: 1,
           top: (theme) => theme.spacing(0.6),
           right: (theme) => `${theme.spacing(0.6)}`,
           left: (theme) => `-${theme.spacing(0.6)}`,
@@ -241,6 +245,7 @@ function Quote({ quote }) {
           sx={{
             borderRadius: "50%",
             overflow: "hidden",
+            maskImage: "radial-gradient(white, black)",
             // width: "6rem",
             // height: "6rem",
           }}

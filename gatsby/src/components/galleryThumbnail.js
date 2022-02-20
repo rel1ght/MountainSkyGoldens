@@ -36,6 +36,8 @@ export default function galleryThumbnail({ children, onClick }) {
             p: 0.5,
             backgroundColor: "grey.300",
             borderRadius: 1,
+            overflow: "hidden",
+            maskImage: "radial-gradient(white, black)",
           }}
         >
           {gatsbyImage}

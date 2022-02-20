@@ -25,6 +25,7 @@ export default function SmallImagePageLayout({
           height: bigBackgroundImage && "100vh",
           position: "relative",
           overflow: "hidden",
+          maskImage: "radial-gradient(white, black)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

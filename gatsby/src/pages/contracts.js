@@ -51,6 +51,7 @@ export default function ContractsPage({ data, uri }) {
                     sx={{
                       borderRadius: 1,
                       overflow: "hidden",
+                      maskImage: "radial-gradient(white, black)",
                       border: "4px solid gray",
                     }}
                   >

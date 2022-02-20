@@ -151,6 +151,7 @@ function Default({ block, disableMx }) {
             sx={{
               borderRadius: 2,
               overflow: "hidden",
+              maskImage: "radial-gradient(white, black)",
               display: "flex",
               justifyContent: "center",
               maxWidth: { xs: "30rem", md: "none" },

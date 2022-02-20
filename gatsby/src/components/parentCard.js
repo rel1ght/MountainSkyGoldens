@@ -91,6 +91,7 @@ export default function ParentCard({ parent }) {
               sx={{
                 borderRadius: 2,
                 overflow: "hidden",
+                maskImage: "radial-gradient(white, black)",
                 maxHeight: "18rem",
                 mt: 1,
               }}
