@@ -57,7 +57,7 @@ export const queries = {
             mainPicture {
               title
               image {
-                gatsbyImageData(formats: [JPG])
+                gatsbyImageData(formats: [JPG], aspectRatio: 1)
               }
               focalPoint {
                 focalPoint {
