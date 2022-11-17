@@ -142,7 +142,14 @@ export default function ParentCard({ parent }) {
         </Grid>
 
         {gallery && !!gallery.length && (
-          <Box sx={{ width: 1, display: "flex", justifyContent: "center" }}>
+          <Box
+            sx={{
+              width: 1,
+              display: "flex",
+              justifyContent: "center",
+              "& *": { justifyContent: "center" },
+            }}
+          >
             <Gallery images={gallery} customWrapper={GalleryThumbnail} />
           </Box>
         )}
