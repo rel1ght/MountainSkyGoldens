@@ -50,6 +50,7 @@ export const queries = {
       allContentfulLitter {
         nodes {
           title
+          dateOfLitter
           puppy {
             id
             collarColor

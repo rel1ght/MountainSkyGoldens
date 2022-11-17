@@ -21,7 +21,9 @@ export default function useFormatLitterData(data) {
     queryData;
   const litters = allContentfulLitter?.nodes || [];
   const formattedLitters = litters
-    .sort((a, b) => new Date(b.dateOfLitter) - new Date(a.dateOfLitter))
+    .sort((a, b) => {
+      return new Date(b.dateOfLitter) - new Date(a.dateOfLitter);
+    })
     .map((litter) => {
       return {
         ...litter,
