@@ -27,7 +27,7 @@
     "bootstrap": "^5.0.2",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "gatsby": "^4.0.0",
+    "gatsby": "^4.24.8",
     "gatsby-plugin-google-gtag": "^4.24.0",
     "gatsby-plugin-image": "^2.0.0",
     "gatsby-plugin-layout": "^3.0.0",
