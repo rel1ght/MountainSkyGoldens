@@ -26,7 +26,7 @@ export default function AboutPage({ data, uri }) {
   const { title, subtitle, backgroundImage, additionalContent, contentBlocks } =
     formatPageData(data);
   return (
-    <Layout title="studservice">
+    <Layout title="studservice" noIndex>
       <SmallImagePageLayout
         title={title}
         subtitle={subtitle}

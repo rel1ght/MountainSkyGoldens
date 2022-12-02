@@ -5,7 +5,7 @@ import FavIcon from "../../images/favicon.ico";
 import NavBar from "./navBar";
 import Footer from "./footer";
 
-export default function Layout({ title, children }) {
+export default function Layout({ title, children, noIndex }) {
   return (
     <Box sx={{ width: 1 }}>
       <Helmet>
@@ -20,6 +20,7 @@ export default function Layout({ title, children }) {
           name="description"
           content="English Cream Golden Retriever Dog Breeder"
         ></meta>
+        {noIndex && <meta name="robots" content="noindex,nofollow" />}
         <meta
           name="keywords"
           content="English Cream, English Creme, Golden Retriever, Dog, Puppy, Puppies, Breeder, Cassia County, Magic Valley, Burley Idaho"

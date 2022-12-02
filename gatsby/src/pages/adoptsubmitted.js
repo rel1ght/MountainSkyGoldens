@@ -31,7 +31,7 @@ export default function AdoptSubmittedPage({ data }) {
   } = formatPageData(data);
 
   return (
-    <Layout title="adopt">
+    <Layout title="adopt" noIndex>
       <SmallImagePageLayout
         title={title}
         subtitle={subtitle}

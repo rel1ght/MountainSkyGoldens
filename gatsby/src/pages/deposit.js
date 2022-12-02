@@ -49,7 +49,7 @@ export default function Deposit({ data, uri }) {
     setShowModal(false);
   }
   return (
-    <Layout title="deposit">
+    <Layout title="deposit" noIndex>
       <SmallImagePageLayout
         title={title}
         subtitle={subtitle}

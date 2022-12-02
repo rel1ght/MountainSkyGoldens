@@ -33,7 +33,7 @@ export default function ContractsPage({ data, uri }) {
   } = formatPageData(data);
 
   return (
-    <Layout title="contracts">
+    <Layout title="contracts" noIndex>
       <SmallImagePageLayout
         title={title}
         subtitle={subtitle}
