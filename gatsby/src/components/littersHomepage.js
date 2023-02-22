@@ -32,7 +32,14 @@ export default function LittersTabs({ litters }) {
 
   function TabBar() {
     return (
-      <Tabs center value={tabsIndex} onChange={handleTabChange}>
+      <Tabs
+        scrollButtons={true}
+        allowScrollButtonsMobile
+        center
+        value={tabsIndex}
+        variant="scrollable"
+        onChange={handleTabChange}
+      >
         {litters.map((litter, index) => (
           <Tab
             sx={{
