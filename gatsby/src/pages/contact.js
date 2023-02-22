@@ -37,7 +37,7 @@ export default function ContactPage({ data }) {
         subtitle={subtitle}
         backgroundImage={backgroundImage}
       >
-        <Grid containersx={{ md: "space-between", xs: "center" }}>
+        <Grid container sx={{ md: "space-between", xs: "center" }}>
           {contactItems.map((contactItem) => {
             if (contactItem.showOnContactPage) {
               return (
@@ -46,6 +46,8 @@ export default function ContactPage({ data }) {
                   xs={12}
                   sm={6}
                   md={4}
+                  lg={4}
+                  xl={4}
                   sx={{ p: 3 }}
                   key={contactItem.title}
                 >
