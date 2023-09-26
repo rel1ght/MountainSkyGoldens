@@ -15,6 +15,7 @@ module.exports = {
     // 		component: require.resolve("./src/components/layout.js"),
     // 	},
     // },
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-sitemap`,
     {
       resolve: "gatsby-plugin-robots-txt",
