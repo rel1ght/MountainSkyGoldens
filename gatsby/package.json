@@ -59,5 +59,10 @@
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "overrides": {
+    "babel-plugin-lodash": {
+      "@babel/types": "~7.20.0"
+    }
   }
 }
