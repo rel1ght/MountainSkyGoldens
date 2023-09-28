@@ -154,8 +154,17 @@ function Default({ block, disableMx }) {
               maskImage: "radial-gradient(white, black)",
               display: "flex",
               justifyContent: "center",
-              maxWidth: { xs: "30rem", md: "none" },
-              maxHeight: { xs: "20rem", md: "none" },
+              maxWidth: {
+                xs: "90vw",
+                md: "70vw",
+                lg: "65vw",
+              },
+              maxHeight: {
+                xs: "80vh",
+                sm: "75vh",
+                md: "72vh",
+                lg: "70vh",
+              },
             }}
           >
             <GatsbyImage
@@ -164,6 +173,7 @@ function Default({ block, disableMx }) {
                 width: "100%",
                 height: "100%",
               }}
+              objectFit="contain"
               imgStyle={mainImage.focalStyle}
               loading="lazy"
               image={mainImage.gatsbyImage}
