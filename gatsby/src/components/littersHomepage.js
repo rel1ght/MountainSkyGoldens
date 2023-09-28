@@ -11,6 +11,7 @@ import {
   Tab,
   Divider,
   Link,
+  useMediaQuery,
 } from "@mui/material";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import { useTheme } from "@mui/material/styles";
@@ -21,7 +22,8 @@ import { processImage } from "../utils/formatPageData";
 export default function LittersTabs({ litters }) {
   const theme = useTheme();
   const [tabsIndex, setTabsIndex] = React.useState(0);
-
+  let lgTrue = useMediaQuery(theme.breakpoints.up("lg"));
+  let mdTrue = useMediaQuery(theme.breakpoints.up("md"));
   function handleTabChange(e, index) {
     setTabsIndex(index);
   }
@@ -33,17 +35,22 @@ export default function LittersTabs({ litters }) {
   function TabBar() {
     return (
       <Tabs
+        sx={{ maxWidth: "100vw" }}
         scrollButtons={true}
         allowScrollButtonsMobile
-        center
+        centered={lgTrue}
         value={tabsIndex}
         variant="scrollable"
         onChange={handleTabChange}
       >
         {litters.map((litter, index) => (
           <Tab
+            wrapped={!mdTrue}
             sx={{
-              fontSize: index === tabsIndex ? "1.4rem" : "1.25rem",
+              fontSize:
+                index === tabsIndex
+                  ? { lg: "1.4rem", xs: "1.1rem" }
+                  : { lg: "1.25rem", xs: ".9rem" },
               fontWeight: index === tabsIndex ? 500 : 300,
             }}
             key={litter.dateOfLitter}

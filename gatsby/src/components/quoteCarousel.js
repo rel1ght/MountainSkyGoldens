@@ -115,7 +115,6 @@ function Dots({ amount, currentIndex }) {
     <Box
       sx={{
         m: 2,
-        width: 1,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
