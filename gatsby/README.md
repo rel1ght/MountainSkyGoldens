@@ -1,54 +1,56 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+Gatsby site hosted on netlify
 
-## 🚀 Quick start
+mountainskygoldens.com domain registered on namecheap
+Project root directory is ./gatsby 
+Public directory is ./gatsby/public
 
-1.  **Create a Gatsby site.**
+All commands are run from ./gatsby dir
+build for production: npm run build
+develop: npm run start
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+##netlify
+2 sites: 
+  1. prod-mountainskygoldens.netlify.com
+  - mountainskygoldens.com points to it.
+  - DNS managed by netlify
+  - SSL cert by netlify
+  - automatically rebuilds when master is pushed to
+  - can be manually rebuilt by clicking contentful "go live" button in sidebar
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+  2. preview-mountainskygoldens.netlify.com
+  - automatically rebuilds when preview is pushed to
+  - automatically rebuilds when any contentful changes are published
+  - accessible through the "preview" button in the contentful editor sidebar
 
-2.  **Start developing.**
+##contentful
+"Go live" button in sidebar is a custom app with a button that triggers a build webhook for prod
+"Preview" button in sidebar is a sidebar extension, accessible through "settings/extensions"
 
-    Navigate into your new site’s directory and start it up.
+###todo
+[] Make the contentful preview extension an app.
+[] Clean up sidebar in contentful
+[] move gatsby dir to the repo root, change any filepaths to match the change.
+[] fix second git project issue, where the vscode workspace opens two repos, one at the repo root, and one in ./gatsby
+[] Change 99inbound form to use netlify
+[] Display a subset of litters on the homepage.
+  [] add a "See more" link to a page that shows rest of litters.
+  [] Figure out a better way to handle showing multiple active litters.
+[] Fix the testimonial content jump issue.
+[] Make sure testimonial dots don't grow past viewport width
+[] Make testimonial dots interactive
+[] Add "see more" link to testimonial section that opens rest of testimonials in new page.
+[] Make sure stud service page is g2g
+[] Make sure google analytics is working
+[] Fix site performance
+[] update site code
+  [] update packages
+  [] remove react helmet
+  [] fix robots-txt plugin
+[] break "about" page content into multiple paragraphs
+[] Shorten homepage hero text
+  [] add extra text to configurable message
+[] move homepage gallery main picture into gallery
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
 
-3.  **Open the code and start customizing!**
 
-    Your site is now running at http://localhost:8000!
 
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
