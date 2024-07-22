@@ -94,6 +94,7 @@ function processContentBlocks(blocks) {
       mainImage = {},
       name,
       contentType,
+      additionalContent = {},
     } = block;
     const { body: bodyText } = body || {};
 
@@ -102,11 +103,15 @@ function processContentBlocks(blocks) {
       Array.isArray(imageGallery) && imageGallery.length
         ? processImageGallery(imageGallery)
         : null;
+    const processedAdditionalContent = processAdditionalContent([
+      additionalContent,
+    ]);
     return {
       ...block,
       body: bodyText,
       mainImage: blockImage,
       gallery: processedImageGallery,
+      additionalContent: processedAdditionalContent,
       header,
       layout,
       contentType,

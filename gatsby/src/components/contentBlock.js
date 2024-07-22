@@ -46,8 +46,11 @@ export default function ContentBlock({ parents = {}, block, disableMx }) {
   );
 }
 
-function GetContentComponent({ parents, block, form, disableMx }) {
-  const { contentType } = block;
+function GetContentComponent({ parents, block, disableMx }) {
+  const { contentType, additionalContent = {} } = block;
+  const { forms = [] } = additionalContent;
+  const form = forms && forms.length ? forms[0] : false;
+
   switch (contentType) {
     case "litters": {
       return <Litters block={block} />;
@@ -62,7 +65,7 @@ function GetContentComponent({ parents, block, form, disableMx }) {
       return <Parents parents={parents} block={block} />;
     }
     case "form": {
-      return typeof form === "object" && <ProcessedForm form={form} />;
+      return typeof form === "object" && form && <ProcessedForm form={form} />;
     }
     default: {
       return <Default block={block} disableMx={disableMx} />;

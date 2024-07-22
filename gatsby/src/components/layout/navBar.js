@@ -25,6 +25,7 @@ export default function NavBar({ currentPage = "" }) {
   const links = [
     { value: "ourdogs", title: "Our Dogs" },
     { value: "about", title: "About" },
+    { value: "studservice", title: "Stud Service" },
     { value: "contact", title: "Contact" },
     { value: "adopt", title: "Adopt", variant: "button" },
   ];

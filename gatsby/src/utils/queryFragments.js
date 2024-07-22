@@ -79,10 +79,27 @@ export const queries = {
   `,
   additionalContentBlockInfo: graphql`
     fragment AdditionalContentBlockInformation on ContentfulContentBlock {
-      id
       additionalContent {
-        id
-        name
+        ... on ContentfulForm {
+          id
+          name
+          postUrl
+          field {
+            validation
+            title
+            placeholder
+            required
+            option
+            helperText
+            fieldType
+            internal {
+              type
+            }
+          }
+          internal {
+            type
+          }
+        }
       }
     }
   `,

@@ -101,7 +101,7 @@ export default function Footer() {
                       }}
                     >
                       <LinkRoundedIcon sx={{ mr: 1 }} />
-                      {link.pageName}
+                      {link.pageLinkText === null ? "Home" : link.title}
                     </Box>
                   </GatsbyLink>
                 </Box>
