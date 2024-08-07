@@ -62,19 +62,7 @@ function processParents(parents) {
   nodes
     .sort((a, b) => a.order - b.order)
     .forEach((parent) => {
-      const { mainPicture, gallery: imageGallery } = parent;
-      const mainImage = mainPicture
-        ? processImage(mainPicture)
-        : { image: placeholderParent };
-      const processedImageGallery =
-        Array.isArray(imageGallery) && imageGallery.length
-          ? processImageGallery(imageGallery)
-          : null;
-      const processedParent = {
-        ...parent,
-        mainImage,
-        gallery: processedImageGallery,
-      };
+      const processedParent = processParent(parent);
       if (processedParent.owner === "Mountain Sky Goldens") {
         ourParents.push(processedParent);
       } else {
@@ -84,6 +72,22 @@ function processParents(parents) {
   return { ourParents, otherParents };
 }
 
+function processParent(parent) {
+  const { mainPicture, gallery: imageGallery } = parent;
+  console.log("parent processParent: ", parent);
+  const mainImage = mainPicture
+    ? processImage(mainPicture)
+    : { image: placeholderParent };
+  const processedImageGallery =
+    Array.isArray(imageGallery) && imageGallery.length
+      ? processImageGallery(imageGallery)
+      : null;
+  return {
+    ...parent,
+    mainImage,
+    gallery: processedImageGallery,
+  };
+}
 function processContentBlocks(blocks) {
   return blocks.map((block) => {
     const {
@@ -103,9 +107,10 @@ function processContentBlocks(blocks) {
       Array.isArray(imageGallery) && imageGallery.length
         ? processImageGallery(imageGallery)
         : null;
-    const processedAdditionalContent = processAdditionalContent([
-      additionalContent,
-    ]);
+    const processedAdditionalContent = processAdditionalContent(
+      [additionalContent],
+      contentType
+    );
     return {
       ...block,
       body: bodyText,
@@ -149,11 +154,12 @@ export function processImageGallery(gallery) {
   });
 }
 
-function processAdditionalContent(content) {
+function processAdditionalContent(content, blockContentType) {
   const contactItems = [];
   const forms = [];
+  const parents = [];
   content.forEach((item) => {
-    const contentType = determineContentType(item);
+    const contentType = determineContentType(item, blockContentType);
     const fields = { ...item };
     //  Object.keys(item).reduce((prev, current) => {
     //   return { ...prev, [current]: item[current] };
@@ -164,14 +170,22 @@ function processAdditionalContent(content) {
         contactItems.push({
           ...fields,
         });
+        break;
       }
       case "form": {
         forms.push({ ...fields });
+        break;
+      }
+      case "stud": {
+        parents.push(processParent(fields));
+        break;
       }
       default:
     }
+    console.log("item: ", item);
+    console.log("parents: ", parents);
   });
-  return { contactItems, forms };
+  return { contactItems, forms, parents };
 }
 
 function processDocuments(documents) {
@@ -181,11 +195,15 @@ function processDocuments(documents) {
     return { title: document.title, url: file.url, type: file.title };
   });
 }
-function determineContentType(contentItem) {
+function determineContentType(contentItem, blockContentType) {
+  console.log("contentItem?.internal?.type: ", contentItem?.internal?.type);
   if (contentItem?.internal?.type === "ContentfulContactInfoField") {
     return "contact";
   }
   if (contentItem?.internal?.type === "ContentfulForm") {
     return "form";
+  }
+  if (blockContentType === "stud") {
+    return "stud";
   }
 }

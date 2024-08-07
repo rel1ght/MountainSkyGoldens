@@ -23,8 +23,14 @@ import formatPageData from "../utils/formatPageData";
 import SmallImagePageLayout from "../components/layout/smallImagePageLayout";
 import ContentBlock from "../components/contentBlock";
 export default function AboutPage({ data, uri }) {
-  const { title, subtitle, backgroundImage, additionalContent, contentBlocks } =
-    formatPageData(data);
+  const {
+    title,
+    subtitle,
+    backgroundImage,
+    additionalContent,
+    contentBlocks,
+    documents,
+  } = formatPageData(data);
   return (
     <Layout title="studservice" noIndex>
       <SmallImagePageLayout
@@ -36,6 +42,28 @@ export default function AboutPage({ data, uri }) {
           <Grid item>
             {contentBlocks.map((block) => {
               return <ContentBlock block={block} key={block.name} />;
+            })}
+            {documents.map((document) => {
+              return (
+                <Box sx={{ width: 1, mb: 5 }}>
+                  <Typography variant="h5" align="center" pb={2}>
+                    {document.title}
+                  </Typography>
+                  <Box
+                    sx={{
+                      borderRadius: 1,
+                      overflow: "hidden",
+                      maskImage: "radial-gradient(white, black)",
+                      border: "4px solid gray",
+                    }}
+                  >
+                    <iframe
+                      style={{ width: "100%", height: "80vh" }}
+                      src={`https://docs.google.com/gview?url=https:${document.url}&embedded=true`}
+                    />
+                  </Box>
+                </Box>
+              );
             })}
           </Grid>
         </Grid>

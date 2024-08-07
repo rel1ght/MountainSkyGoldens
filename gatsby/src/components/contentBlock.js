@@ -24,6 +24,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Gallery from "@browniebroke/gatsby-image-gallery";
 import GalleryThumbnail from "./galleryThumbnail";
 import QuoteCarousel from "./quoteCarousel";
+import StudCard from "./studCard";
 export default function ContentBlock({ parents = {}, block, disableMx }) {
   const { header } = block;
 
@@ -48,7 +49,8 @@ export default function ContentBlock({ parents = {}, block, disableMx }) {
 
 function GetContentComponent({ parents, block, disableMx }) {
   const { contentType, additionalContent = {} } = block;
-  const { forms = [] } = additionalContent;
+  const { forms = [], parents: additionalContentParents = [] } =
+    additionalContent;
   const form = forms && forms.length ? forms[0] : false;
 
   switch (contentType) {
@@ -64,9 +66,18 @@ function GetContentComponent({ parents, block, disableMx }) {
     case "other parents": {
       return <Parents parents={parents} block={block} />;
     }
+    case "stud": {
+      const stud = additionalContentParents[0];
+
+      return <StudCard parent={stud} />;
+    }
     case "form": {
       return typeof form === "object" && form && <ProcessedForm form={form} />;
     }
+    // todo: add
+    // case "document": {
+    //   return <Document block={block} />;
+    // }
     default: {
       return <Default block={block} disableMx={disableMx} />;
     }
@@ -79,6 +90,10 @@ function Testimonials({ block }) {
       <QuoteCarousel />
     </>
   );
+}
+
+function Document({ block }) {
+  return <></>;
 }
 
 function Parents({ parents, ourParentsFlag }) {

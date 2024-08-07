@@ -89,7 +89,11 @@ export default function QuoteCarousel() {
         </Typography>
         <Divider variant="thick" sx={{ py: 1 }} flexItem />
         {quotePages.length > 1 && (
-          <Dots amount={quotePages.length} currentIndex={index} />
+          <Dots
+            amount={quotePages.length}
+            currentIndex={index}
+            setIndex={setIndex}
+          />
         )}
       </Box>
       <Box
@@ -110,7 +114,7 @@ export default function QuoteCarousel() {
   );
 }
 
-function Dots({ amount, currentIndex }) {
+function Dots({ amount, currentIndex, setIndex }) {
   return (
     <Box
       sx={{
@@ -124,7 +128,10 @@ function Dots({ amount, currentIndex }) {
         return currentIndex === index ? (
           <CircleIcon color="disabled" />
         ) : (
-          <CircleOutlinedIcon color="disabled" />
+          <CircleOutlinedIcon
+            color="disabled"
+            onClick={() => setIndex(index)}
+          />
         );
       })}
     </Box>

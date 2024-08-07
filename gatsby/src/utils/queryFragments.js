@@ -80,6 +80,63 @@ export const queries = {
   additionalContentBlockInfo: graphql`
     fragment AdditionalContentBlockInformation on ContentfulContentBlock {
       additionalContent {
+        ... on ContentfulParent {
+          id
+          owner
+          ownerWebsiteLink
+          pedigreeLink
+          role
+          status
+          weight
+          hipCertification
+          elbowCertification
+          heartCertification
+          eyeCertification
+          breed
+          bio {
+            id
+            bio
+          }
+          mainPicture {
+            image {
+              gatsbyImageData(formats: [JPG])
+            }
+            focalPoint {
+              focalPoint {
+                x
+                y
+              }
+            }
+            title
+          }
+          slug
+          gallery {
+            focalPoint {
+              focalPoint {
+                x
+                y
+              }
+            }
+            image {
+              gatsbyImageData(formats: [JPG])
+              title
+            }
+            title
+          }
+          name
+          showOnOurDogsPage
+          showOnStudServicePage
+          order
+          chic
+          dam
+          sire
+          prcdpra
+          pra1
+          pra2
+          ichthyosis
+          dm
+          ncl
+        }
         ... on ContentfulForm {
           id
           name
@@ -295,6 +352,14 @@ export const ParentInformation = graphql`
     showOnOurDogsPage
     showOnStudServicePage
     order
+    chic
+    dam
+    sire
+    prcdpra
+    pra1
+    pra2
+    ichthyosis
+    dm
   }
 `;
 
