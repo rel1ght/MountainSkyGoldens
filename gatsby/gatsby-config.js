@@ -25,7 +25,7 @@ module.exports = {
         policy: [
           {
             userAgent: "Googlebot",
-            disallow: ["/deposit", "/adoptSubmitted", "/studService"],
+            disallow: ["/deposit", "/adoptSubmitted"],
           },
           { userAgent: "*", allow: "/" },
         ],
