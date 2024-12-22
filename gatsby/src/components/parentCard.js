@@ -83,7 +83,6 @@ export default function ParentCard({
     },
   ];
   const { bio } = bioWrapper || {};
-  console.log("dogAttributes: ", dogAttributes);
   return (
     <>
       {variant === "default" ? (
@@ -152,14 +151,6 @@ export default function ParentCard({
                     </Box>
                   </Box>
                 ))}
-            </Grid>
-            <Grid container item xs={12} sx={{ px: 4 }}>
-              <Grid item xs={12} sm={10} md={6} sx={{ p: 2 }}>
-                test1
-              </Grid>
-              <Grid item xs={12} sm={10} md={6} sx={{ p: 2 }}>
-                test2
-              </Grid>
             </Grid>
             {bio && (
               <Grid item xs={12} sx={{ px: 4 }}>
