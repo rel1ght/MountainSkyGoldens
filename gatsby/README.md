@@ -8,7 +8,7 @@ All commands are run from ./gatsby dir
 build for production: npm run build
 develop: npm run start
 
-##netlify
+## netlify
 2 sites: 
   1. prod-mountainskygoldens.netlify.com
   - mountainskygoldens.com points to it.
@@ -22,7 +22,7 @@ develop: npm run start
   - automatically rebuilds when any contentful changes are published
   - accessible through the "preview" button in the contentful editor sidebar
 
-##contentful
+## contentful
 "Go live" button in sidebar is a custom app with a button that triggers a build webhook for prod
 "Preview" button in sidebar is a sidebar extension, accessible through "settings/extensions"
 
@@ -50,7 +50,6 @@ develop: npm run start
 [] Shorten homepage hero text
   [] add extra text to configurable message
 [] move homepage gallery main picture into gallery
-
 
 
 
