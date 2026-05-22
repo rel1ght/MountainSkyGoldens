@@ -44,7 +44,6 @@ module.exports = {
       options: { defaults: { formats: ["jpg", "png"] } },
     },
     "gatsby-plugin-react-helmet",
-    "gatsby-theme-material-ui",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -124,11 +123,7 @@ module.exports = {
         rule: {
           include: /images\/.*\.svg/,
         },
-        filters: [
-          (value) => {
-            console.log(value);
-          },
-        ],
+        filters: [(value) => value],
         // omitKeys: [
         // 	// "xmlnsDc",
         // 	// "xmlnsCc",
